@@ -9,14 +9,43 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
 `;
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  } to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  color: #000;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 700px;
+
+  ul {
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+
+    .activeTab {
+      font-weight: bolder;
+      border-bottom: 2px solid #93ccea;
+      margin-right: 25px;
+    }
+
+    .defaultTab {
+      border-bottom: 2px solid white;
+      margin-right: 25px;
+    }
+  }
 
   img {
     margin-top: 20px;
@@ -29,27 +58,44 @@ export const Content = styled.div`
   */
 `;
 
-const appearFromRight = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  } to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
+export const ContactTo = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #000;
 
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  height: 350px;
+
+  /**
+  place-content: center;
+*/
+`;
+export const SexoInput = styled.div`
+  display: flex;
+  padding-top: 10px;
+  color: #000;
+  align-content: center;
+  justify-content: space-around;
+
+  /**
+place-content: center;
+*/
+`;
 export const AnimationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 600px;
 
   animation: ${appearFromRight} 1.5s;
 
   form {
     margin: 20px 0;
     width: 340px;
+
     text-align: center;
 
     h1 {
@@ -84,7 +130,7 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color: ${lighten(0.2, '#00ff00')};
+      color: ${lighten(0.2, '#000')};
     }
   }
 `;

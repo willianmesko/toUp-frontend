@@ -10,7 +10,7 @@ import getValidationErrors from '~/utils/getValidationErrors';
 import { useAuth } from '~/hooks/AuthContext';
 import { useToast } from '~/hooks/ToastContext';
 
-import Input from '~/components/Input';
+import Input from '~/components/Inputs/Text';
 import Button from '~/components/Button';
 
 import logoImg from '~/assets/TO-UP.png';
