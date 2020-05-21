@@ -1,0 +1,99 @@
+.container-profile {
+  margin-top: 100px;
+  display: grid;
+  margin: 20px;
+
+  grid-gap: 50px;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.card-profile {
+  cursor: pointer;
+  width: 40vw;
+  height: 25vh;
+  transition: all 0.5s ease;
+  border-radius: 0.75rem;
+  transition: all 0.5s ease;
+  background: 0000;
+
+  display: grid;
+  grid-template-columns: 40% auto;
+  color: #000;
+
+  align-items: center;
+
+  will-change: transform;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    border: 3px solid #000;
+  }
+}
+
+.card-details {
+  padding: 1rem;
+}
+
+.name {
+  font-size: 1.25rem;
+}
+
+.occupation {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.card-avatar-training {
+  height: 100%;
+  width: 100%;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card-about {
+  margin-top: 1rem;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+
+  .value {
+    font-size: 1rem;
+  }
+
+  .label {
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.75rem;
+
+  .label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .value {
+    margin-top: 0.15rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
+}

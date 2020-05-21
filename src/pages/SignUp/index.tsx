@@ -27,8 +27,10 @@ import {
 
 interface SignUpFormData {
   name: string;
+  surname: string;
   email: string;
   password: string;
+  sexo: boolean;
 }
 
 const SignUp: React.FC = () => {
@@ -53,6 +55,7 @@ const SignUp: React.FC = () => {
             6,
             'Digite uma senha de no mínimo 6 dígitos',
           ),
+          sexo: Yup.boolean(),
         });
 
         await schema.validate(data, {
@@ -128,10 +131,11 @@ const SignUp: React.FC = () => {
                 />
                 <SexoInput>
                   <div>
-                    <InputRadio name="masculine" /> <label>Masculino</label>
+                    <InputRadio name="sexo" value={0} />{' '}
+                    <label>Masculino</label>
                   </div>
                   <div>
-                    <InputRadio name="femenine" /> <label>Femenino</label>
+                    <InputRadio name="sexo" value={1} /> <label>Feminino</label>
                   </div>
                 </SexoInput>
                 <Button type="submit">Cadastrar</Button>
