@@ -1,11 +1,23 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
-  max-width: 1300px;
-  margin: 100px auto;
+  max-width: 1366px;
+  margin: 150px auto;
+
+  svg {
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    transition: all 0.25s ease;
+
+    &:hover {
+      fill: ${shade(0.2, '#87868B')};
+    }
+  }
   h1 {
     text-align: center;
-    padding: 100px;
+    padding: 50px;
     color: #000;
   }
 `;
@@ -17,12 +29,17 @@ export const Content = styled.main`
 
 export const MenuLateral = styled.aside`
   display: block;
-  height: 1200px;
+  height: 900px;
   width: 350px;
-  background: #fff;
+  background: linear-gradient(
+    to bottom,
+    rgba(42, 159, 255, 0.2) 10%,
+    rgb(248, 248, 255) 60%,
+    rgba(255, 255, 255, 1) 100%
+  ) !important;
   color: #000;
-  border-radius: 5px;
-  border: 1px solid #000;
+  border-radius: 0.75rem;
+
   padding: 32px;
   margin-right: 50px;
 

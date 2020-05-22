@@ -6,13 +6,22 @@ interface ContainerProps {
   isFocused: boolean;
   isFilled: boolean;
   isErrored: boolean;
+  width?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
   background: #fff;
   border-radius: 10px;
   padding: 16px;
-  width: 100%;
+
+  ${props =>
+    props.width
+      ? css`
+          width: 40%;
+        `
+      : css`
+          width: 100%;
+        `}
 
   color: #666360;
   border: 2px solid #232129;

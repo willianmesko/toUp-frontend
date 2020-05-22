@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.footer`
   background-color: rgb(221, 221, 221);
-  z-index: 99999;
+
   padding: 0 30px;
   opacity: 1;
-  position: fixed;
+  display: block;
+  position: relative;
   bottom: 0;
-  height: 160px;
+  height: 250px;
   width: 100%;
 `;
 

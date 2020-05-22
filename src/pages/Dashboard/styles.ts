@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Cards = styled.div`
   max-width: 1366px;
-  margin: 200px auto;
+  margin: 0 auto;
   width: calc(100% - 2em);
   display: grid;
 
