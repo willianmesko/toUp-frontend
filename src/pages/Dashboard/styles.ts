@@ -2,16 +2,16 @@ import styled from 'styled-components';
 
 export const Cards = styled.div`
   max-width: 1366px;
-  margin: 0 auto;
+  margin: 50px auto;
   width: calc(100% - 2em);
   display: grid;
 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 1em;
   grid-template-areas:
-    'a a b c'
-    'a a d d';
+    'a a b b'
+    'a a c c';
 
   .card {
     width: 100%;
@@ -20,28 +20,70 @@ export const Cards = styled.div`
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    opacity: 0.9;
+    display: flex;
+  justify-content: center;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+    to top,
+    rgba(42, 159, 255, 0.2) 10%,
+    rgb(248, 248, 255) 60%,
+    rgba(255, 255, 255, 1) 100%
+  ) !important;
+
+  h1 {
+    margin-top:30px;
+    color:rgb(135,134,139);
+    font-weight: 900;
+    font-size:40px;
+  }
+
+      .card-content {
+          margin-top:-50px;
+          display: flex;
+          flex-direction: column;
+            justify-content: center;
+
+            align-items: center;
+            .small {
+              margin-top: 60px;
+              h2 {
+
+              color:rgb(135,134,139);
+              font-weight: 900;
+              font-size:30px;
+              }
+              svg {
+                margin-left: 20px;
+              }
+              }
+
+      }
 
     &:last-child {
       margin-bottom: 0;
+
     }
     &:before {
       height: 0;
       content: '';
       display: block;
       padding-bottom: 47.36%;
+      border-radius: 50%;
     }
 
     &.content {
+
       &:after {
         position: absolute;
-
+        border-radius: 50%;
         bottom: 0;
         left: 0;
         width: 100%;
         height: 50%;
         content: '';
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+
       }
     }
     &:nth-child(1) {
@@ -87,10 +129,9 @@ export const Cards = styled.div`
       padding: 0.5em;
     }
     &-title {
-      position: absolute;
-      left: 1em;
-      bottom: 1em;
-      color: #d6dbeb;
+
+
+      color: #87868B;
       z-index: 5;
       font-size: 0.8em;
     }
@@ -178,8 +219,12 @@ export const Cards = styled.div`
       }
     }
     &:hover {
-      transform: scale(1.02);
-      opacity: 1;
+      transform:
+      box-shadow: 1px 1px #53a7ea, 2px 2px #53a7ea, 3px 3px #53a7ea;
+      -webkit-transform: translateX(-3px);
+      transform: scale(1.02) translateX(-3px);
+      border: 3px solid #000;
+
     }
   }
 `;

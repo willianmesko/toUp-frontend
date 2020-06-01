@@ -1,11 +1,8 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
-export const Container = styled.div`
-  border-radius: 10px;
-`;
+export const Container = styled.div``;
 
-export const AthleteField = styled.div`
+export const TrainingField = styled.div`
   display: flex;
   margin-left: 30px;
   margin-top: 15px;
@@ -19,8 +16,7 @@ export const AthleteField = styled.div`
     width: 60%;
     border: 2px solid rgb(135, 134, 139);
   }
-  span {
-    cursor: pointer;
+  a {
     padding: 10px 10px;
     border-radius: 50%;
     border: 0;
@@ -33,21 +29,18 @@ export const AthleteField = styled.div`
   }
 `;
 
-export const AthleteCard = styled.div`
+export const TrainingCard = styled.div`
+  margin-top: 100px;
   display: grid;
-  grid-gap: 20px;
+  margin: 20px;
+  grid-gap: 50px;
   justify-content: center;
   align-items: center;
 
-  p {
-    color: #000;
-    margin-bottom: 0px;
-  }
-
-  .card-profile-athlete {
+  .card-profile {
     cursor: pointer;
     width: 40vw;
-    height: 20vh;
+    height: 22vh;
     transition: all 0.5s ease;
     border-radius: 0.75rem;
     transition: all 0.5s ease;
@@ -57,7 +50,10 @@ export const AthleteCard = styled.div`
       rgb(248, 248, 255) 60%,
       rgba(255, 255, 255, 1) 100%
     ) !important;
-
+    p {
+      color: #000;
+      margin-bottom: 0px;
+    }
     display: grid;
     grid-template-columns: 40% auto;
     color: #000;
@@ -78,38 +74,23 @@ export const AthleteCard = styled.div`
   }
 
   .name {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
     font-size: 1.25rem;
-
-    .icons {
-      svg {
-        margin: 5px;
-        cursor: pointer;
-
-        transition: all 0.25s ease;
-
-        &:hover {
-          fill: ${shade(0.2, '#87868B')};
-        }
-      }
-    }
   }
 
   .occupation {
-    font-weight: 200;
+    font-weight: 600;
     color: var(--primary);
   }
 
-  .card-avatar {
-    display: grid;
-    place-items: center;
-    img {
-      width: 9vw;
-      height: 16vh;
-      border-radius: 50%;
-    }
+  .card-avatar-training {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
   }
 
   .card-about {
@@ -128,6 +109,7 @@ export const AthleteCard = styled.div`
     }
 
     .label {
+      margin-top: 0.15rem;
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--primary);
@@ -146,6 +128,7 @@ export const AthleteCard = styled.div`
     }
 
     .value {
+      margin-top: 0.15rem;
       font-size: 0.75rem;
       line-height: 1.25rem;
     }

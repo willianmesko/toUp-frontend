@@ -10,10 +10,10 @@ import { useToast } from '~/hooks/ToastContext';
 import api from '~/services/api';
 import getValidationErrors from '~/utils/getValidationErrors';
 
-import logoImg from '~/assets/TO-UP.png';
+import logoImg from '~/assets/to-up2.png';
 
 import Input from '~/components/Inputs/Text';
-import InputRadio from '~/components/Inputs/Radio';
+
 import Button from '~/components/Button';
 
 import {
@@ -30,18 +30,17 @@ interface SignUpFormData {
   surname: string;
   email: string;
   password: string;
-  sexo: boolean;
 }
 
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
   const [activeTab, setActiveTab] = useState(0);
-
+  const [sexo, setSexo] = useState(0);
   const { addToast } = useToast();
 
   const handleSubmit = useCallback(
-    async (data: SignUpFormData) => {
+    async ({ name, surname, email, password }: SignUpFormData) => {
       try {
         formRef.current?.setErrors({});
 
@@ -55,21 +54,23 @@ const SignUp: React.FC = () => {
             6,
             'Digite uma senha de no mínimo 6 dígitos',
           ),
-          sexo: Yup.boolean(),
         });
 
-        await schema.validate(data, {
-          abortEarly: false,
-        });
+        await schema.validate(
+          { name, surname, email, password },
+          {
+            abortEarly: false,
+          },
+        );
 
-        await api.post('/users', data);
+        await api.post('/users', { name, surname, email, password, sexo });
 
         history.push('/');
 
         addToast({
           type: 'success',
-          title: 'Cadastro realizado! ✂️',
-          description: 'Você já pode fazer seu logon no GoBarber!',
+          title: 'Cadastro realizado! 🏋 ',
+          description: 'Você já pode fazer seu logon no To Up!',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -131,11 +132,22 @@ const SignUp: React.FC = () => {
                 />
                 <SexoInput>
                   <div>
-                    <InputRadio name="sexo" value={0} />{' '}
+                    <input
+                      type="radio"
+                      checked={sexo === 0}
+                      onChange={() => setSexo(0)}
+                      value={sexo}
+                    />{' '}
                     <label>Masculino</label>
                   </div>
                   <div>
-                    <InputRadio name="sexo" value={1} /> <label>Feminino</label>
+                    <input
+                      type="radio"
+                      checked={sexo === 1}
+                      onChange={() => setSexo(1)}
+                      value={sexo}
+                    />{' '}
+                    <label>Feminino</label>
                   </div>
                 </SexoInput>
                 <Button type="submit">Cadastrar</Button>

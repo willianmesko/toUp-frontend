@@ -13,15 +13,8 @@ export const Container = styled.div<ContainerProps>`
   background: #fff;
   border-radius: 10px;
   padding: 16px;
+  width: 100%;
 
-  ${props =>
-    props.width
-      ? css`
-          width: 40%;
-        `
-      : css`
-          width: 100%;
-        `}
 
   color: #666360;
   border: 2px solid #232129;
@@ -29,9 +22,8 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
 
-  & + div {
-    margin-top: 8px;
-  }
+
+
 
   ${props =>
     props.isErrored &&
@@ -57,6 +49,7 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: #000;
+
 
     &::placeholder {
       color: #666360;

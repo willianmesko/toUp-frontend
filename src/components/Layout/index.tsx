@@ -1,46 +1,53 @@
-import React, { useMemo } from 'react';
-import { GiWeightLiftingUp } from 'react-icons/gi';
+import React, { useState } from 'react';
+
 import Header from '~/components/Header';
-import Footer from '~/components/Footer';
-
-import { useLocation } from 'react-router-dom';
-import { Container, Content, MenuLateral } from './styles';
-
-const Layout: React.FC = ({ children }) => {
-  const location = useLocation();
-
-  const url = useMemo(() => location.pathname, [location]);
+import { TopArea, Content, MenuLateral } from './styles';
+import { UserInfo } from './Userinfo';
+import { AthleteInfo } from './AthleteInfo';
+import { TrainingInfo } from './TrainingInfo';
+export const Layout = ({ sideBar, topBar, children }) => {
+  const [widthMenuLateral, setWidth] = useState(380);
+  const renderComponentInfo = () => {
+    switch (window.location.pathname) {
+      case '/training':
+        return <UserInfo />;
+        break;
+      case '/athletes':
+        return <UserInfo />;
+        break;
+      case '/perfil-athlete':
+        return <AthleteInfo />;
+        break;
+      case '/training-info':
+        return <AthleteInfo />;
+        break;
+    }
+  };
 
   return (
     <>
       <Header />
-      <Container>
-        {url !== '/newAthlete' && url !== '/dashboard' && (
-          <>
-            <GiWeightLiftingUp size={100} color="#87868B" />
-            <h1>Alunos</h1>
-
+      {topBar && (
+        <>
+          <TopArea>
+            {/* {infos.topIcon} */}
+            <h1>
+              {window.location.pathname === '/training' ? 'Treinos' : 'Alunos'}
+            </h1>
             <hr />
-          </>
+          </TopArea>
+        </>
+      )}
+      <Content>
+        {sideBar && (
+          <MenuLateral width={widthMenuLateral} onClick={() => setWidth(5000)}>
+            {renderComponentInfo()}
+          </MenuLateral>
         )}
-        <Content>
-          {url !== '/newAthlete' && url !== '/dashboard' && (
-            <MenuLateral>
-              <div>
-                <img
-                  src="https://avatars3.githubusercontent.com/u/26778884?v=4"
-                  alt="Person"
-                />
-                <h2>Mesko</h2>
-              </div>
-            </MenuLateral>
-          )}
-
-          {children}
-        </Content>
-      </Container>
+        {widthMenuLateral < 600 ? children : ''}
+      </Content>
     </>
   );
 };
 
-export default Layout;
+// export const LeftBox: React.FC = ({ children }) => {};

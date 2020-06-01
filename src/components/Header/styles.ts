@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: rgb(248, 248, 255);
+  background: #fff;
   z-index: 99999;
   padding: 0 30px;
   opacity: 1;
@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 130px;
+  height: 80px;
   max-width: 1336px;
   margin: 0 auto;
   display: flex;
@@ -68,6 +68,41 @@ export const Profile = styled.div`
     border-color: rgb(135, 134, 139);
     border-image: initial;
     border-radius: 50%;
+  }
+`;
 
+export const Menu = styled.div`
+  display: flex;
+  margin-left: 100px;
+  li {
+    margin: 0 20px 0 20px;
+    &.active {
+      border-bottom: 2px solid #3bb9e3;
+      &:hover {
+        border-radius: 0px !important;
+        background: rgb(248, 248, 255) !important;
+      }
+      svg {
+        margin: 10px 25px;
+        fill: rgb(42, 159, 255) !important;
+        stroke-width: 0 !important;
+        stroke: rgb(42, 159, 255) !important;
+      }
+    }
 
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+    &:hover {
+      border-radius: 6px;
+      background: rgba(106, 161, 169, 0.29);
+    }
+    svg {
+      margin: 10px 25px;
+      fill: none;
+      stroke-width: 20px;
+      stroke: #a9a9a9;
+      width: 40;
+    }
+  }
 `;

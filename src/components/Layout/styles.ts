@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const Container = styled.div`
+interface AsideProps {
+  width: number;
+}
+
+export const TopArea = styled.div`
   max-width: 1366px;
-  margin: 150px auto;
+  margin: 80px auto 50px auto;
 
   svg {
     cursor: pointer;
@@ -17,22 +21,25 @@ export const Container = styled.div`
   }
   h1 {
     text-align: center;
-    padding: 50px;
-    color: #000;
+    padding: 20px;
+    color: rgb(135, 134, 139);
+    font-weight: 900;
   }
 `;
 
 export const Content = styled.main`
-  margin-top: 100px;
+  max-width: 1366px;
   display: flex;
+  margin: 100px auto;
 `;
 
-export const MenuLateral = styled.aside`
+export const MenuLateral = styled.aside<AsideProps>`
   display: block;
-  height: 900px;
-  width: 350px;
+
+  height: 800px;
+  width: ${props => `${props.width}px`};
   background: linear-gradient(
-    to bottom,
+    to top,
     rgba(42, 159, 255, 0.2) 10%,
     rgb(248, 248, 255) 60%,
     rgba(255, 255, 255, 1) 100%
@@ -55,6 +62,35 @@ export const MenuLateral = styled.aside`
       border-style: solid;
       border-color: rgb(135, 134, 139);
       border-image: initial;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 5px;
+    }
+
+    .information-area {
+      margin-top: 60px;
+
+      li {
+        padding: 3px;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+
+        &:hover {
+          background: rgba(106, 161, 169, 0.29);
+        }
+      }
+      p {
+        font-weight: 500;
+        font-size: 16px;
+        margin: 5px;
+
+        svg {
+          margin-right: 5px;
+        }
+      }
     }
   }
 `;

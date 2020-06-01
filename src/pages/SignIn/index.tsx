@@ -13,7 +13,7 @@ import { useToast } from '~/hooks/ToastContext';
 import Input from '~/components/Inputs/Text';
 import Button from '~/components/Button';
 
-import logoImg from '~/assets/TO-UP.png';
+import logoImg from '~/assets/to-up2.png';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
 

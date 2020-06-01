@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
+import { LastLocationProvider } from 'react-router-last-location';
 import AppProvider from '~/hooks';
 
 import Routes from '~/routes';
 
 import GlobalStyle from '~/styles/global';
 
-const App: React.FC = () => (
+const App = () => (
   <BrowserRouter>
-    <AppProvider>
-      <Routes />
-    </AppProvider>
-    <GlobalStyle />
+    <LastLocationProvider>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+      <GlobalStyle />
+    </LastLocationProvider>
   </BrowserRouter>
 );
 

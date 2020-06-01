@@ -15,11 +15,11 @@ export const Container = styled.div<ContainerProps>`
   width: 100%;
 
   color: #666360;
-  border: 2px solid rgb(135, 134, 139);
+  border: 2px solid rgb(135, 134, 139);;
   margin-bottom: 10px;
+
   display: flex;
   align-items: center;
-
 
 
   ${props =>
@@ -41,15 +41,20 @@ export const Container = styled.div<ContainerProps>`
       color: #93ccea;
     `}
 
-  input {
-    flex: 1;
+  select {
+
     background: transparent;
     border: 0;
-    color: #000;
+    color: #666360;
+    font-size:15px;
 
-    &::placeholder {
+    option {
       color: #666360;
+      border-radius: 10px;
+
     }
+
+
 
     & + input {
       margin-top: 8px;
