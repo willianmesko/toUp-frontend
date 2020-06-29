@@ -14,10 +14,7 @@ const UserInfo: React.FC = () => {
   return (
     <>
       <div>
-        <img
-          src="https://avatars3.githubusercontent.com/u/26778884?v=4"
-          alt="Person"
-        />
+        <img src={user.avatar_url} alt="Person" />
         <h2>{user.name}</h2>
         <hr />
         <h3>Plano lite</h3>

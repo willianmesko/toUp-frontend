@@ -40,7 +40,7 @@ export const TrainingCard = styled.div`
   .card-profile {
     cursor: pointer;
     width: 40vw;
-    height: 22vh;
+    height: 18vh;
     transition: all 0.5s ease;
     border-radius: 0.75rem;
     transition: all 0.5s ease;
@@ -65,7 +65,10 @@ export const TrainingCard = styled.div`
 
     &:hover {
       transform: scale(1.05);
-      border: 3px solid #000;
+      border: 2px solid #000;
+      img {
+        transform: scale(1.01);
+      }
     }
   }
 
@@ -83,14 +86,17 @@ export const TrainingCard = styled.div`
   }
 
   .card-avatar-training {
-    width: 100%;
-    height: 100%;
-  }
+    width: 80%;
+    height: 18vh;
 
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 70%;
+      height: 70%;
+      border-radius: 5px;
+    }
   }
 
   .card-about {

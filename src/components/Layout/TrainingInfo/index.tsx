@@ -2,7 +2,7 @@ import React from 'react';
 import { GiWeightLiftingUp, GiWeight, GiBodyHeight } from 'react-icons/gi';
 import { AiFillCalculator } from 'react-icons/ai';
 import { FaBirthdayCake } from 'react-icons/fa';
-
+import trainingCover from '~/assets/training-card.jpg';
 import { useTraining } from '~/hooks/TrainingContext';
 
 const TrainingInfo: React.FC = () => {
@@ -12,18 +12,16 @@ const TrainingInfo: React.FC = () => {
     <>
       <div>
         <img
-          src="https://cdn.dribbble.com/users/458522/screenshots/3374303/goku_rgb_dribbbler.jpg"
-          alt="Person"
+          style={{ width: '100%', height: '250px', borderRadius: '5px' }}
+          src={trainingCover}
+          alt="cover"
         />
         <h2>{training.title}</h2>
+
         <hr />
-        <h3>Plano lite</h3>
+        <h3> {console.log(training)}</h3>
         <div className="information-area">
-          <li>
-            <p>
-              <FaBirthdayCake />
-            </p>
-          </li>
+          <li></li>
           <li>
             <p>
               <GiWeight />

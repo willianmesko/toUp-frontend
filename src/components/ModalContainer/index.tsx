@@ -38,7 +38,7 @@ const ModalContainer: React.FC<ModalProps> = ({
           <span onClick={toggle}>{selectButton[button]}</span>
         ) : (
           <Button
-            style={{ width: '120px', float: 'right', height: '36px' }}
+            style={{ width: '150px', float: 'right', height: '36px' }}
             data-tut="reactour__create_routine"
             onClick={() => {
               toggle();

@@ -85,17 +85,16 @@ const Header = () => {
             >
               <Profile>
                 <div>
-                  <strong>Willian Mesko</strong>
-                  <Link to="/account">willianmesko@hotmail.com</Link>
+                  <strong>{user.name}</strong>
+                  <Link to="/profile">{user.email}</Link>
                 </div>
-                <img
-                  src="https://yt3.ggpht.com/a-/AOh14GjDM_FdVyl5v7gQrGyIgjf770GJBujpn9Q3LLI2cTI=s88-c-k-c0xffffffff-no-rj-mo"
-                  alt="avatarfake"
-                />
+                <img src={user.avatar_url} alt="avatarfake" />
               </Profile>
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem>Conta</DropdownItem>
+              <DropdownItem>
+                <Link to="/profile">Conta</Link>
+              </DropdownItem>
               <DropdownItem onClick={() => signOut()}>Sair</DropdownItem>
             </DropdownMenu>
           </Dropdown>

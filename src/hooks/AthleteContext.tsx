@@ -1,5 +1,10 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
 
+interface Training {
+  id: string;
+  description?: string;
+  title: string;
+}
 interface Athlete {
   id: string;
   name: string;
@@ -13,6 +18,7 @@ interface Athlete {
   objective: number;
   aerobic_profile: number;
   training_level: number;
+  trainings?: Training[];
 }
 
 interface AthleteContextData {

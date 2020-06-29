@@ -1,10 +1,23 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
-import api from '~/services/api';
+import api from '../services/api';
 
 interface User {
   id: string;
   avatar_url: string;
   name: string;
+  email: string;
+}
+
+interface SignInCredencials {
+  email: string;
+  password: string;
+}
+
+interface AuthContextData {
+  user: User;
+  signIn(credencials: SignInCredencials): Promise<void>;
+  signOut(): void;
+  updateUser(user: User): void;
 }
 
 interface AuthState {
@@ -12,26 +25,15 @@ interface AuthState {
   user: User;
 }
 
-interface SignInCredentials {
-  email: string;
-  password: string;
-}
-
-interface AuthContextData {
-  user: User;
-  signIn(credentials: SignInCredentials): Promise<void>;
-  signOut(): void;
-}
-
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@ToUp:token');
-    const user = localStorage.getItem('@ToUp:user');
+    const token = localStorage.getItem('@toUp:token');
+    const user = localStorage.getItem('@toUp:user');
 
     if (token && user) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
+      api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user) };
     }
 
@@ -39,39 +41,51 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('sessions', {
-      email,
-      password,
-    });
+    const response = await api.post('/sessions', { email, password });
 
     const { token, user } = response.data;
-    api.defaults.headers.Authorization = `Bearer ${token}`;
 
-    localStorage.setItem('@ToUp:token', token);
-    localStorage.setItem('@ToUp:user', JSON.stringify(user));
+    localStorage.setItem('@toUp:token', token);
+    localStorage.setItem('@toUp:user', JSON.stringify(user));
+
+    api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@ToUp:token');
-    localStorage.removeItem('@ToUp:user');
+    localStorage.removeItem('@toUp:token');
+    localStorage.removeItem('@toUp:user');
 
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(
+    (user: User) => {
+      localStorage.setItem('@toUp:user', JSON.stringify(user));
+
+      setData({
+        token: data.token,
+        user,
+      });
+    },
+    [setData, data.token],
+  );
+
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{ user: data.user, signIn, signOut, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
-function useAuth(): AuthContextData {
+function useAuth() {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useAuth must be used within an AuthProvider.');
   }
 
   return context;

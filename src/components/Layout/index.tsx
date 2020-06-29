@@ -19,7 +19,7 @@ export const Layout = ({ sideBar, topBar, children }) => {
         return <AthleteInfo />;
         break;
       case '/training-info':
-        return <AthleteInfo />;
+        return <TrainingInfo />;
         break;
     }
   };

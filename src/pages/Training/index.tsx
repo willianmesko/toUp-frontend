@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-
+import bicps from '~/assets/icons/bicps.svg';
 import { Container, TrainingField } from './styles';
 import { GrAddCircle } from 'react-icons/gr';
 import api from '~/services/api';
@@ -29,7 +29,8 @@ const Training: React.FC = () => {
   return (
     <Container>
       <TrainingField>
-        <input placeholder="buscar" />
+        {trainings.length > 0 && <input placeholder="buscar" />}
+
         <Link to="new-training">
           <GrAddCircle size={40} color="#87868B" />
         </Link>
@@ -40,15 +41,12 @@ const Training: React.FC = () => {
             <div
               onClick={() => {
                 setTraining(trainin);
-                history.push('/training-info');
+                setTimeout(() => history.push('/training-info'), 0);
               }}
             >
               <div className="card-profile">
                 <div className="card-avatar-training">
-                  <img
-                    src="http://t2.gstatic.com/images?q=tbn:ANd9GcReF05v9LFNyOk7ECwAHzzIx3DDJ45-JJVYgeG2-f6GbMLc2gATDffU0A1D1zNp7Djo4AU8XLp7JdIObdjoXTQ"
-                    alt="Person"
-                  />
+                  <img src={bicps} alt="Person" />
                 </div>
                 <div className="card-details">
                   <div className="name">
@@ -58,32 +56,6 @@ const Training: React.FC = () => {
                     <p>Hipertrofia</p>
                   </div>
 
-                  <div className="card-about">
-                    <div className="item">
-                      <span className="value">
-                        <p>25</p>
-                      </span>
-                      <span className="label">
-                        <p>Idade</p>
-                      </span>
-                    </div>
-                    <div className="item">
-                      <span className="value">
-                        <p>70 kg</p>{' '}
-                      </span>
-                      <span className="label">
-                        <p>Peso</p>
-                      </span>
-                    </div>
-                    <div className="item">
-                      <span className="value">
-                        <p>175 cm</p>
-                      </span>
-                      <span className="label">
-                        <p>Altura</p>
-                      </span>
-                    </div>
-                  </div>
                   {/* <div className="skills">
                     <p className="value">
                       Immeasurable Physical Prowess, Supernatural Reflexes and

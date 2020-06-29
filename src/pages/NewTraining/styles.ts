@@ -45,8 +45,8 @@ export const TrainingArea = styled.div`
       }
     }
 
-    #difficulty {
-      grid-area: difficulty;
+    #cycle {
+      grid-area: cycle;
     }
 
     /* > div {

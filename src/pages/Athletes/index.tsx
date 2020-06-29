@@ -59,7 +59,8 @@ const Athletes: React.FC = () => {
           onLoaderFinished={() => setLoadingBar(0)}
         />
         <AthleteField>
-          <input placeholder="buscar" />
+          {athletes.length > 0 && <input placeholder="buscar" />}
+
           <span>
             <GrAddCircle
               onClick={() => {
@@ -90,10 +91,7 @@ const Athletes: React.FC = () => {
                   </div>
                   <div className="card-details">
                     <div className="name">
-                      <div>
-                        {athlete.name.charAt(0).toUpperCase() +
-                          athlete.name.slice(1)}
-                      </div>
+                      <div>{athlete.name}</div>
                       <div className="icons">
                         <GiWeight />
                         <GiWeightLiftingUp />

@@ -7,7 +7,7 @@ import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 import Dashboard from '~/pages/Dashboard';
 import Athletes from '~/pages/Athletes';
-import Account from '~/pages/Account';
+import Profile from '~/pages/Profile';
 import Training from '~/pages/Training';
 import NewAthlete from '~/pages/NewAthlete';
 import AthletePerfil from '~/pages/AthletePerfil';
@@ -20,7 +20,7 @@ const Routes: React.FC = () => (
     <Route path="/signup" component={SignUp} />
 
     <Route path="/dashboard" component={Dashboard} isPrivate />
-    <Route path="/account" component={Account} isPrivate />
+    <Route path="/profile" component={Profile} isPrivate />
     <Route path="/athletes" topBar sideBar component={Athletes} isPrivate />
     <Route path="/training" topBar sideBar component={Training} isPrivate />
     <Route path="/new-athlete" component={NewAthlete} isPrivate />

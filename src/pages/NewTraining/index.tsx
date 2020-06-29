@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 
-import { FiUser } from 'react-icons/fi';
-import { GiStairsGoal } from 'react-icons/gi';
+import { MdTitle, MdDescription } from 'react-icons/md';
+import { GiStairsGoal, GiCycle } from 'react-icons/gi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { useHistory } from 'react-router-dom';
@@ -22,7 +22,7 @@ import { Container, Cover, Content, TrainingArea, RoutineArea } from './styles';
 interface NewTrainingFormData {
   title: string;
   description: string;
-  difficulty: number;
+  cycle: number;
   objective: number;
 }
 
@@ -33,19 +33,14 @@ const NewTraining: React.FC = () => {
   const { setTraining } = useTraining();
 
   const handleSubmit = useCallback(
-    async ({
-      title,
-      description,
-      difficulty,
-      objective,
-    }: NewTrainingFormData) => {
+    async ({ title, description, cycle, objective }: NewTrainingFormData) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
           title: Yup.string().required('Campo obrigatório'),
           description: Yup.string(),
-          difficulty: Yup.number(),
+          cycle: Yup.number(),
           objective: Yup.number(),
         });
 
@@ -53,7 +48,7 @@ const NewTraining: React.FC = () => {
           {
             title,
             description,
-            difficulty,
+            cycle,
             objective,
           },
           {
@@ -64,7 +59,7 @@ const NewTraining: React.FC = () => {
         const response = await api.post('/training', {
           title,
           description,
-          difficulty,
+          cycle,
           objective,
         });
 
@@ -98,7 +93,7 @@ const NewTraining: React.FC = () => {
 
   return (
     <Container>
-      <Cover></Cover>
+      <Cover />
       <Content>
         <TrainingArea>
           <h1>Cadastre um novo treino</h1>
@@ -106,17 +101,21 @@ const NewTraining: React.FC = () => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <div>
               <div id="title">
-                <Input name="title" icon={FiUser} placeholder="Titulo" />
+                <Input name="title" icon={MdTitle} placeholder="Titulo" />
               </div>
-              <div id="difficulty">
+              <div id="cycle">
                 <Select
-                  label="Dificuldade"
-                  icon={GiStairsGoal}
+                  label="Ciclo"
+                  icon={GiCycle}
                   options={[
-                    { key: 'Emagrecimento', value: 1 },
-                    { key: 'Hipertrofia', value: 2 },
+                    { key: 'Nenhum', value: 0 },
+                    { key: 'A B', value: 2 },
+                    { key: 'A B C', value: 3 },
+                    { key: 'A B C D', value: 4 },
+                    { key: 'A B C D E', value: 5 },
+                    { key: 'A B C D E F', value: 6 },
                   ]}
-                  name="difficulty"
+                  name="cycle"
                 />
               </div>
               <div id="objective">
@@ -134,7 +133,7 @@ const NewTraining: React.FC = () => {
               <div id="description">
                 <Input
                   name="description"
-                  icon={FiUser}
+                  icon={MdDescription}
                   placeholder="Descrição"
                 />
               </div>

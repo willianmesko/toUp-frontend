@@ -1,22 +1,37 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTraining } from '~/hooks/TrainingContext';
-import { Container, RoutinesArea, Routine, ExerciceArea } from './styles';
+import { Container, RoutinesArea, Routine, ExerciceArea, View } from './styles';
 import ModalContainer from '~/components/ModalContainer';
 import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Button from '~/components/Button';
 import { FiUser, FiEdit3, FiSave } from 'react-icons/fi';
-import { GrNotes } from 'react-icons/gr';
+import { FaThList } from 'react-icons/fa';
+import { BsGrid1X2Fill } from 'react-icons/bs';
+import { MdArrowBack } from 'react-icons/md';
+import { AiOutlineEye } from 'react-icons/ai';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+
 import Tour from 'reactour';
 import * as Yup from 'yup';
 import { useToast } from '~/hooks/ToastContext';
 import getValidationErrors from '~/utils/getValidationErrors';
 import api from '~/services/api';
-import Table from 'react-bootstrap/Table';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import AddAthletes from './AddAthletes';
+import TableRow from '@material-ui/core/TableRow';
+import ReactCardFlip from 'react-card-flip';
 import Chip from '@material-ui/core/Chip';
 import ReactTooltip from 'react-tooltip';
-
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateExercice from './CreateExercice';
 
 interface RoutineInterface {
@@ -45,25 +60,66 @@ interface ExerciceInterface {
 const TrainingInfo: React.FC = () => {
   const { training } = useTraining();
   const [routines, setRoutines] = useState([]);
-  const [exercices, setExercices] = useState();
+  const [exercices, setExercices] = useState([]);
   const [trainin, setTraining] = useState<TrainingInterface>(
     {} as TrainingInterface,
   );
-
+  const [flipped, setFlipped] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [startStep, setStartStep] = useState(0);
   const [playVideo, setPlayVideo] = useState(0);
   const [exerciceDragged, setExerciceDragged] = useState('');
-  const [editRoutine, setEditRoutine] = useState(false);
+  const [editRoutine, setEditRoutine] = useState({
+    routineIndex: 0,
+    active: false,
+  });
   const [editedRoutine, setEditedRoutine] = useState([]);
+  const [addExerciceToRotine, setAddExerciceToRotine] = useState({
+    routineIndex: 0,
+    active: false,
+  });
+  const [newExerciceInRoutine, setNewExerciceInRoutine] = useState({
+    id: {},
+    volume: '',
+    repetitions: '',
+    sequence: '',
+  });
   const { addToast } = useToast();
   const formRef = useRef<FormHandles>(null);
+  const [showRoutine, setShowRoutine] = useState<number[]>([
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+  ] as number[]);
+  const [flippedExercice, setFlippedExercice] = useState({
+    name: '',
+    routine_name: '',
+  });
+  const [activeView, setActiveView] = useState('list');
+  //Onloadig
+  const steps = [
+    {
+      selector: '[data-tut="reactour__create_routine"]',
+      content: 'Adicione uma rotina ao treino que criou',
+    },
+    {
+      selector: '[data-tut="reactour__add_exercice0"]',
+      content: 'Adicione exercicios na rotina',
+    },
+    {
+      selector: '[data-tut="reacttour_add_exercice_to"]',
+      content: 'Selecione o exercicio e arraste até a rotina escolhida',
+    },
+  ];
 
   useEffect(() => {
     async function getTraining(): Promise<void> {
-      const exercicesData = await api.get('/exercices');
       const routinesData = await api.get(`/routines/${training.id}`);
+      const exercicesData = await api.get('/exercices');
 
       setExercices(exercicesData.data);
 
@@ -72,7 +128,7 @@ const TrainingInfo: React.FC = () => {
       setRoutines(routinesData.data);
     }
     getTraining();
-  }, [training]);
+  }, []);
 
   const exerciceName = id => {
     const exercice = exercices.find(exercice => exercice.id === id);
@@ -112,6 +168,16 @@ const TrainingInfo: React.FC = () => {
     try {
       const editRoutine = [...routines];
       const index = editRoutine.findIndex(r => r.id === id);
+
+      if (editRoutine[index].routineExercice.length >= 10) {
+        addToast({
+          type: 'error',
+          title: 'Erro no cadastro',
+          description: 'Limite de 10 exercícios por rotina',
+        });
+        return;
+      }
+
       //Verifica se exercício já existe na rotina
 
       const exerciceIndex = editRoutine[index].routineExercice.findIndex(
@@ -146,20 +212,11 @@ const TrainingInfo: React.FC = () => {
     } catch (error) {}
   };
 
-  const steps = [
-    {
-      selector: '[data-tut="reactour__create_routine"]',
-      content: 'Adicione uma rotina ao treino que criou',
-    },
-    {
-      selector: '[data-tut="reactour__add_exercice0"]',
-      content: 'Adicione exercicios na rotina',
-    },
-    {
-      selector: '[data-tut="reacttour_add_exercice_to"]',
-      content: 'Selecione o exercicio e arraste até a rotina escolhida',
-    },
-  ];
+  const getLetterTraining = index => {
+    const letter = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+    return letter[index];
+  };
 
   async function editRoutineExercice(e, routine_id, id, editField) {
     const editR = [...editedRoutine];
@@ -184,7 +241,55 @@ const TrainingInfo: React.FC = () => {
 
   async function handleEditRoutine() {
     await api.put('/routine_exercice', editedRoutine);
-    setEditRoutine(false);
+    setEditRoutine({ routineIndex: 0, active: false });
+  }
+
+  //cria exercicio e adiciona na rotina
+  async function handleAddExerciceInRoutine(routine_id) {
+    try {
+      const findRoutine = [...routines];
+      const index = findRoutine.findIndex(r => r.id === routine_id);
+
+      if (findRoutine[index].routineExercice.length >= 10) {
+        setAddExerciceToRotine({ routineIndex: 0, active: false });
+        addToast({
+          type: 'error',
+          title: 'Erro no cadastro',
+          description: 'Limite de 10 exercícios por rotina',
+        });
+        return;
+      }
+
+      //Verifica se exercício já existe na rotina
+
+      const exerciceIndex = findRoutine[index].routineExercice.findIndex(
+        exercice => exercice.exercice_id === newExerciceInRoutine.id,
+      );
+
+      if (exerciceIndex >= 0) {
+        addToast({
+          type: 'error',
+          title: 'Erro no cadastro',
+          description: 'Exercício já vinculado a esta rotina',
+        });
+        setAddExerciceToRotine({ routineIndex: 0, active: false });
+        return;
+      }
+      const routineExerciceResponse = await api.post('/routine_exercice', {
+        exercice_id: newExerciceInRoutine.id,
+        routine_id,
+        volume: newExerciceInRoutine.volume,
+        repetitions: newExerciceInRoutine.repetitions,
+        sequence: newExerciceInRoutine.sequence,
+      });
+
+      if (routineExerciceResponse.data.id) {
+        findRoutine[index].routineExercice.push(routineExerciceResponse.data);
+
+        setAddExerciceToRotine({ routineIndex: 0, active: false });
+        setRoutines(findRoutine);
+      }
+    } catch (error) {}
   }
 
   async function handleSubmitRoutine({ title, description }: RoutineFormData) {
@@ -201,13 +306,11 @@ const TrainingInfo: React.FC = () => {
       }
       const schema = Yup.object().shape({
         title: Yup.string().required('Campo obrigatório'),
-        description: Yup.string(),
       });
 
       await schema.validate(
         {
           title,
-          description,
         },
         {
           abortEarly: false,
@@ -216,7 +319,7 @@ const TrainingInfo: React.FC = () => {
 
       const response = await api.post('/routines', {
         title,
-        description,
+
         training_id: training.id,
       });
 
@@ -251,21 +354,24 @@ const TrainingInfo: React.FC = () => {
 
   return (
     <Container>
-      <ModalContainer
-        setCloseModal={setOpenModal}
-        opened={openModal}
-        execute={setIsTourOpen}
-        buttonLabel={'Criar rotina'}
-        title={'Rotina de exercícios'}
-      >
-        <Form ref={formRef} onSubmit={handleSubmitRoutine}>
-          <Input name="title" icon={FiUser} placeholder="Titulo" />
+      <div>
+        <ModalContainer
+          setCloseModal={setOpenModal}
+          opened={openModal}
+          execute={setIsTourOpen}
+          buttonLabel={'Nova rotina'}
+          title={'Rotina de exercícios'}
+        >
+          <Form ref={formRef} onSubmit={handleSubmitRoutine}>
+            <Input name="title" icon={FiUser} placeholder="Titulo" />
 
-          <Input name="description" icon={GrNotes} placeholder="Observações" />
+            <Button type="submit">Cadastrar</Button>
+          </Form>
+        </ModalContainer>
 
-          <Button type="submit">Cadastrar</Button>
-        </Form>
-      </ModalContainer>
+        <AddAthletes training_id={training.id} />
+      </div>
+
       <Tour
         startAt={startStep}
         steps={steps}
@@ -277,29 +383,33 @@ const TrainingInfo: React.FC = () => {
         {exercices &&
           exercices.map((exercice, index) => (
             <>
-              <a
+              <Chip
                 data-tut={`reactour__add_exercice${index}`}
                 data-tip
                 data-for={`tooltip${index}`}
-              >
-                <Chip
-                  style={{ display: 'flex' }}
-                  draggable={true}
-                  onDragEnd={e => dragEnd(e, exercice.id)}
-                  onDragOver={e => dragOver(e)}
-                  onDrag={e => dragStart(e, exercice.id)}
-                  clickable
-                  color="primary"
-                  variant="outlined"
-                  label={exercice.name}
-                />
-              </a>
+                onMouseEnter={() => setPlayVideo(1)}
+                onMouseLeave={() => setPlayVideo(0)}
+                style={{ display: 'flex' }}
+                draggable={true}
+                onDragEnd={e => dragEnd(e, exercice.id)}
+                onDragOver={e => dragOver(e)}
+                onDrag={e => dragStart(e, exercice.id)}
+                clickable
+                color="primary"
+                variant="outlined"
+                label={exercice.name}
+              />
+
               <ReactTooltip
                 delayShow={2000}
                 id={`tooltip${index}`}
-                type="error"
+                clickable={true}
               >
-                <span>{exercice.name}</span>
+                <iframe
+                  width="420"
+                  height="315"
+                  src={`https://www.youtube.com/embed/tgbNymZ7vqY`}
+                />
               </ReactTooltip>
             </>
           ))}
@@ -310,107 +420,340 @@ const TrainingInfo: React.FC = () => {
       </ExerciceArea>
 
       <RoutinesArea>
+        <View>
+          <li
+            className={activeView === 'list' ? 'activeTab' : 'defaultTab'}
+            onClick={() => setActiveView('list')}
+          >
+            <FaThList /> Visualização em lista
+          </li>
+          <li
+            className={activeView === 'grid' ? 'activeTab' : 'defaultTab'}
+            onClick={() => setActiveView('grid')}
+          >
+            <BsGrid1X2Fill /> Visualização em grade
+          </li>
+        </View>
         {routines &&
-          routines.map(routine => {
+          routines.map((routine, index) => {
             return (
-              <Routine
-                onDrop={e => dropRoutine(e, routine.id)}
-                onDragOver={dragOver}
+              <ReactCardFlip
+                isFlipped={flipped.find(flippp => flippp === index)}
+                flipDirection="horizontal"
               >
-                <div className="routine-title">
-                  <p></p>
-                  <strong>{routine.title}</strong>
-                  {editRoutine ? (
-                    <FiSave onClick={() => handleEditRoutine()} />
-                  ) : (
-                    <FiEdit3 onClick={() => setEditRoutine(true)} />
-                  )}
-                </div>
-                <Table bordered striped hover responsive size="sm">
-                  <thead>
-                    <tr>
-                      <th id="exercice">Exercicio</th>
-                      <th id="series">Séries</th>
-                      <th id="series">Reps</th>
-                      <th id="series">Carga</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {routine.routineExercice &&
-                      routine.routineExercice.map(exercice => {
-                        return (
-                          <tr
-                            draggable={true}
-                            onDrag={e => dragStart(e, exercice.id)}
-                            onDrop={e => dropExercice(e, exercice.volume)}
-                            onDragOver={dragOver}
-                          >
-                            <td>{exerciceName(exercice.exercice_id)}</td>
-                            {editRoutine ? (
-                              <>
-                                <td>
-                                  <input
-                                    onChange={e => {
-                                      editRoutineExercice(
-                                        e,
-                                        routine.id,
-                                        exercice.id,
-                                        'sequence',
+                <DragDropContext onDragEnd={value => {}}>
+                  <Routine
+                    show={
+                      showRoutine.find(show => show === index + 1)
+                        ? 'flex'
+                        : 'none'
+                    }
+                    width={activeView === 'list' ? '400px' : '800px'}
+                  >
+                    <div className="routine-title">
+                      <p>{getLetterTraining(index)}</p>
+                      <strong>{routine.title}</strong>
+                      <span>
+                        {!showRoutine.find(show => show === index + 1) ? (
+                          <ArrowDropDownIcon
+                            onClick={() =>
+                              setShowRoutine(state => [...state, index + 1])
+                            }
+                          />
+                        ) : (
+                          <ArrowDropUpIcon
+                            onClick={() =>
+                              setShowRoutine(state =>
+                                state.filter(s => s !== index + 1),
+                              )
+                            }
+                          />
+                        )}
+                        {(editRoutine.routineIndex === index &&
+                          editRoutine.active) ||
+                        (addExerciceToRotine.routineIndex === index &&
+                          addExerciceToRotine.active) ? (
+                          <FiSave
+                            onClick={() =>
+                              editRoutine.active
+                                ? handleEditRoutine()
+                                : handleAddExerciceInRoutine(routine.id)
+                            }
+                          />
+                        ) : (
+                          <FiEdit3
+                            onClick={() =>
+                              setEditRoutine({
+                                routineIndex: index,
+                                active: true,
+                              })
+                            }
+                          />
+                        )}
+                      </span>
+                    </div>
+
+                    <>
+                      <TableContainer
+                        onDrop={e => dropRoutine(e, routine.id)}
+                        onDragOver={dragOver}
+                        className="table-container"
+                      >
+                        <Droppable droppableId={routine.id}>
+                          {provided => (
+                            <Table
+                              size="small"
+                              stickyHeader
+                              aria-label="sticky table"
+                              ref={provided.innerRef}
+                              {...provided.droppableProps}
+                            >
+                              {provided.placeholder}
+                              <TableHead>
+                                <TableRow>
+                                  <TableCell id="exercice">Exercicio</TableCell>
+                                  <TableCell size="small" id="series">
+                                    Séries
+                                  </TableCell>
+                                  <TableCell size="small" id="series">
+                                    Reps
+                                  </TableCell>
+                                  <TableCell size="small" id="volume">
+                                    Carga
+                                  </TableCell>
+                                </TableRow>
+                              </TableHead>
+
+                              <TableBody>
+                                {addExerciceToRotine.routineIndex === index &&
+                                  addExerciceToRotine.active && (
+                                    <TableRow>
+                                      <TableCell>
+                                        <Autocomplete
+                                          id="combo-box-demo"
+                                          onChange={(e, newValue) => {
+                                            setNewExerciceInRoutine({
+                                              id: newValue.id,
+                                              volume:
+                                                newExerciceInRoutine.volume,
+                                              sequence:
+                                                newExerciceInRoutine.sequence,
+                                              repetitions:
+                                                newExerciceInRoutine.repetitions,
+                                            });
+                                          }}
+                                          options={exercices}
+                                          getOptionLabel={option => option.name}
+                                          renderInput={params => (
+                                            <TextField {...params} />
+                                          )}
+                                        />
+                                      </TableCell>
+                                      <TableCell>
+                                        <input
+                                          onChange={e => {
+                                            setNewExerciceInRoutine({
+                                              id: newExerciceInRoutine.id,
+                                              volume:
+                                                newExerciceInRoutine.volume,
+                                              sequence: e.target.value,
+                                              repetitions:
+                                                newExerciceInRoutine.repetitions,
+                                            });
+                                          }}
+                                          value={newExerciceInRoutine.sequence}
+                                        />
+                                      </TableCell>
+                                      <TableCell>
+                                        <input
+                                          onChange={e => {
+                                            setNewExerciceInRoutine({
+                                              id: newExerciceInRoutine.id,
+                                              volume:
+                                                newExerciceInRoutine.volume,
+                                              sequence:
+                                                newExerciceInRoutine.sequence,
+                                              repetitions: e.target.value,
+                                            });
+                                          }}
+                                          value={
+                                            newExerciceInRoutine.repetitions
+                                          }
+                                        />
+                                      </TableCell>
+                                      <TableCell>
+                                        <input
+                                          onChange={e => {
+                                            setNewExerciceInRoutine({
+                                              id: newExerciceInRoutine.id,
+                                              volume: e.target.value,
+                                              sequence:
+                                                newExerciceInRoutine.sequence,
+                                              repetitions:
+                                                newExerciceInRoutine.repetitions,
+                                            });
+                                          }}
+                                          value={newExerciceInRoutine.volume}
+                                        />
+                                      </TableCell>
+                                    </TableRow>
+                                  )}
+
+                                {routine.routineExercice &&
+                                  routine.routineExercice.map(
+                                    (exercice, indexExercice) => {
+                                      return (
+                                        <Draggable
+                                          draggableId={exercice.id}
+                                          index={indexExercice}
+                                        >
+                                          {provide => (
+                                            <TableRow
+                                              ref={provide.innerRef}
+                                              {...provide.draggableProps}
+                                              {...provide.dragHandleProps}
+                                            >
+                                              <TableCell>
+                                                <div>
+                                                  <span>
+                                                    {exerciceName(
+                                                      exercice.exercice_id,
+                                                    )}
+                                                  </span>
+                                                  <span>
+                                                    <AiOutlineEye
+                                                      onClick={() => {
+                                                        setFlipped(state => [
+                                                          ...state,
+                                                          index,
+                                                        ]);
+                                                        setFlippedExercice({
+                                                          name: exerciceName(
+                                                            exercice.exercice_id,
+                                                          ),
+                                                          routine_name:
+                                                            routine.title,
+                                                        });
+                                                      }}
+                                                    />
+                                                  </span>
+                                                </div>
+                                              </TableCell>
+                                              {editRoutine.routineIndex ===
+                                                index && editRoutine.active ? (
+                                                <>
+                                                  <TableCell>
+                                                    <input
+                                                      onChange={e => {
+                                                        editRoutineExercice(
+                                                          e,
+                                                          routine.id,
+                                                          exercice.id,
+                                                          'sequence',
+                                                        );
+                                                      }}
+                                                      value={exercice.sequence}
+                                                    />
+                                                  </TableCell>
+                                                  <TableCell>
+                                                    <input
+                                                      onChange={e => {
+                                                        editRoutineExercice(
+                                                          e,
+                                                          routine.id,
+                                                          exercice.id,
+                                                          'repetitions',
+                                                        );
+                                                      }}
+                                                      value={
+                                                        exercice.repetitions
+                                                      }
+                                                    />
+                                                  </TableCell>
+                                                  <TableCell>
+                                                    <input
+                                                      onChange={e => {
+                                                        editRoutineExercice(
+                                                          e,
+                                                          routine.id,
+                                                          exercice.id,
+                                                          'volume',
+                                                        );
+                                                      }}
+                                                      value={exercice.volume}
+                                                    />{' '}
+                                                    kg
+                                                  </TableCell>
+                                                </>
+                                              ) : (
+                                                <>
+                                                  <TableCell>
+                                                    {exercice.sequence}
+                                                  </TableCell>
+                                                  <TableCell>
+                                                    {exercice.repetitions}
+                                                  </TableCell>
+                                                  <TableCell>
+                                                    {exercice.volume} kg
+                                                  </TableCell>
+                                                </>
+                                              )}
+                                            </TableRow>
+                                          )}
+                                        </Draggable>
                                       );
-                                    }}
-                                    value={exercice.sequence}
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    onChange={e => {
-                                      editRoutineExercice(
-                                        e,
-                                        routine.id,
-                                        exercice.id,
-                                        'repetitions',
-                                      );
-                                    }}
-                                    value={exercice.repetitions}
-                                  />
-                                </td>
-                                <td>
-                                  <input
-                                    onChange={e => {
-                                      editRoutineExercice(
-                                        e,
-                                        routine.id,
-                                        exercice.id,
-                                        'volume',
-                                      );
-                                    }}
-                                    value={exercice.volume}
-                                  />
-                                </td>
-                              </>
-                            ) : (
-                              <>
-                                <td>{exercice.sequence}</td>
-                                <td>{exercice.repetitions}</td>
-                                <td>{exercice.volume}</td>
-                              </>
-                            )}
-                          </tr>
-                        );
-                      })}
-                  </tbody>
-                </Table>
-                <div className="routine-footer">
-                  <div>
-                    <small>Duração total</small>
-                    <small>Gasto Calórico</small>
+                                    },
+                                  )}
+                              </TableBody>
+                            </Table>
+                          )}
+                        </Droppable>
+                      </TableContainer>
+
+                      <div
+                        onClick={() =>
+                          setAddExerciceToRotine({
+                            routineIndex: index,
+                            active: true,
+                          })
+                        }
+                        className="add_exercice"
+                      >
+                        <p>Adicionar exercicio</p>
+                      </div>
+                    </>
+
+                    <div className="routine-footer">
+                      <div>
+                        <small>Duração total</small>
+                        <small>Gasto Calórico</small>
+                      </div>
+                      <div>
+                        <small>Volume total</small>
+                        <small>Intensidade total</small>
+                      </div>
+                    </div>
+                  </Routine>
+                </DragDropContext>
+                <Routine>
+                  <div className="routine-title">
+                    <span
+                      onClick={() =>
+                        setFlipped(state =>
+                          state.filter(flipp => flipp !== index),
+                        )
+                      }
+                    >
+                      <MdArrowBack />
+                    </span>
+                    <span>
+                      {flippedExercice.routine_name} > {flippedExercice.name}
+                    </span>
+                    <span></span>
                   </div>
-                  <div>
-                    <small>Volume total</small>
-                    <small>Intensidade total</small>
-                  </div>
-                </div>
-              </Routine>
+                  <div className="routine_flipped">a</div>
+                </Routine>
+              </ReactCardFlip>
             );
           })}
       </RoutinesArea>

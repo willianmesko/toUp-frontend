@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface RoutineAreaProps {
+  width?: string;
+  show?: string;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -45,12 +50,11 @@ export const Card = styled.li`
 `;
 
 export const RoutinesArea = styled.div`
-  background: #fff;
   width: 900px;
   padding: 20px;
   flex-wrap: wrap;
   display: flex;
-
+  background: #fff;
   margin-top: 30px;
   border-radius: 6px;
   justify-content: space-around;
@@ -58,21 +62,95 @@ export const RoutinesArea = styled.div`
   align-items: center;
 `;
 
-export const Routine = styled.div`
-  width: 400px;
-  min-height: 200px;
-  max-height: 500px;
-  table {
-    font-size: 12px;
+export const View = styled.ul`
+  display: flex;
+  width: 900px;
+  text-align: center;
+
+  .activeTab {
+    color: rgb(42, 159, 255);
+    width: 50%;
+    height: 40px;
+    font-weight: bolder;
+    border-bottom: 2px solid rgb(42, 159, 255);
     cursor: pointer;
-    input {
-      font-size: 12px;
-      text-align: center;
-      border-style: none;
-      width: 30px;
+    transition: all ease 0.25s;
+
+    &:hover {
+      background: rgba(106, 161, 169, 0.29);
     }
-    #series {
-      width: 10px;
+  }
+
+  .defaultTab {
+    cursor: pointer;
+    &:hover {
+      background: rgba(106, 161, 169, 0.29);
+      color: rgb(42, 159, 255);
+    }
+    height: 40px;
+    transition: all ease 0.25s;
+    width: 50%;
+    font-weight: bolder;
+    color: rgb(135, 134, 139);
+  }
+`;
+export const Routine = styled.div<RoutineAreaProps>`
+  width: ${props => props.width} !important;
+  transition: all ease 0.25s;
+  .routine_flipped {
+    width: ${props => props.width} !important;
+    margin-bottom: 5px;
+    max-height: 300px;
+  }
+  .table-container {
+    width: ${props => props.width} !important;
+    transition: all ease 0.25s;
+    max-height: 300px;
+    margin-bottom: 5px;
+    display: ${props => props.show} !important;
+    table {
+      font-size: 12px;
+      transition: all ease 0.25s;
+      cursor: pointer;
+      border: 1px solid #808080;
+      border-top: none;
+      border-bottom: none;
+      th {
+        font-weight: bold !important;
+      }
+      tr {
+        transition: all ease 0.5s;
+        &:nth-of-type(odd) {
+          background: #f8f8f8;
+        }
+
+        &:hover {
+          background: rgba(117, 163, 187, 0.29);
+          svg {
+            cursor: pointer;
+            display: flex;
+          }
+        }
+
+        td {
+          div {
+            display: flex;
+            justify-content: space-between;
+
+            svg {
+              display: none;
+            }
+          }
+        }
+      }
+      input {
+        font-size: 12px;
+        text-align: center;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 30px;
+      }
     }
   }
   .routine-title {
@@ -89,12 +167,25 @@ export const Routine = styled.div`
       margin: 5px;
     }
   }
+  .add_exercice {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #808080;
+    border-bottom: none;
+    border-top: none;
+    text-align: center;
+    margin-top: -5px;
+    font-size: 12px;
+    cursor: pointer;
+    &:hover {
+      background: rgba(117, 163, 187, 0.29);
+    }
+  }
   .routine-footer {
     text-align: center;
-
+    margin-top: -5px;
     width: 100%;
-    margin-top: -18px;
-
+    margin-bottom: 50px;
     height: 40px;
     border: 1px solid #808080;
     border-top: none;

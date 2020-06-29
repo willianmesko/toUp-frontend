@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState, useMemo } from 'react';
 import moment from 'moment';
-import { FiMail, FiUser } from 'react-icons/fi';
+import { FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi';
 import {
   GiWeight,
   GiBodyHeight,
@@ -26,7 +26,7 @@ import Select from '~/components/Inputs/Select';
 import { useAthlete } from '~/hooks/AthleteContext';
 import Button from '~/components/Button';
 
-import { Container, Content, SexoInput } from './styles';
+import { Container, Content, SexoInput, AvatarInput } from './styles';
 
 interface NewAthleteFormData {
   name: string;
@@ -38,6 +38,7 @@ interface NewAthleteFormData {
   objective: number;
   aerobic_profile: number;
   training_level: number;
+  avatar?: string;
 }
 
 const NewAthlete: React.FC = () => {
@@ -59,6 +60,7 @@ const NewAthlete: React.FC = () => {
       objective,
       aerobic_profile,
       training_level,
+      avatar,
     }: NewAthleteFormData) => {
       try {
         const dateFormated = moment(date_of_birth, 'DD/MM/YYYY').format(
@@ -148,10 +150,18 @@ const NewAthlete: React.FC = () => {
   return (
     <Container>
       <Content>
-        <img
-          src="https://cdn.dribbble.com/users/458522/screenshots/3374303/goku_rgb_dribbbler.jpg"
-          alt="To Up"
-        />
+        <AvatarInput>
+          <img
+            src={
+              'https://yt3.ggpht.com/a-/AOh14GjDM_FdVyl5v7gQrGyIgjf770GJBujpn9Q3LLI2cTI=s88-c-k-c0xffffffff-no-rj-mo'
+            }
+            alt="{user.name}"
+          />
+          <label htmlFor="avatar">
+            <FiCamera />
+            <input type="file" id="avatar" onChange={() => {}} />
+          </label>
+        </AvatarInput>
         <h1>Cadastre um novo aluno</h1>
 
         <Form ref={formRef} onSubmit={handleSubmit}>

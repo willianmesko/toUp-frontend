@@ -8,10 +8,26 @@ export default createGlobalStyle`
     outline: 0;
   }
 
-  body {
+  body, html {
     background: #F2F3F5;
 
     -webkit-font-smoothing: antialiased;
+    overscroll-behavior-x: none;
+    font-family: 'Fira Sans', Arial, sans-serif;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
   }
 
   body, input, button {
