@@ -12,12 +12,14 @@ interface RouteProps extends ReactDOMRouteProps {
   component: React.ComponentType;
   sideBar?: boolean;
   topBar?: boolean;
+  sideMenu?: boolean;
 }
 
 const Route: React.FC<RouteProps> = ({
   isPrivate = false,
   sideBar = false,
   topBar = false,
+  sideMenu = false,
   component: Component,
   ...rest
 }) => {
@@ -28,7 +30,7 @@ const Route: React.FC<RouteProps> = ({
   }
 
   if (user && !isPrivate) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/athletes" />;
   }
   return (
     <ReactDOMRoute
@@ -36,7 +38,7 @@ const Route: React.FC<RouteProps> = ({
       render={() => {
         if (isPrivate)
           return (
-            <Layout topBar={topBar} sideBar={sideBar}>
+            <Layout topBar={topBar} sideBar={sideBar} sideMenu={sideMenu}>
               <Component />
             </Layout>
           );

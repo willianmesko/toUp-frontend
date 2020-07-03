@@ -40,14 +40,15 @@ const Header = () => {
     <Container>
       <Content>
         <nav>
-          <Link to="/dashboard">
+          <Link to="/athletes">
             <img src={logo} alt="ToUp" />
           </Link>
           <Link to={lastLocation ? lastLocation : '/dashboard'}>
-            <FiArrowLeft />
+            <FiArrowLeft /> Voltar
           </Link>
         </nav>
-        {(activeUrl === '/athletes' || activeUrl === '/training') && (
+        {(activeUrl === '/perfil-athlete' ||
+          activeUrl === '/training-info') && (
           <Menu>
             <LoadingBar
               progress={loadingBar}
@@ -57,20 +58,30 @@ const Header = () => {
               onLoaderFinished={() => completeLoading()}
             />
             <li
-              className={activeUrl === '/athletes' ? 'active' : ''}
+              className={activeUrl === '/perfil-athlete' ? 'active' : ''}
               onClick={() => {
                 completeLoading('/athletes');
               }}
             >
-              <GiWeightLiftingUp size={40} />
+              <GiWeightLiftingDown size={40} />
+              {activeUrl === '/perfil-athlete' ? (
+                <small>Trocar aluno </small>
+              ) : (
+                <small>Ir para alunos</small>
+              )}
             </li>
             <li
-              className={activeUrl === '/training' ? 'active' : ''}
+              className={activeUrl === '/training-info' ? 'active' : ''}
               onClick={() => {
                 completeLoading('/training');
               }}
             >
               <GiWeightLiftingDown size={40} />
+              {activeUrl === '/training-info' ? (
+                <small>Trocar treino </small>
+              ) : (
+                <small>Ir para treinos</small>
+              )}
             </li>
           </Menu>
         )}
@@ -88,7 +99,13 @@ const Header = () => {
                   <strong>{user.name}</strong>
                   <Link to="/profile">{user.email}</Link>
                 </div>
-                <img src={user.avatar_url} alt="avatarfake" />
+                {user.avatar_url ? (
+                  <img src={user.avatar_url} alt="avatarfake" />
+                ) : (
+                  <div className="no-image">
+                    <h1>{user.name.charAt(0)}</h1>
+                  </div>
+                )}
               </Profile>
             </DropdownToggle>
             <DropdownMenu>

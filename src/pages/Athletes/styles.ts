@@ -48,6 +48,7 @@ export const AthleteCard = styled.div`
     cursor: pointer;
     width: 40vw;
     height: 20vh;
+    opacity: 0.7;
     transition: all 0.5s ease;
     border-radius: 0.75rem;
     transition: all 0.5s ease;
@@ -57,7 +58,9 @@ export const AthleteCard = styled.div`
       rgb(248, 248, 255) 60%,
       rgba(255, 255, 255, 1) 100%
     ) !important;
-
+    -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
     display: grid;
     grid-template-columns: 40% auto;
     color: #000;
@@ -70,6 +73,8 @@ export const AthleteCard = styled.div`
     &:hover {
       transform: scale(1.05);
       border: 3px solid #000;
+      opacity: 1;
+      box-shadow: none;
     }
   }
 
@@ -105,10 +110,19 @@ export const AthleteCard = styled.div`
   .card-avatar {
     display: grid;
     place-items: center;
+    div,
     img {
       width: 9vw;
       height: 16vh;
+      background: #f8f8f8;
       border-radius: 50%;
+      text-align: center;
+      font-size: 90px;
+
+      p {
+        margin-top: 1vh;
+        color: rgb(135, 134, 139);
+      }
     }
   }
 

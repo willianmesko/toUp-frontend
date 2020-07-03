@@ -11,8 +11,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 80px;
-  max-width: 1336px;
+  height: 90px;
+
   margin: 0 auto;
   display: flex;
 
@@ -24,12 +24,13 @@ export const Content = styled.div`
     img {
       width: 100px;
       height: 80px;
-      margin-right: 20px;
+      margin-left: -15px;
+
       padding-right: 20px;
     }
     a {
       font-weight: bold;
-      color: #7159c1;
+      color: #000;
     }
   }
   aside {
@@ -49,16 +50,28 @@ export const Profile = styled.div`
     margin-right: 10px;
     strong {
       display: block;
-      color: rgb(135, 134, 139);
-      font-weight: bold;
+      color: #000;
+      font-weight: 500;
       margin-bottom: 6px;
     }
     a {
       display: block;
       margin-top: 2px;
       font-size: 12px;
-      color: rgb(135, 134, 139);
+      color: #000;
     }
+  }
+
+  .no-image {
+    text-align: center;
+    width: 56px;
+    height: 56px;
+    border-width: 3px;
+    background: #f8f8f8;
+    border-style: solid;
+    border-color: rgb(135, 134, 139);
+    color: rgb(135, 134, 139);
+    border-radius: 50%;
   }
   img {
     width: 56px;
@@ -75,9 +88,14 @@ export const Menu = styled.div`
   display: flex;
   margin-left: 100px;
   li {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    color: #a9a9a9;
     margin: 0 20px 0 20px;
     &.active {
       border-bottom: 2px solid #3bb9e3;
+      color: #3bb9e3;
       &:hover {
         border-radius: 0px !important;
         background: rgb(248, 248, 255) !important;

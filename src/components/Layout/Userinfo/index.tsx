@@ -41,13 +41,12 @@ const UserInfo: React.FC = () => {
           </li>
           <li>
             <p>
-              <GiBroadsword /> 5 Inicantes{' '}
+              <GiBroadsword /> 5 Inicantes
             </p>
           </li>
           <li>
             <p>
-              {' '}
-              <GiCrossedSwords /> 5 Avançados{' '}
+              <GiCrossedSwords /> 5 Avançados
             </p>
           </li>
         </div>

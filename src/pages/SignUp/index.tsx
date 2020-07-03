@@ -98,7 +98,7 @@ const SignUp: React.FC = () => {
       <Content>
         <AnimationContainer>
           <img src={logoImg} alt="Go Barber" />
-          <h1>Faça seu cadastro</h1>
+          <h1>Cadastre-se</h1>
           <Tabs>
             <TabList>
               <Tab

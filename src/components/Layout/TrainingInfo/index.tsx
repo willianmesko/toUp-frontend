@@ -11,11 +11,11 @@ const TrainingInfo: React.FC = () => {
   return (
     <>
       <div>
-        <img
+        {/* <img
           style={{ width: '100%', height: '250px', borderRadius: '5px' }}
           src={trainingCover}
           alt="cover"
-        />
+        /> */}
         <h2>{training.title}</h2>
 
         <hr />

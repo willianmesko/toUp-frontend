@@ -21,6 +21,7 @@ interface Athlete {
   aerobic_profile: number;
   training_level: number;
   objectiveLabel: string;
+  avatar_url?: string;
 }
 
 const Athletes: React.FC = () => {
@@ -84,19 +85,22 @@ const Athletes: React.FC = () => {
                   }}
                 >
                   <div className="card-avatar">
-                    <img
-                      src="https://cdn.dribbble.com/users/458522/screenshots/3374303/goku_rgb_dribbbler.jpg"
-                      alt="Person"
-                    />
+                    {athlete.avatar_url ? (
+                      <img src={athlete.avatar_url} alt="Person" />
+                    ) : (
+                      <div>
+                        <p>{athlete.name.charAt(0)}</p>
+                      </div>
+                    )}
                   </div>
                   <div className="card-details">
                     <div className="name">
                       <div>{athlete.name}</div>
-                      <div className="icons">
+                      {/* <div className="icons">
                         <GiWeight />
                         <GiWeightLiftingUp />
                         <GiBodyHeight />
-                      </div>
+                      </div> */}
                     </div>
                     <div className="occupation">
                       <p>{athlete.objectiveLabel}</p>

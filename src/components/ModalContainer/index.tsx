@@ -5,8 +5,8 @@ import Button from '~/components/Button';
 import { GrAddCircle } from 'react-icons/gr';
 
 interface ModalProps {
-  title: string;
-  buttonLabel: string;
+  title?: string;
+  buttonLabel?: string;
   button?: string;
   setCloseModal(value: boolean): void;
   opened?: boolean;

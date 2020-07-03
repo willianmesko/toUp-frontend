@@ -59,6 +59,7 @@ export const RoutinesArea = styled.div`
   border-radius: 6px;
   justify-content: space-around;
   align-content: center;
+  opacity: 0.8;
   align-items: center;
 `;
 
@@ -128,7 +129,7 @@ export const Routine = styled.div<RoutineAreaProps>`
           background: rgba(117, 163, 187, 0.29);
           svg {
             cursor: pointer;
-            display: flex;
+            display: inline;
           }
         }
 
@@ -157,11 +158,24 @@ export const Routine = styled.div<RoutineAreaProps>`
     display: flex;
 
     justify-content: space-between;
+    align-items: center;
+
     background: #75a3bb;
     width: 100%;
     color: #fff;
     border-radius: 5px 5px 0px 0px;
-
+    p {
+      display: flex;
+      margin-top: 10px;
+      margin-left: 5px;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      color: #000;
+    }
     svg {
       cursor: pointer;
       margin: 5px;

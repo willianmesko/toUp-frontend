@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-
+import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
+import { AiOutlineDashboard } from 'react-icons/ai';
+import { useLocation, Link } from 'react-router-dom';
 import Header from '~/components/Header';
-import { TopArea, Content, MenuLateral } from './styles';
+import { TopArea, Content, MenuLateral, SideMenu, Container } from './styles';
 import { UserInfo } from './Userinfo';
 import { AthleteInfo } from './AthleteInfo';
 import { TrainingInfo } from './TrainingInfo';
-export const Layout = ({ sideBar, topBar, children }) => {
+
+export const Layout = ({ sideBar, topBar, children, sideMenu }) => {
   const [widthMenuLateral, setWidth] = useState(380);
+  const location = useLocation();
   const renderComponentInfo = () => {
-    switch (window.location.pathname) {
+    switch (location.pathname) {
       case '/training':
         return <UserInfo />;
         break;
@@ -27,27 +31,71 @@ export const Layout = ({ sideBar, topBar, children }) => {
   return (
     <>
       <Header />
-      {topBar && (
-        <>
-          <TopArea>
-            {/* {infos.topIcon} */}
-            <h1>
-              {window.location.pathname === '/training' ? 'Treinos' : 'Alunos'}
-            </h1>
-            <hr />
-          </TopArea>
-        </>
-      )}
-      <Content>
-        {sideBar && (
-          <MenuLateral width={widthMenuLateral} onClick={() => setWidth(5000)}>
-            {renderComponentInfo()}
-          </MenuLateral>
+
+      <Container>
+        {sideMenu && (
+          <SideMenu>
+            <div>
+              <Link to="/dashboard">
+                <span
+                  className={
+                    location.pathname === '/dashboard' ? 'active' : 'default'
+                  }
+                >
+                  <AiOutlineDashboard size={40} />
+                  Dashboard
+                </span>
+              </Link>
+              <Link to="/athletes">
+                <span
+                  className={
+                    location.pathname === '/athletes' ? 'active' : 'default'
+                  }
+                >
+                  <GiWeightLiftingUp size={50} />
+                  Alunos
+                </span>
+              </Link>
+              <Link to="/training">
+                <span
+                  className={
+                    location.pathname === '/training' ? 'active' : 'default'
+                  }
+                >
+                  <GiWeightLiftingDown size={50} />
+                  Treinos
+                </span>
+              </Link>
+            </div>
+          </SideMenu>
         )}
-        {widthMenuLateral < 600 ? children : ''}
-      </Content>
+
+        <Content
+          margin={sideMenu ? '100px' : 'auto'}
+          flexDirection={sideBar ? 'row' : 'column'}
+        >
+          {topBar && (
+            <>
+              <TopArea>
+                <h1>
+                  {location.pathname === '/training' ? 'Treinos' : 'Alunos'}
+                </h1>
+                <hr />
+              </TopArea>
+            </>
+          )}
+
+          {sideBar && (
+            <MenuLateral
+              width={widthMenuLateral}
+              onClick={() => setWidth(5000)}
+            >
+              {renderComponentInfo()}
+            </MenuLateral>
+          )}
+          {children}
+        </Content>
+      </Container>
     </>
   );
 };
-
-// export const LeftBox: React.FC = ({ children }) => {};

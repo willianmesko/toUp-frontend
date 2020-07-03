@@ -33,6 +33,12 @@ import Chip from '@material-ui/core/Chip';
 import ReactTooltip from 'react-tooltip';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateExercice from './CreateExercice';
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
 
 interface RoutineInterface {
   title: string;
@@ -99,7 +105,8 @@ const TrainingInfo: React.FC = () => {
     name: '',
     routine_name: '',
   });
-  const [activeView, setActiveView] = useState('list');
+  const [activeView, setActiveView] = useState('grid');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   //Onloadig
   const steps = [
     {
@@ -422,16 +429,16 @@ const TrainingInfo: React.FC = () => {
       <RoutinesArea>
         <View>
           <li
-            className={activeView === 'list' ? 'activeTab' : 'defaultTab'}
-            onClick={() => setActiveView('list')}
-          >
-            <FaThList /> Visualização em lista
-          </li>
-          <li
             className={activeView === 'grid' ? 'activeTab' : 'defaultTab'}
             onClick={() => setActiveView('grid')}
           >
-            <BsGrid1X2Fill /> Visualização em grade
+            <FaThList /> Visualização em grade
+          </li>
+          <li
+            className={activeView === 'list' ? 'activeTab' : 'defaultTab'}
+            onClick={() => setActiveView('list')}
+          >
+            <BsGrid1X2Fill /> Visualização em lista
           </li>
         </View>
         {routines &&
@@ -448,7 +455,7 @@ const TrainingInfo: React.FC = () => {
                         ? 'flex'
                         : 'none'
                     }
-                    width={activeView === 'list' ? '400px' : '800px'}
+                    width={activeView === 'list' ? '800px' : '400px'}
                   >
                     <div className="routine-title">
                       <p>{getLetterTraining(index)}</p>
@@ -735,7 +742,7 @@ const TrainingInfo: React.FC = () => {
                     </div>
                   </Routine>
                 </DragDropContext>
-                <Routine>
+                <Routine width={activeView === 'list' ? '800px' : '400px'}>
                   <div className="routine-title">
                     <span
                       onClick={() =>

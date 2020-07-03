@@ -93,7 +93,7 @@ const NewTraining: React.FC = () => {
 
   return (
     <Container>
-      <Cover />
+      {/* <Cover /> */}
       <Content>
         <TrainingArea>
           <h1>Cadastre um novo treino</h1>
@@ -123,11 +123,11 @@ const NewTraining: React.FC = () => {
                   label="Objetivo"
                   icon={GiStairsGoal}
                   options={[
-                    { key: 'Iniciante', value: 1 },
-                    { key: 'Intermediário', value: 2 },
-                    { key: 'Avançado', value: 3 },
+                    { key: 'Hipertrofia', value: 1 },
+                    { key: 'Emagrecimento', value: 2 },
+                    { key: 'Resistencia', value: 3 },
                   ]}
-                  name="difficulty"
+                  name="objective"
                 />
               </div>
               <div id="description">

@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { lighten, shade } from 'polished';
 
 export const Container = styled.div`
-  margin: 0px auto;
+  margin: 100px auto;
   display: flex;
 `;
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: column;
+
   color: #000;
 
   align-items: center;
-
+  align-content: center;
   justify-content: center;
 
   form {

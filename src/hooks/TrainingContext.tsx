@@ -8,8 +8,8 @@ interface RoutineInterface {
 interface Training {
   id: string;
   title: string;
-  description: string;
-  difficulty: number;
+  description?: string;
+
   routines?: RoutineInterface[];
 }
 

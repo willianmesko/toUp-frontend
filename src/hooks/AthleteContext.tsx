@@ -1,9 +1,17 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
 
+interface RoutineInterface {
+  id: string;
+  title: string;
+  description: string;
+}
+
 interface Training {
   id: string;
   description?: string;
   title: string;
+  routines?: RoutineInterface[];
+  objective: number;
 }
 interface Athlete {
   id: string;
@@ -11,6 +19,7 @@ interface Athlete {
   age: number;
   imc: number;
   email: string;
+  avatar_url?: string;
   body_mass: number;
   stature: number;
   date_of_birth: string;
@@ -24,6 +33,7 @@ interface Athlete {
 interface AthleteContextData {
   athlete: Athlete;
   setAthlete(athlete: Athlete): void;
+  updateAthlete(athlete: Athlete): void;
 }
 
 const AthleteContext = createContext<AthleteContextData>(
@@ -37,8 +47,17 @@ const AthleteProvider: React.FC = ({ children }) => {
     setData(athlete);
   }, []);
 
+  const updateAthlete = useCallback(
+    (athlete: Athlete) => {
+      setData(athlete);
+    },
+    [setData],
+  );
+
   return (
-    <AthleteContext.Provider value={{ athlete: data, setAthlete }}>
+    <AthleteContext.Provider
+      value={{ athlete: data, setAthlete, updateAthlete }}
+    >
       {children}
     </AthleteContext.Provider>
   );

@@ -31,112 +31,81 @@ export const TrainingField = styled.div`
 
 export const TrainingCard = styled.div`
   margin-top: 100px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin: 20px;
-  grid-gap: 50px;
-  justify-content: center;
-  align-items: center;
 
   .card-profile {
     cursor: pointer;
+    opacity: 0.7;
+    margin-bottom: 30px;
+    cursor: pointer;
     width: 40vw;
-    height: 18vh;
-    transition: all 0.5s ease;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
     border-radius: 0.75rem;
-    transition: all 0.5s ease;
-    background: linear-gradient(
+
+    color: #000;
+    /* background: linear-gradient(
       to right,
       rgba(42, 159, 255, 0.2) 10%,
       rgb(248, 248, 255) 60%,
       rgba(255, 255, 255, 1) 100%
     ) !important;
+    -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75); */
+    background: pink;
     p {
       color: #000;
       margin-bottom: 0px;
     }
-    display: grid;
-    grid-template-columns: 40% auto;
-    color: #000;
-
-    align-items: center;
-
-    will-change: transform;
-    transition: all 0.25s ease;
 
     &:hover {
       transform: scale(1.05);
       border: 2px solid #000;
+      opacity: 1;
+      box-shadow: none;
+    }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    background: blue;
+    .card-details {
+      width: 75%;
+
+      padding-top: 20px;
+    }
+
+    .name {
+      font-size: 1.25rem;
+    }
+
+    .occupation {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .card-avatar-training {
+      width: 9vw;
+      height: 16vh;
+      background: #f8f8f8;
+      border-radius: 10%;
+      align-self: center;
+      display: flex;
+      margin-left: 60px;
+      justify-content: center;
+      align-items: center;
+
       img {
-        transform: scale(1.01);
+        width: 50%;
+        height: 50%;
+        border-radius: 5px;
       }
-    }
-  }
-
-  .card-details {
-    padding: 1rem;
-  }
-
-  .name {
-    font-size: 1.25rem;
-  }
-
-  .occupation {
-    font-weight: 600;
-    color: var(--primary);
-  }
-
-  .card-avatar-training {
-    width: 80%;
-    height: 18vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 70%;
-      height: 70%;
-      border-radius: 5px;
-    }
-  }
-
-  .card-about {
-    margin-top: 1rem;
-    display: grid;
-    grid-auto-flow: column;
-  }
-
-  .item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-
-    .value {
-      font-size: 1rem;
-    }
-
-    .label {
-      margin-top: 0.15rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--primary);
-    }
-  }
-
-  .skills {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0.75rem;
-
-    .label {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .value {
-      margin-top: 0.15rem;
-      font-size: 0.75rem;
-      line-height: 1.25rem;
     }
   }
 `;

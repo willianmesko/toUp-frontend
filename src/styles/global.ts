@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import bg from '~/assets/background-content.png';
+import bg3 from '~/assets/bg4.png';
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -9,8 +11,12 @@ export default createGlobalStyle`
   }
 
   body, html {
-    background: #F2F3F5;
-
+    background: rgba(242, 243, 245, 0.9);
+    background-image: url(${bg3});
+    background-repeat: no-repeat;
+    background-position-x: 600px;
+    background-position-y: 400px ;
+    background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     overscroll-behavior-x: none;
     font-family: 'Fira Sans', Arial, sans-serif;
