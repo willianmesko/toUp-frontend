@@ -47,8 +47,8 @@ export const AthleteCard = styled.div`
 
   .card-profile-athlete {
     cursor: pointer;
-    width: 40vw;
-    height: 20vh;
+    width: 700px;
+    height: 200px;
     opacity: 0.7;
     transition: all 0.5s ease;
     border-radius: 0.75rem;
