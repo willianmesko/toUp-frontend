@@ -6,6 +6,7 @@ import { Form } from '@unform/web';
 import Input from '~/components/Input';
 import { MdRemoveRedEye, MdDescription } from 'react-icons/md';
 import api from '~/services/api';
+import { Container } from './styles';
 
 interface RoutineInterface {
   id: string;
@@ -44,49 +45,51 @@ const ViewRoutine: React.FC<ModalProps> = ({ icon, routine }) => {
           <h2>Supino</h2>
         </ModalHeader>
         <ModalBody>
-          <div>
-            <label>Execução</label>
-            <table>
-              <thead>
-                <tr>
-                  <td>Séries</td>
-                  <td>Repetições</td>
-                  <td>Carga</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>3</td>
-                  <td>20</td>
-                  <td>50kg</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <Container>
+            <div className="exercice-info-modal">
+              <h3>Execução</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Séries</td>
+                    <td>Repetições</td>
+                    <td>Carga</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>3</td>
+                    <td>20</td>
+                    <td>50kg</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div>
-            <p>Video</p>
-            <iframe
-              id="player"
-              width="640"
-              height="360"
-              src="http://www.youtube.com/embed/4m72jsC_5Ro"
-              frameBorder="0"
-            ></iframe>
-          </div>
-          <div>
-            <Form
-              initialData={{ obser: 'Executar após supino' }}
-              ref={formRef}
-              onSubmit={() => {}}
-            >
-              <Input
-                placeholder="Observações"
-                icon={MdDescription}
-                name="obser"
-              />
-            </Form>
-          </div>
+            <div className="exercice-video-modal">
+              <h3>Video</h3>
+              <iframe
+                id="player"
+                src="http://www.youtube.com/embed/4m72jsC_5Ro"
+                frameBorder="0"
+              ></iframe>
+            </div>
+            <div className="exercice-description-modal">
+              <h3>Observações</h3>
+              <Form
+                initialData={{ note: 'Executar após supino' }}
+                ref={formRef}
+                onSubmit={() => {}}
+              >
+                <Input
+                  id="note"
+                  placeholder="Observações"
+                  icon={MdDescription}
+                  name="note"
+                />
+              </Form>
+            </div>
+          </Container>
         </ModalBody>
       </Modal>
     </div>

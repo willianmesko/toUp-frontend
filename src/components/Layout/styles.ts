@@ -35,21 +35,60 @@ export const TopArea = styled.div`
 
 export const Content = styled.main<ContentProps>`
   max-width: 1366px;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: ${props => props.flexDirection};
 
   margin: 100px ${props => props.margin};
 `;
+
+export const LinksUtils = styled.div`
+  width: 350px;
+  margin-top: 150px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+
+  hr {
+    width: 80%;
+  }
+
+  a {
+    color: #808080;
+    text-decoration: none;
+  }
+`;
+
+export const Post = styled.div`
+  width: 300px;
+  width: 250px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 20px;
+  font-size: 14px;
+  margin-left: 20px;
+  color: #808080;
+  transition: all ease 0.25s;
+  img {
+    margin-bottom: 5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 export const SideMenu = styled.div`
   width: 120px;
   background: #fff;
-  min-height: 100vh;
-  max-height: 10000px;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-content: center;
-
+  min-height: 100vh;
   div {
     display: flex;
     width: 120px;
@@ -155,6 +194,20 @@ export const MenuLateral = styled.aside<AsideProps>`
       svg {
         margin-right: 8px;
         cursor: pointer;
+      }
+    }
+    .training-image {
+      background: pink !important;
+      width: 100px !important;
+      height: 100px !important;
+      border-radius: 6px !important;
+
+      img {
+        display: block;
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 2px !important;
+        border: none !important;
       }
     }
     img,

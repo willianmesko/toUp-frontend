@@ -6,7 +6,7 @@ import LoadingBar from 'react-top-loading-bar';
 
 const Dashboard: React.FC = () => {
   const history = useHistory();
-  const [loadingBar, setLoadingBar] = useState();
+  const [loadingBar, setLoadingBar] = useState<number>(0);
   const [redirectPage, setRedirectPage] = useState('');
   return (
     <>

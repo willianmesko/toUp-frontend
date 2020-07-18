@@ -10,10 +10,19 @@ import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import api from '~/services/api';
 import { useTraining } from '~/hooks/TrainingContext';
 
+interface RoutineExerciceInterface {
+  exercice_id: string;
+  routine_id: string;
+  sequence: number;
+  repetitions: number;
+  volume: number;
+}
+
 interface RoutineInterface {
   id: string;
   title: string;
   description: string;
+  routineExercice?: RoutineExerciceInterface[];
 }
 
 interface TrainingInterface {
@@ -28,7 +37,7 @@ const AthleteTraining: React.FC = () => {
   const { athlete } = useAthlete();
   const [training, setTrainings] = useState({} as TrainingInterface);
   const [routines, setRoutines] = useState([]);
-  const [routine, setRoutine] = useState();
+  const [routine, setRoutine] = useState<RoutineInterface>();
   const [exercices, setExercices] = useState([]);
   const { setTraining } = useTraining();
   const history = useHistory();
@@ -63,7 +72,7 @@ const AthleteTraining: React.FC = () => {
 
   return (
     <Content>
-      {athlete.trainings && athlete.trainings.length > 0 ? (
+      {training.title ? (
         <TrainingContainer>
           <div className="icons-action">
             <span
@@ -121,6 +130,7 @@ const AthleteTraining: React.FC = () => {
       <RoutineInfo>
         <ul>
           {routine &&
+            routine.routineExercice.length > 0 &&
             routine.routineExercice.map(exercice => (
               <li>
                 <div className="exercice-video">

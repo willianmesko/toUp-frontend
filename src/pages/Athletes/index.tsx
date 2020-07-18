@@ -27,7 +27,7 @@ interface Athlete {
 const Athletes: React.FC = () => {
   const [athletes, setAthletes] = useState<Athlete[]>([]);
   const { setAthlete } = useAthlete();
-  const [loadingBar, setLoadingBar] = useState();
+  const [loadingBar, setLoadingBar] = useState<number>(0);
   const history = useHistory();
 
   function formatObjective(objective: number): string {
@@ -86,7 +86,7 @@ const Athletes: React.FC = () => {
                 >
                   <div className="card-avatar">
                     {athlete.avatar_url ? (
-                      <img src={athlete.avatar_url} alt="Person" />
+                      <img src={athlete.avatar_url} alt={athlete.name} />
                     ) : (
                       <div>
                         <p>{athlete.name.charAt(0)}</p>

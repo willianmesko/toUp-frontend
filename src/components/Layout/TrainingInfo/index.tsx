@@ -1,9 +1,10 @@
 import React from 'react';
-import { GiWeightLiftingUp, GiWeight, GiBodyHeight } from 'react-icons/gi';
+import { GiWeight, GiBodyHeight } from 'react-icons/gi';
 import { AiFillCalculator } from 'react-icons/ai';
-import { FaBirthdayCake } from 'react-icons/fa';
-import trainingCover from '~/assets/training-card.jpg';
+import Hipertrofia from '~/assets/icons/hipertrofia.svg';
+import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import { useTraining } from '~/hooks/TrainingContext';
+import formatObjective from '~/utils/formatObjectiveLabel';
 
 const TrainingInfo: React.FC = () => {
   const { training } = useTraining();
@@ -11,11 +12,17 @@ const TrainingInfo: React.FC = () => {
   return (
     <>
       <div>
-        {/* <img
-          style={{ width: '100%', height: '250px', borderRadius: '5px' }}
-          src={trainingCover}
-          alt="cover"
-        /> */}
+        <div className="training-image">
+          <img
+            src={
+              formatObjective(training.objective) === 'Hipertrofia'
+                ? Hipertrofia
+                : emagrecimento
+            }
+            alt="cover"
+          />
+        </div>
+
         <h2>{training.title}</h2>
 
         <hr />

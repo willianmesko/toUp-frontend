@@ -248,4 +248,8 @@ export const RoutineInfo = styled.div`
       }
     }
   }
+
+  .exercice-modal {
+    background: pink;
+  }
 `;

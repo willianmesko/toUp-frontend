@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Notification from './Notification';
 import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -17,16 +18,13 @@ import {
 const Header = () => {
   const history = useHistory();
   const { user, signOut } = useAuth();
-  const [activeUrl, setActiveUrl] = useState();
+
   const location = useLocation();
   const lastLocation = useLastLocation();
-  const [loadingBar, setLoadingBar] = useState();
+  const [loadingBar, setLoadingBar] = useState<number>();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
-  useEffect(() => {
-    setActiveUrl(location.pathname);
-  }, [location]);
   function completeLoading(url = null) {
     if (url) {
       setLoadingBar(100);
@@ -47,8 +45,8 @@ const Header = () => {
             <FiArrowLeft /> Voltar
           </Link>
         </nav>
-        {(activeUrl === '/perfil-athlete' ||
-          activeUrl === '/training-info') && (
+        {(location.pathname === '/perfil-athlete' ||
+          location.pathname === '/training-info') && (
           <Menu>
             <LoadingBar
               progress={loadingBar}
@@ -58,36 +56,30 @@ const Header = () => {
               onLoaderFinished={() => completeLoading()}
             />
             <li
-              className={activeUrl === '/perfil-athlete' ? 'active' : ''}
+              className={
+                location.pathname === '/perfil-athlete' ? 'active' : ''
+              }
               onClick={() => {
                 completeLoading('/athletes');
               }}
             >
               <GiWeightLiftingDown size={40} />
-              {activeUrl === '/perfil-athlete' ? (
-                <small>Trocar aluno </small>
-              ) : (
-                <small>Ir para alunos</small>
-              )}
+              <small>Alunos</small>
             </li>
             <li
-              className={activeUrl === '/training-info' ? 'active' : ''}
+              className={location.pathname === '/training-info' ? 'active' : ''}
               onClick={() => {
                 completeLoading('/training');
               }}
             >
               <GiWeightLiftingDown size={40} />
-              {activeUrl === '/training-info' ? (
-                <small>Trocar treino </small>
-              ) : (
-                <small>Ir para treinos</small>
-              )}
+              <small>Treinos</small>
             </li>
           </Menu>
         )}
 
         <aside>
-          {/* <Notification /> */}
+          <Notification />
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle
               tag="div"

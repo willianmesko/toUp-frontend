@@ -10,8 +10,9 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Button from '~/components/Button';
 import { FiUser, FiEdit3, FiSave } from 'react-icons/fi';
 import { FaThList } from 'react-icons/fa';
+import { GrCircleInformation } from 'react-icons/gr';
 import { BsGrid1X2Fill } from 'react-icons/bs';
-import { MdArrowBack } from 'react-icons/md';
+import { MdArrowBack, MdDescription } from 'react-icons/md';
 import { AiOutlineEye } from 'react-icons/ai';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -361,7 +362,8 @@ const TrainingInfo: React.FC = () => {
 
   return (
     <Container>
-      <div>
+      <div className="icons-action">
+        <AddAthletes training_id={training.id} />
         <ModalContainer
           setCloseModal={setOpenModal}
           opened={openModal}
@@ -376,7 +378,10 @@ const TrainingInfo: React.FC = () => {
           </Form>
         </ModalContainer>
 
-        <AddAthletes training_id={training.id} />
+        <GrCircleInformation
+          onClick={() => setIsTourOpen(true)}
+          fontSize={20}
+        />
       </div>
 
       <Tour
@@ -754,11 +759,53 @@ const TrainingInfo: React.FC = () => {
                       <MdArrowBack />
                     </span>
                     <span>
-                      {flippedExercice.routine_name} > {flippedExercice.name}
+                      {flippedExercice.routine_name} `{'>'}`{' '}
+                      {flippedExercice.name}
                     </span>
                     <span></span>
                   </div>
-                  <div className="routine_flipped">a</div>
+                  <div className="routine_flipped">
+                    <div className="exercice-video-view">
+                      <iframe
+                        id="player"
+                        height="250"
+                        src="http://www.youtube.com/embed/4m72jsC_5Ro"
+                        frameBorder="0"
+                      ></iframe>
+                    </div>
+                    <div className="exercice-info-view">
+                      <h4>Execução</h4>
+                      <table>
+                        <thead>
+                          <tr>
+                            <td>Séries</td>
+                            <td>Repetições</td>
+                            <td>Carga</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>3</td>
+                            <td>20</td>
+                            <td>50kg</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h4>Observações</h4>
+                      <Form
+                        initialData={{ note: 'Executar após supino' }}
+                        ref={formRef}
+                        onSubmit={() => {}}
+                      >
+                        <Input
+                          id="note"
+                          placeholder="Observações"
+                          icon={MdDescription}
+                          name="note"
+                        />
+                      </Form>
+                    </div>
+                  </div>
                 </Routine>
               </ReactCardFlip>
             );

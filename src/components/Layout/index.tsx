@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { useLocation, Link } from 'react-router-dom';
+import { IoIosFitness } from 'react-icons/io';
 import Header from '~/components/Header';
-import { TopArea, Content, MenuLateral, SideMenu, Container } from './styles';
+import {
+  TopArea,
+  Content,
+  MenuLateral,
+  SideMenu,
+  Container,
+  LinksUtils,
+  Post,
+} from './styles';
 import { UserInfo } from './Userinfo';
 import { AthleteInfo } from './AthleteInfo';
 import { TrainingInfo } from './TrainingInfo';
+import articleTrainer from '~/assets/utils.jpg';
+import avaliacao from '~/assets/avaliacao.jpg';
 
-export const Layout = ({ sideBar, topBar, children, sideMenu }) => {
+export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
   const [widthMenuLateral, setWidth] = useState(380);
   const location = useLocation();
   const renderComponentInfo = () => {
@@ -66,6 +77,16 @@ export const Layout = ({ sideBar, topBar, children, sideMenu }) => {
                   Treinos
                 </span>
               </Link>
+              <Link to="/exercices">
+                <span
+                  className={
+                    location.pathname === '/exercices' ? 'active' : 'default'
+                  }
+                >
+                  <IoIosFitness size={50} />
+                  Exercicios
+                </span>
+              </Link>
             </div>
           </SideMenu>
         )}
@@ -95,6 +116,27 @@ export const Layout = ({ sideBar, topBar, children, sideMenu }) => {
           )}
           {children}
         </Content>
+        {linksUtils && (
+          <LinksUtils>
+            <h5>Links Uteis</h5>
+
+            <Post>
+              <img src={articleTrainer} alt="article" />
+              <p>Como montar um treino efeciente </p>
+            </Post>
+            <hr />
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://www.appto.com.br/blog/2017/09/18/avaliacao-fisica-entenda-como-realmente-pode-ajuda-lo-a-atingir-resultados"
+            >
+              <Post>
+                <img src={avaliacao} alt="avaliacao" />
+                <p>Avaliação física: entenda como realmente pode ajudá-lo a </p>
+              </Post>
+            </a>
+          </LinksUtils>
+        )}
       </Container>
     </>
   );

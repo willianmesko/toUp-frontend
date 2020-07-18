@@ -105,7 +105,7 @@ const NewTraining: React.FC = () => {
               </div>
               <div id="cycle">
                 <Select
-                  label="Ciclo"
+                  label="Modelo"
                   icon={GiCycle}
                   options={[
                     { key: 'Nenhum', value: 0 },
@@ -114,6 +114,7 @@ const NewTraining: React.FC = () => {
                     { key: 'A B C D', value: 4 },
                     { key: 'A B C D E', value: 5 },
                     { key: 'A B C D E F', value: 6 },
+                    { key: 'A B C D E F G', value: 7 },
                   ]}
                   name="cycle"
                 />

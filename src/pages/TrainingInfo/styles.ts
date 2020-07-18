@@ -8,6 +8,15 @@ interface RoutineAreaProps {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  .icons-action {
+    display: flex;
+    justify-content: flex-end;
+
+    svg {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -99,9 +108,41 @@ export const Routine = styled.div<RoutineAreaProps>`
   width: ${props => props.width} !important;
   transition: all ease 0.25s;
   .routine_flipped {
+    padding: 20px;
     width: ${props => props.width} !important;
     margin-bottom: 5px;
     max-height: 300px;
+    display: flex;
+    .exercice-video-view {
+      width: 40%;
+      #player {
+        border-radius: 6px;
+        border: solid 1px #999;
+
+        height: 250px;
+
+        z-index: 10;
+
+        iframe {
+          z-index: 9;
+        }
+      }
+    }
+      .exercice-info-view {
+        margin-left: 30px;
+        width: 60%;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+      }
+      h4 {
+        margin-top: 20px;
+      }
+      form {
+        margin-top: 20px;
+      }
+    }
   }
   .table-container {
     width: ${props => props.width} !important;
@@ -232,16 +273,7 @@ export const ExerciceArea = styled.div`
     border: 2px solid #93ccea;
   }
 
-  /* span {
+  span {
     cursor: pointer;
-    padding: 15px 15px;
-    border-radius: 50%;
-    border: 0;
-    margin-left: auto;
-    transition: all ease 0.2s;
-
-    &:hover {
-      background: rgba(106, 161, 169, 0.29);
-    }
-  } */
+  }
 `;

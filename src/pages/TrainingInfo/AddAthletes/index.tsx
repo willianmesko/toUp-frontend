@@ -44,10 +44,15 @@ const AddAthletes: React.FC<ModalProps> = ({ training_id }) => {
   return (
     <div>
       <Button
-        style={{ width: '150px', float: 'right', height: '36px' }}
+        style={{
+          width: '200px',
+          float: 'right',
+          marginRight: '15px',
+          height: '36px',
+        }}
         onClick={toggle}
       >
-        add Alunos
+        Vincular a alunos
       </Button>
 
       <Modal centered isOpen={modal} toggle={toggle}>

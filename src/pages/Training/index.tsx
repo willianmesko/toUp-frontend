@@ -24,7 +24,7 @@ const Training: React.FC = () => {
   const { setTraining } = useTraining();
   const history = useHistory();
   const [nameDuplicateTraining, setNameDuplicateTraining] = useState();
-  const [duplicateTraining, setDuplicateTraining] = useState();
+  const [duplicateTraining, setDuplicateTraining] = useState<Training>();
   const { addToast } = useToast();
 
   function formatObjective(objective: number): string {
@@ -81,28 +81,15 @@ const Training: React.FC = () => {
       <TrainingCard>
         {trainings &&
           trainings.map(trainin => (
-            <div className="card-profile">
-              {' '}
-              <div className="action-butons">
-                <span onClick={() => setDuplicateTraining(trainin)}>
-                  <Alert
-                    icon="duplicate"
-                    title="Duplicar Treino"
-                    text="duplicar"
-                    execute={cloneTraining}
-                    setNameDuplicateTraining={setNameDuplicateTraining}
-                    nameDuplicateTraining={nameDuplicateTraining}
-                  />
-                </span>
-              </div>
-              <div
-                onClick={() => {
-                  setTraining(trainin);
-                  setTimeout(() => history.push('/training-info'), 0);
-                }}
-                className="card"
-              >
-                <div className="card-avatar-training">
+            <div>
+              <div className="card-training">
+                <div
+                  className="card-image"
+                  onClick={e => {
+                    setTraining(trainin);
+                    history.push('/training-info');
+                  }}
+                >
                   <img
                     src={
                       trainin.objectiveLabel === 'Hipertrofia'
@@ -112,13 +99,54 @@ const Training: React.FC = () => {
                     alt="Person"
                   />
                 </div>
-
                 <div className="card-details">
                   <div className="name">
-                    <p>{trainin.title}</p>
+                    <div>{trainin.title}</div>
+                    {/* <div className="icons">
+                    <GiWeight />
+                    <GiWeightLiftingUp />
+                    <GiBodyHeight />
+                  </div> */}
                   </div>
                   <div className="occupation">
                     <p>{trainin.objectiveLabel}</p>
+                  </div>
+
+                  <div className="card-about">
+                    <div className="item">
+                      <span
+                        onClick={() => setDuplicateTraining(trainin)}
+                        className="value"
+                      >
+                        <Alert
+                          icon="duplicate"
+                          title="Duplicar Treino"
+                          text="duplicar"
+                          execute={cloneTraining}
+                          setNameDuplicateTraining={setNameDuplicateTraining}
+                          nameDuplicateTraining={nameDuplicateTraining}
+                        />
+                      </span>
+                      <span className="label">
+                        <p>Duplicar</p>
+                      </span>
+                    </div>
+                    <div className="item">
+                      <span className="value">
+                        <p> kg </p>
+                      </span>
+                      <span className="label">
+                        <p>Peso</p>
+                      </span>
+                    </div>
+                    <div className="item">
+                      <span className="value">
+                        <p> cm</p>
+                      </span>
+                      <span className="label">
+                        <p>Altura</p>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

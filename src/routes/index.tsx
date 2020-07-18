@@ -21,8 +21,22 @@ const Routes: React.FC = () => (
 
     <Route path="/dashboard" sideMenu component={Dashboard} isPrivate />
     <Route path="/profile" component={Profile} isPrivate />
-    <Route path="/athletes" topBar sideMenu component={Athletes} isPrivate />
-    <Route path="/training" topBar sideMenu component={Training} isPrivate />
+    <Route
+      path="/athletes"
+      linksUtils
+      topBar
+      sideMenu
+      component={Athletes}
+      isPrivate
+    />
+    <Route
+      path="/training"
+      linksUtils
+      topBar
+      sideMenu
+      component={Training}
+      isPrivate
+    />
     <Route path="/new-athlete" component={NewAthlete} isPrivate />
     <Route path="/perfil-athlete" sideBar component={AthletePerfil} isPrivate />
     <Route path="/new-training" component={NewTraining} isPrivate />

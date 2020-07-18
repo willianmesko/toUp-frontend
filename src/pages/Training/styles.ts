@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div``;
 
@@ -30,25 +31,25 @@ export const TrainingField = styled.div`
 `;
 
 export const TrainingCard = styled.div`
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
+  display: grid;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
 
-  .card-profile {
-    cursor: pointer;
-    opacity: 0.7;
-    margin-bottom: 30px;
+  p {
+    color: #000;
+    margin-bottom: 0px;
+  }
+
+  .card-training {
     cursor: pointer;
     width: 40vw;
     height: 20vh;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.25s ease;
+    opacity: 0.7;
+    transition: all 0.5s ease;
     border-radius: 0.75rem;
-
-    color: #000;
-    /* background: linear-gradient(
+    transition: all 0.5s ease;
+    background: linear-gradient(
       to right,
       rgba(42, 159, 255, 0.2) 10%,
       rgb(248, 248, 255) 60%,
@@ -56,56 +57,105 @@ export const TrainingCard = styled.div`
     ) !important;
     -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75); */
-    background: pink;
-    p {
-      color: #000;
-      margin-bottom: 0px;
-    }
+    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    display: grid;
+    grid-template-columns: 40% auto;
+    color: #000;
+
+    align-items: center;
+
+    will-change: transform;
+    transition: all 0.25s ease;
 
     &:hover {
       transform: scale(1.05);
-      border: 2px solid #000;
+      border: 3px solid #000;
       opacity: 1;
       box-shadow: none;
     }
   }
 
-  .card {
+  .card-details {
+    padding: 1rem;
+  }
+
+  .name {
     display: flex;
-    flex-direction: row;
-    background: blue;
-    .card-details {
-      width: 75%;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.25rem;
 
-      padding-top: 20px;
+    .icons {
+      svg {
+        margin: 5px;
+        cursor: pointer;
+
+        transition: all 0.25s ease;
+
+        &:hover {
+          fill: ${shade(0.2, '#87868B')};
+        }
+      }
+    }
+  }
+
+  .occupation {
+    font-weight: 200;
+    color: var(--primary);
+  }
+
+  .card-image {
+    display: grid;
+    justify-self: center;
+    place-items: center;
+    width: 10vw;
+    height: 16vh;
+    border-radius: 6px;
+
+    background: #f8f8f8;
+    div,
+    img {
+      width: 7vw;
+      height: 14vh;
+    }
+  }
+
+  .card-about {
+    margin-top: 1rem;
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+
+    .value {
+      font-size: 1rem;
     }
 
-    .name {
-      font-size: 1.25rem;
+    .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
     }
+  }
 
-    .occupation {
+  .skills {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.75rem;
+
+    .label {
+      font-size: 1rem;
       font-weight: 600;
       color: var(--primary);
     }
 
-    .card-avatar-training {
-      width: 9vw;
-      height: 16vh;
-      background: #f8f8f8;
-      border-radius: 10%;
-      align-self: center;
-      display: flex;
-      margin-left: 60px;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 50%;
-        height: 50%;
-        border-radius: 5px;
-      }
+    .value {
+      font-size: 0.75rem;
+      line-height: 1.25rem;
     }
   }
 `;

@@ -56,7 +56,6 @@ export default function Alert({
             onChange={e => setNameDuplicateTraining(e.target.value)}
             margin="dense"
             id="name"
-            label="Email Address"
             type="email"
             fullWidth
           />
@@ -67,7 +66,7 @@ export default function Alert({
               handleClose();
               setNameDuplicateTraining('');
             }}
-            color="primary"
+            style={{ color: 'rgb(42, 159, 255)' }}
           >
             Cancelar
           </Button>
@@ -76,7 +75,7 @@ export default function Alert({
               handleClose();
               execute();
             }}
-            color="primary"
+            style={{ color: 'rgb(42, 159, 255)' }}
           >
             Confirmar
           </Button>

@@ -30,7 +30,9 @@ import { Container, Content, AvatarInput } from './styles';
 
 interface NewAthleteFormData {
   name: string;
+  surname: string;
   email: string;
+  ethnicity: number;
   body_mass: number;
   stature: number;
   date_of_birth: string;
@@ -52,7 +54,9 @@ const NewAthlete: React.FC = () => {
   const handleSubmit = useCallback(
     async ({
       name,
+      surname,
       email,
+      ethnicity,
       body_mass,
       sexo,
       stature,
@@ -77,6 +81,7 @@ const NewAthlete: React.FC = () => {
 
         const schema = Yup.object().shape({
           name: Yup.string().required('Campo obrigatório'),
+          surname: Yup.string().required('Campo obrigatório'),
           email: Yup.string()
             .required('E-mail obrigatório')
             .email('Digite um e-mail válido'),
@@ -93,8 +98,10 @@ const NewAthlete: React.FC = () => {
         await schema.validate(
           {
             name,
+            surname,
             email,
             age,
+            ethnicity,
             sexo,
             body_mass,
             stature,
@@ -108,21 +115,22 @@ const NewAthlete: React.FC = () => {
             abortEarly: false,
           },
         );
-
+        console.log(surname);
         const response = await api.post('/athletes', {
           name,
+          surname: 'viera',
           email,
           age,
           sexo,
           body_mass,
           stature,
-
+          ethnicity,
           physical_activity,
           objective,
           aerobic_profile,
           training_level,
         });
-
+        console.log(response);
         addToast({
           type: 'success',
           title: 'Cadastro realizado! 🏋 ',
@@ -170,8 +178,19 @@ const NewAthlete: React.FC = () => {
 
           <Form ref={formRef} onSubmit={handleSubmit}>
             <div>
-              <Input name="name" icon={FiUser} placeholder="Nome Completo" />
+              <Input name="name" icon={FiUser} placeholder="Nome" />
+              <Input name="surname" icon={FiUser} placeholder="Sobrenome" />
               <Input name="email" icon={FiMail} placeholder="Email" />
+              <Select
+                icon={GiRun}
+                label="Etnia"
+                options={[
+                  { key: 'Branca', value: 0 },
+                  { key: 'Preta', value: 1.1 },
+                  { key: 'Asiática', value: 2 },
+                ]}
+                name="ethnicity"
+              />
               <Input
                 name="body_mass"
                 icon={GiWeight}
@@ -238,7 +257,7 @@ const NewAthlete: React.FC = () => {
                 name="objective"
               />
               <Select
-                label="Genero"
+                label="Sexo"
                 icon={GiStairsGoal}
                 options={[
                   { key: 'Masculino', value: 0 },

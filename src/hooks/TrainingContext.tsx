@@ -9,7 +9,7 @@ interface Training {
   id: string;
   title: string;
   description?: string;
-
+  objective?: number;
   routines?: RoutineInterface[];
 }
 

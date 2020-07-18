@@ -9,8 +9,7 @@ import Autocomplete, {
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useAthlete } from '~/hooks/AthleteContext';
-import { useToast } from '~/hooks/ToastContext';
-import Button from '~/components/Button';
+import Button from '@material-ui/core/Button';
 import { FaExchangeAlt } from 'react-icons/fa';
 import api from '~/services/api';
 
@@ -44,7 +43,7 @@ const AddTraining: React.FC<ModalProps> = ({
   newRoutines,
 }) => {
   const [modal, setModal] = useState(false);
-  const [training, setTraining] = useState();
+  const [training, setTraining] = useState({} as TrainingInterface);
   const [options, setOptions] = useState([]);
   const { athlete, setAthlete } = useAthlete();
   const history = useHistory();
@@ -99,7 +98,6 @@ const AddTraining: React.FC<ModalProps> = ({
               value={training}
               onChange={(event, newValue) => {
                 if (typeof newValue === 'string') {
-                  setTraining(newValue);
                 } else if (newValue && newValue.inputValue) {
                   // Create a new value from the user input
                   setTraining(newValue);
@@ -144,7 +142,12 @@ const AddTraining: React.FC<ModalProps> = ({
                 <TextField {...params} variant="standard" />
               )}
             />
-            <Button type="submit">Salvar</Button>
+            <Button
+              style={{ float: 'right', color: 'rgb(42, 159, 255)' }}
+              type="submit"
+            >
+              Salvar
+            </Button>
           </form>
         </ModalBody>
       </Modal>

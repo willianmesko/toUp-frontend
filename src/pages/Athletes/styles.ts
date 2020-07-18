@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
+import backgroundCard from '~/assets/MountainsOpacity.a4edba24.png';
 
 export const Container = styled.div`
   border-radius: 10px;
@@ -80,6 +81,7 @@ export const AthleteCard = styled.div`
 
   .card-details {
     padding: 1rem;
+    background: url(${backgroundCard}) no-repeat center;
   }
 
   .name {
