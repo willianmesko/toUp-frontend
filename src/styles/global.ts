@@ -13,9 +13,10 @@ export default createGlobalStyle`
   body, html {
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
+    background-size: 70%;
     background-repeat: no-repeat;
-    background-position-x: 600px;
-    background-position-y: 400px ;
+    background-position-x: 100%;
+    background-position-y: 200% ;
     background-attachment: fixed;
     -webkit-font-smoothing: antialiased;
     overscroll-behavior-x: none;
