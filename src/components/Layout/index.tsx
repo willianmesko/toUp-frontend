@@ -3,6 +3,8 @@ import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { useLocation, Link } from 'react-router-dom';
 import { IoIosFitness } from 'react-icons/io';
+import { GiStrong } from 'react-icons/gi';
+import { FaRuler } from 'react-icons/fa';
 import Header from '~/components/Header';
 import {
   TopArea,
@@ -14,6 +16,7 @@ import {
   Post,
 } from './styles';
 import { UserInfo } from './Userinfo';
+import { useAuth } from '~/hooks/AuthContext';
 import { AthleteInfo } from './AthleteInfo';
 import { TrainingInfo } from './TrainingInfo';
 import articleTrainer from '~/assets/utils.jpg';
@@ -22,6 +25,7 @@ import avaliacao from '~/assets/avaliacao.jpg';
 export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
   const [widthMenuLateral, setWidth] = useState(380);
   const location = useLocation();
+  const { role } = useAuth();
   const renderComponentInfo = () => {
     switch (location.pathname) {
       case '/training':
@@ -46,48 +50,85 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
       <Container>
         {sideMenu && (
           <SideMenu>
-            <div>
-              <Link to="/dashboard">
-                <span
-                  className={
-                    location.pathname === '/dashboard' ? 'active' : 'default'
-                  }
-                >
-                  <AiOutlineDashboard size={40} />
-                  Dashboard
-                </span>
-              </Link>
-              <Link to="/athletes">
-                <span
-                  className={
-                    location.pathname === '/athletes' ? 'active' : 'default'
-                  }
-                >
-                  <GiWeightLiftingUp size={50} />
-                  Alunos
-                </span>
-              </Link>
-              <Link to="/training">
-                <span
-                  className={
-                    location.pathname === '/training' ? 'active' : 'default'
-                  }
-                >
-                  <GiWeightLiftingDown size={50} />
-                  Treinos
-                </span>
-              </Link>
-              <Link to="/exercices">
-                <span
-                  className={
-                    location.pathname === '/exercices' ? 'active' : 'default'
-                  }
-                >
-                  <IoIosFitness size={50} />
-                  Exercicios
-                </span>
-              </Link>
-            </div>
+            {role === 'trainer' ? (
+              <div>
+                <Link to="/dashboard">
+                  <span
+                    className={
+                      location.pathname === '/dashboard' ? 'active' : 'default'
+                    }
+                  >
+                    <AiOutlineDashboard size={40} />
+                    Dashboard
+                  </span>
+                </Link>
+                <Link to="/athletes">
+                  <span
+                    className={
+                      location.pathname === '/athletes' ? 'active' : 'default'
+                    }
+                  >
+                    <GiWeightLiftingUp size={50} />
+                    Alunos
+                  </span>
+                </Link>
+                <Link to="/training">
+                  <span
+                    className={
+                      location.pathname === '/training' ? 'active' : 'default'
+                    }
+                  >
+                    <GiWeightLiftingDown size={50} />
+                    Treinos
+                  </span>
+                </Link>
+                <Link to="/exercices">
+                  <span
+                    className={
+                      location.pathname === '/exercices' ? 'active' : 'default'
+                    }
+                  >
+                    <IoIosFitness size={50} />
+                    Exercicios
+                  </span>
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link to="/trainer">
+                  <span
+                    className={
+                      location.pathname === '/trainer' ? 'active' : 'default'
+                    }
+                  >
+                    <GiStrong size={40} />
+                    Treinadores
+                  </span>
+                </Link>
+                <Link to="/workout">
+                  <span
+                    className={
+                      location.pathname === '/workout' ? 'active' : 'default'
+                    }
+                  >
+                    <GiWeightLiftingDown size={50} />
+                    Treino
+                  </span>
+                </Link>
+                <Link to="/evaluations">
+                  <span
+                    className={
+                      location.pathname === '/evaluations'
+                        ? 'active'
+                        : 'default'
+                    }
+                  >
+                    <FaRuler size={40} />
+                    Avaliaçoes
+                  </span>
+                </Link>
+              </div>
+            )}
           </SideMenu>
         )}
 

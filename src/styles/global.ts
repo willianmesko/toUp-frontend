@@ -11,6 +11,7 @@ export default createGlobalStyle`
   }
 
   body, html {
+    zoom: .9;
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
     background-size: 70%;
@@ -23,7 +24,9 @@ export default createGlobalStyle`
     font-family: 'Fira Sans', Arial, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-
+    .modal-backdrop {
+    zoom: 2 !important;
+  }
   }
   ::-webkit-scrollbar-track {
     background-color: #F4F4F4;

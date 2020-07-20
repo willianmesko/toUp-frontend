@@ -43,8 +43,8 @@ export const TrainingCard = styled.div`
 
   .card-training {
     cursor: pointer;
-    width: 40vw;
-    height: 20vh;
+    width: 700px;
+    height: 200px;
     opacity: 0.7;
     transition: all 0.5s ease;
     border-radius: 0.75rem;
@@ -108,15 +108,15 @@ export const TrainingCard = styled.div`
     display: grid;
     justify-self: center;
     place-items: center;
-    width: 10vw;
-    height: 16vh;
+    width: 180px;
+    height: 180px;
     border-radius: 6px;
 
     background: #f8f8f8;
     div,
     img {
-      width: 7vw;
-      height: 14vh;
+      width: 130px;
+      height: 130px;
     }
   }
 

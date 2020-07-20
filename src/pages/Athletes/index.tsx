@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Container, AthleteField, AthleteCard } from './styles';
 import { GrAddCircle } from 'react-icons/gr';
 import api from '~/services/api';
-import { GiWeight, GiBodyHeight, GiWeightLiftingUp } from 'react-icons/gi';
+
 import { useAthlete } from '~/hooks/AthleteContext';
 import LoadingBar from 'react-top-loading-bar';
 

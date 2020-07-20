@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Button from '~/components/Button';
 import { GrAddCircle } from 'react-icons/gr';
+import { Container } from './styles';
 
 interface ModalProps {
   title?: string;
@@ -32,7 +33,7 @@ const ModalContainer: React.FC<ModalProps> = ({
   const toggle = () => setCloseModal(!opened);
 
   return (
-    <div>
+    <Container>
       <div>
         {button ? (
           <span onClick={toggle}>{selectButton[button]}</span>
@@ -54,7 +55,7 @@ const ModalContainer: React.FC<ModalProps> = ({
         <ModalHeader>{title}</ModalHeader>
         <ModalBody>{children}</ModalBody>
       </Modal>
-    </div>
+    </Container>
   );
 };
 

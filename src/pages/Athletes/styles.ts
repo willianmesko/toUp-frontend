@@ -114,8 +114,8 @@ export const AthleteCard = styled.div`
     place-items: center;
     div,
     img {
-      width: 9vw;
-      height: 16vh;
+      width: 150px;
+      height: 150px;
       background: #f8f8f8;
       border-radius: 50%;
       text-align: center;

@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
 import api from '../services/api';
+import jwt_decode from 'jwt-decode';
 
 interface User {
   id: string;
@@ -15,6 +16,7 @@ interface SignInCredencials {
 
 interface AuthContextData {
   user: User;
+  role: string;
   signIn(credencials: SignInCredencials): Promise<void>;
   signOut(): void;
   updateUser(user: User): void;
@@ -23,6 +25,7 @@ interface AuthContextData {
 interface AuthState {
   token: string;
   user: User;
+  role: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -33,8 +36,9 @@ const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@toUp:user');
 
     if (token && user) {
+      const decodedToken = jwt_decode(token);
       api.defaults.headers.authorization = `Bearer ${token}`;
-      return { token, user: JSON.parse(user) };
+      return { token, user: JSON.parse(user), role: decodedToken.role };
     }
 
     return {} as AuthState;
@@ -45,12 +49,14 @@ const AuthProvider: React.FC = ({ children }) => {
 
     const { token, user } = response.data;
 
+    const decodedToken = jwt_decode(token);
+
     localStorage.setItem('@toUp:token', token);
     localStorage.setItem('@toUp:user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
-    setData({ token, user });
+    setData({ token, user, role: decodedToken.role });
   }, []);
 
   const signOut = useCallback(() => {
@@ -67,6 +73,7 @@ const AuthProvider: React.FC = ({ children }) => {
       setData({
         token: data.token,
         user,
+        role: data.role,
       });
     },
     [setData, data.token],
@@ -74,7 +81,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, updateUser }}
+      value={{ user: data.user, signIn, signOut, updateUser, role: data.role }}
     >
       {children}
     </AuthContext.Provider>

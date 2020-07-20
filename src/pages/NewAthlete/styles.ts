@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { lighten, shade } from 'polished';
 
 export const Container = styled.div`
-  margin: 100px auto;
+  margin: 20px auto;
   display: flex;
 `;
 
@@ -25,8 +25,10 @@ export const Content = styled.div`
     button {
       align-self: center;
     }
+
     > div {
       grid-gap: 10px;
+
       display: grid;
       grid-template-columns: repeat(2, auto);
     }
@@ -98,12 +100,4 @@ export const AvatarInput = styled.div`
       background: ${shade(0.2, '#75a3bb')};
     }
   }
-`;
-
-export const SexoInput = styled.div`
-  display: flex;
-  padding-top: 10px;
-  color: #000;
-  align-content: center;
-  justify-content: space-around;
 `;

@@ -11,6 +11,7 @@ interface ContentProps {
 
 export const Container = styled.div`
   display: flex;
+  height: auto;
 `;
 export const TopArea = styled.div`
   max-width: 1366px;

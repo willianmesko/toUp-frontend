@@ -35,13 +35,13 @@ export const Content = styled.div`
     justify-content: center;
     list-style-type: none;
 
-    .activeTab {
+    .active {
       font-weight: bolder;
       border-bottom: 2px solid #93ccea;
       margin-right: 25px;
     }
 
-    .defaultTab {
+    .desactive {
       border-bottom: 2px solid white;
       margin-right: 25px;
     }

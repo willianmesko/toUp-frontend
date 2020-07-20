@@ -25,14 +25,16 @@ const Route: React.FC<RouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  const { user } = useAuth();
+  const { user, role } = useAuth();
 
   if (!user && isPrivate) {
     return <Redirect to="/" />;
   }
 
   if (user && !isPrivate) {
-    return <Redirect to="/athletes" />;
+    if (role === 'trainer') {
+      return <Redirect to="/athletes" />;
+    } else return <Redirect to="/workout" />;
   }
   return (
     <ReactDOMRoute

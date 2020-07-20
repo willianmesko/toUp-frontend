@@ -115,7 +115,7 @@ const NewAthlete: React.FC = () => {
             abortEarly: false,
           },
         );
-        console.log(surname);
+
         const response = await api.post('/athletes', {
           name,
           surname: 'viera',

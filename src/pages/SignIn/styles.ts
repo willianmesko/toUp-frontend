@@ -4,8 +4,6 @@ import { lighten } from 'polished';
 import signInbackgroundImg from '~/assets/sign-in-background.png';
 
 export const Container = styled.div`
-  height: 100vh;
-
   display: flex;
   align-items: stretch;
 
@@ -22,6 +20,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+
   max-width: 700px;
 
   /**
@@ -44,7 +43,9 @@ export const AnimationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 500px;
 
+  margin-top: 100px;
   animation: ${appearFromLeft} 1.5s;
 
   form {
@@ -91,6 +92,7 @@ export const AnimationContainer = styled.div`
 
 export const Background = styled.div`
   flex: 1;
+
   background: url(${signInbackgroundImg}) no-repeat center;
   background-size: cover;
 `;

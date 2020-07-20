@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Notification from './Notification';
-import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
+import { GiWeightLiftingDown } from 'react-icons/gi';
+import { IoIosFitness } from 'react-icons/io';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import logo from '~/assets/to-up2.png';
@@ -74,6 +75,14 @@ const Header = () => {
             >
               <GiWeightLiftingDown size={40} />
               <small>Treinos</small>
+            </li>
+            <li
+              onClick={() => {
+                completeLoading('/exercices');
+              }}
+            >
+              <IoIosFitness size={40} />
+              <small>Exercícios</small>
             </li>
           </Menu>
         )}

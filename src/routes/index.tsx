@@ -13,6 +13,10 @@ import NewAthlete from '~/pages/NewAthlete';
 import AthletePerfil from '~/pages/AthletePerfil';
 import NewTraining from '~/pages/NewTraining';
 import TrainingInfo from '~/pages/TrainingInfo';
+import AthleteTraining from '~/pages/AthleteTraining';
+import AthleteEvaluation from '~/pages/AthleteEvaluation';
+import TrainerList from '~/pages/TrainerList';
+import Exercices from '~/pages/Exercices';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -21,14 +25,7 @@ const Routes: React.FC = () => (
 
     <Route path="/dashboard" sideMenu component={Dashboard} isPrivate />
     <Route path="/profile" component={Profile} isPrivate />
-    <Route
-      path="/athletes"
-      linksUtils
-      topBar
-      sideMenu
-      component={Athletes}
-      isPrivate
-    />
+    <Route path="/athletes" topBar sideMenu component={Athletes} isPrivate />
     <Route
       path="/training"
       linksUtils
@@ -41,6 +38,15 @@ const Routes: React.FC = () => (
     <Route path="/perfil-athlete" sideBar component={AthletePerfil} isPrivate />
     <Route path="/new-training" component={NewTraining} isPrivate />
     <Route path="/training-info" sideBar component={TrainingInfo} isPrivate />
+    <Route path="/workout" sideMenu component={AthleteTraining} isPrivate />
+    <Route
+      path="/evaluations"
+      sideMenu
+      component={AthleteEvaluation}
+      isPrivate
+    />
+    <Route path="/trainer" sideMenu component={TrainerList} isPrivate />
+    <Route path="/exercices" sideMenu component={Exercices} isPrivate />
   </Switch>
 );
 

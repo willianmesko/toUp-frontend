@@ -108,7 +108,11 @@ const AthleteTraining: React.FC = () => {
                   <div
                     onClick={() => setRoutine(r)}
                     className={
-                      r.id == routine.id ? 'routine-active' : 'routine-default'
+                      routine
+                        ? r.id === routine.id
+                          ? 'routine-active'
+                          : 'routine-default'
+                        : 'routine-default'
                     }
                   >
                     {r.title}
