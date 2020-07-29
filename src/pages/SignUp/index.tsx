@@ -66,7 +66,7 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         },
       );
-      console.log(typeProfile);
+
       if (typeProfile === 1) {
         await api.post('/users', { name, surname, email, password, sexo });
       }

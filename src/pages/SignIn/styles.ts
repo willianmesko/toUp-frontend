@@ -17,10 +17,10 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  color: #000;
   align-items: center;
   justify-content: center;
   width: 100%;
-
   max-width: 700px;
 
   /**
@@ -44,7 +44,7 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 500px;
-
+  height: 100vh;
   margin-top: 100px;
   animation: ${appearFromLeft} 1.5s;
 
@@ -92,7 +92,6 @@ export const AnimationContainer = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-
   background: url(${signInbackgroundImg}) no-repeat center;
   background-size: cover;
 `;

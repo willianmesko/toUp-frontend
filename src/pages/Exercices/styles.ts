@@ -25,7 +25,7 @@ export const SearchField = styled.div`
   margin-left: 30px;
   margin-top: 15px;
   align-content: flex-end;
-
+  margin-bottom: 15px;
   justify-content: space-around;
   input {
     padding: 12px;
@@ -45,5 +45,22 @@ export const SearchField = styled.div`
     &:hover {
       background: rgba(106, 161, 169, 0.29);
     }
+  }
+`;
+
+export const GroupMuscleFilter = styled.div`
+  display: flex;
+`;
+export const GroupMuscle = styled.div`
+  margin-left: 40px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
   }
 `;

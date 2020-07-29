@@ -11,7 +11,11 @@ export default createGlobalStyle`
   }
 
   body, html {
-    zoom: .9;
+
+    @media (max-width: 1300px) {
+      zoom: .9;
+    }
+
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
     background-size: 70%;

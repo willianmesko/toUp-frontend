@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Container, ExerciceCard, SearchField } from './styles';
-import { GrAddCircle } from 'react-icons/gr';
+import {
+  Container,
+  ExerciceCard,
+  SearchField,
+  GroupMuscleFilter,
+  GroupMuscle,
+} from './styles';
+import bicps from '~/assets/bicps.png';
+import tricps from '~/assets/tricps.png';
+import leg from '~/assets/leg.png';
+import costas from '~/assets/costas.jpg';
+import abdomen from '~/assets/abdomen.svg';
+
+import CreateExercice from '~/pages/TrainingInfo/CreateExercice';
 import api from '~/services/api';
 
 const Exercices = () => {
@@ -21,9 +33,32 @@ const Exercices = () => {
         <input placeholder="buscar" />
 
         <span>
-          <GrAddCircle size={40} color="#87868B" />
+          <CreateExercice addExercice={setExercices} />
         </span>
       </SearchField>
+      {/* <GroupMuscleFilter>
+        <GroupMuscle>
+          <img src={bicps} />
+          <small>Biceps</small>
+        </GroupMuscle>
+        <GroupMuscle>
+          <img src={tricps} />
+          <small>Tricpes</small>
+        </GroupMuscle>
+
+        <GroupMuscle>
+          <img src={abdomen} />
+          <small>Abdomen</small>
+        </GroupMuscle>
+        <GroupMuscle>
+          <img src={leg} />
+          <small>Perna</small>
+        </GroupMuscle>
+        <GroupMuscle>
+          <img src={costas} />
+          <small>Dorsal</small>
+        </GroupMuscle>
+      </GroupMuscleFilter> */}
       <Container>
         {exercices &&
           exercices.map((exercice, index) => {
