@@ -165,11 +165,12 @@ const TrainingInfo: React.FC = () => {
     e.preventDefault();
   };
 
-  //Change order exercice
+  // Change order exercice
+
   const dropExercice = async (e, id) => {
     console.log(id);
   };
-  //Add exerice to routine
+  // Add exerice to routine
   const dropRoutine = async (e, id) => {
     e.preventDefault();
 
@@ -186,7 +187,7 @@ const TrainingInfo: React.FC = () => {
         return;
       }
 
-      //Verifica se exercício já existe na rotina
+      // Verifica se exercício já existe na rotina
 
       const exerciceIndex = editRoutine[index].routineExercice.findIndex(
         exercice => exercice.exercice_id === exerciceDragged,
@@ -226,7 +227,12 @@ const TrainingInfo: React.FC = () => {
     return letter[index];
   };
 
-  async function editRoutineExercice(e, routine_id, id, editField) {
+  async function editRoutineExercice(
+    e,
+    routine_id,
+    id,
+    editField,
+  ): Promise<void> {
     const editR = [...editedRoutine];
     const edit = [...routines];
     const routineIndex = edit.findIndex(r => r.id === routine_id);
@@ -247,13 +253,13 @@ const TrainingInfo: React.FC = () => {
     setEditedRoutine(editR);
   }
 
-  async function handleEditRoutine() {
+  async function handleEditRoutine(): Promise<void> {
     await api.put('/routine_exercice', editedRoutine);
     setEditRoutine({ routineIndex: 0, active: false });
   }
 
-  //cria exercicio e adiciona na rotina
-  async function handleAddExerciceInRoutine(routine_id) {
+  // cria exercicio e adiciona na rotina
+  async function handleAddExerciceInRoutine(routine_id): Promise<void> {
     try {
       const findRoutine = [...routines];
       const index = findRoutine.findIndex(r => r.id === routine_id);
@@ -268,7 +274,7 @@ const TrainingInfo: React.FC = () => {
         return;
       }
 
-      //Verifica se exercício já existe na rotina
+      // Verifica se exercício já existe na rotina
 
       const exerciceIndex = findRoutine[index].routineExercice.findIndex(
         exercice => exercice.exercice_id === newExerciceInRoutine.id,
@@ -300,7 +306,10 @@ const TrainingInfo: React.FC = () => {
     } catch (error) {}
   }
 
-  async function handleSubmitRoutine({ title, description }: RoutineFormData) {
+  async function handleSubmitRoutine({
+    title,
+    description,
+  }: RoutineFormData): Promise<void> {
     try {
       formRef.current?.setErrors({});
       if (routines.length >= 6) {
@@ -368,8 +377,8 @@ const TrainingInfo: React.FC = () => {
           setCloseModal={setOpenModal}
           opened={openModal}
           execute={setIsTourOpen}
-          buttonLabel={'Nova rotina'}
-          title={'Rotina de exercícios'}
+          buttonLabel="Nova rotina"
+          title="Rotina de exercícios"
         >
           <Form ref={formRef} onSubmit={handleSubmitRoutine}>
             <Input name="title" icon={FiUser} placeholder="Titulo" />
@@ -402,7 +411,7 @@ const TrainingInfo: React.FC = () => {
                 onMouseEnter={() => setPlayVideo(1)}
                 onMouseLeave={() => setPlayVideo(0)}
                 style={{ display: 'flex' }}
-                draggable={true}
+                draggable
                 onDragEnd={e => dragEnd(e, exercice.id)}
                 onDragOver={e => dragOver(e)}
                 onDrag={e => dragStart(e, exercice.id)}
@@ -412,15 +421,12 @@ const TrainingInfo: React.FC = () => {
                 label={exercice.name}
               />
 
-              <ReactTooltip
-                delayShow={2000}
-                id={`tooltip${index}`}
-                clickable={true}
-              >
+              <ReactTooltip delayShow={2000} id={`tooltip${index}`} clickable>
                 <iframe
+                  title="exercice example"
                   width="420"
                   height="315"
-                  src={`https://www.youtube.com/embed/tgbNymZ7vqY`}
+                  src="https://www.youtube.com/embed/tgbNymZ7vqY"
                 />
               </ReactTooltip>
             </>
