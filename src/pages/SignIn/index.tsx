@@ -103,7 +103,7 @@ const SignIn: React.FC = () => {
           </Link>
         </AnimationContainer>
       </Content>
-      <Background />
+      {/* <Background /> */}
     </Container>
   );
 };

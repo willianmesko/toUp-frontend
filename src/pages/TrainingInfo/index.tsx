@@ -106,7 +106,7 @@ const TrainingInfo: React.FC = () => {
     name: '',
     routine_name: '',
   });
-  const [activeView, setActiveView] = useState('grid');
+  const [activeView, setActiveView] = useState('list');
   const [dropdownOpen, setDropdownOpen] = useState(false);
   //Onloadig
   const steps = [
@@ -147,8 +147,9 @@ const TrainingInfo: React.FC = () => {
   const dragStart = (e, id) => {
     const { target } = e;
     setExerciceDragged(id);
+    console.log(id);
     setTimeout(() => {
-      target.style.display = 'none';
+      // target.style.display = 'none';
     }, 0);
   };
 
@@ -394,7 +395,12 @@ const TrainingInfo: React.FC = () => {
       <ExerciceArea data-tut="reactour__add_exercice">
         {exercices &&
           exercices.map((exercice, index) => (
-            <>
+            <div
+              draggable={true}
+              onDragEnd={e => dragEnd(e, exercice.id)}
+              onDragOver={e => dragOver(e)}
+              onDrag={e => dragStart(e, exercice.id)}
+            >
               <Chip
                 data-tut={`reactour__add_exercice${index}`}
                 data-tip
@@ -402,17 +408,13 @@ const TrainingInfo: React.FC = () => {
                 onMouseEnter={() => setPlayVideo(1)}
                 onMouseLeave={() => setPlayVideo(0)}
                 style={{ display: 'flex' }}
-                draggable={true}
-                onDragEnd={e => dragEnd(e, exercice.id)}
-                onDragOver={e => dragOver(e)}
-                onDrag={e => dragStart(e, exercice.id)}
                 clickable
                 color="primary"
                 variant="outlined"
                 label={exercice.name}
               />
 
-              <ReactTooltip
+              {/* <ReactTooltip
                 delayShow={2000}
                 id={`tooltip${index}`}
                 clickable={true}
@@ -422,8 +424,8 @@ const TrainingInfo: React.FC = () => {
                   height="315"
                   src={`https://www.youtube.com/embed/tgbNymZ7vqY`}
                 />
-              </ReactTooltip>
-            </>
+              </ReactTooltip> */}
+            </div>
           ))}
 
         <span>
@@ -434,16 +436,16 @@ const TrainingInfo: React.FC = () => {
       <RoutinesArea>
         <View>
           <li
-            className={activeView === 'grid' ? 'activeTab' : 'defaultTab'}
-            onClick={() => setActiveView('grid')}
-          >
-            <FaThList /> Visualização em grade
-          </li>
-          <li
             className={activeView === 'list' ? 'activeTab' : 'defaultTab'}
             onClick={() => setActiveView('list')}
           >
             <BsGrid1X2Fill /> Visualização em lista
+          </li>
+          <li
+            className={activeView === 'grid' ? 'activeTab' : 'defaultTab'}
+            onClick={() => setActiveView('grid')}
+          >
+            <FaThList /> Visualização em grade
           </li>
         </View>
         {routines &&

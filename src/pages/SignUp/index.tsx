@@ -105,11 +105,11 @@ const SignUp: React.FC = () => {
 
   return (
     <Container>
-      <Background />
+      {/* <Background /> */}
 
       <Content>
         <AnimationContainer>
-          <img src={logoImg} alt="Go Barber" />
+          <img src={logoImg} alt="TO UP" />
           <h1>Cadastre-se</h1>
           <ul>
             <li

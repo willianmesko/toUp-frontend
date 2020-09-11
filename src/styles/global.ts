@@ -14,6 +14,9 @@ export default createGlobalStyle`
 
     @media (max-width: 1300px) {
       zoom: .9;
+      .modal-backdrop {
+    zoom: 2 !important;
+  }
     }
 
     background: rgba(242, 243, 245, 0.9);
@@ -42,7 +45,7 @@ export default createGlobalStyle`
 ::-webkit-scrollbar-thumb {
     background: #dad7d7;
 }
-  }
+
 
   body, input, button {
     font-family: 'Roboto Slab', serif !important;

@@ -4,10 +4,9 @@ import { lighten } from 'polished';
 import signInbackgroundImg from '~/assets/sign-in-background.png';
 
 export const Container = styled.div`
-  height: 100vh;
-
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
 `;
 const appearFromRight = keyframes`
   from {
@@ -88,6 +87,7 @@ export const AnimationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   width: 600px;
 
   animation: ${appearFromRight} 1.5s;

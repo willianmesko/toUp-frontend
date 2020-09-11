@@ -5,8 +5,8 @@ import signInbackgroundImg from '~/assets/sign-in-background.png';
 
 export const Container = styled.div`
   display: flex;
-  align-items: stretch;
-
+  align-items: center;
+  justify-content: center;
   img {
     margin-top: 20px;
     width: 250px;
@@ -18,6 +18,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   color: #000;
+
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -44,6 +45,7 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 500px;
+
   height: 100vh;
   margin-top: 100px;
   animation: ${appearFromLeft} 1.5s;
@@ -91,7 +93,7 @@ export const AnimationContainer = styled.div`
 `;
 
 export const Background = styled.div`
-  flex: 1;
+  height: 100%;
   background: url(${signInbackgroundImg}) no-repeat center;
   background-size: cover;
 `;
