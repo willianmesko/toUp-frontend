@@ -16,7 +16,14 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
 }) => {
   return (
     <Container>
-      <p onClick={() => viewEvaluation(false)}>voltar</p>
+      <p
+        aria-hidden="true"
+        onClick={() => {
+          viewEvaluation(false);
+        }}
+      >
+        voltar
+      </p>
       {evaluation.type_title}
       <PieChart
         data={[

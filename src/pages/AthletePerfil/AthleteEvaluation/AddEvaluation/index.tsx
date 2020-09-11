@@ -107,7 +107,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
     left_leg,
     left_forearm,
     right_forearm,
-  }) => {
+  }): Promise<void> => {
     try {
       const now = new Date();
       const response = await api.post('/evaluation', {

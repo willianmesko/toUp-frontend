@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Container, AthleteField, AthleteCard } from './styles';
+import LoadingBar from 'react-top-loading-bar';
 import { GrAddCircle } from 'react-icons/gr';
+import { Container, AthleteField, AthleteCard } from './styles';
+
 import api from '~/services/api';
 
 import { useAthlete } from '~/hooks/AthleteContext';
-import LoadingBar from 'react-top-loading-bar';
 
 interface Athlete {
   id: string;
@@ -78,6 +79,7 @@ const Athletes: React.FC = () => {
             return (
               <div>
                 <div
+                  aria-hidden="true"
                   className="card-profile-athlete"
                   onClick={() => {
                     setAthlete(athlete);
