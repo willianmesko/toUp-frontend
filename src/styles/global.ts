@@ -18,7 +18,7 @@ export default createGlobalStyle`
     zoom: 2 !important;
   }
     }
-
+  
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
     background-size: 70%;
@@ -48,8 +48,9 @@ export default createGlobalStyle`
 
 
   body, input, button {
-    font-family: 'Roboto Slab', serif !important;
+    font-family: Roboto, sans-serif !important;
     font-size: 16px;
+    outline: 0 !important;
   }
 
 

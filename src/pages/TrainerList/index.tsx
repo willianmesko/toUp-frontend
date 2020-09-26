@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, TrainerContainer, Trainer } from './styles';
+import {
+  Container,
+  TrainerContainer,
+  Trainer,
+  PerfilArea,
+  ContractArea,
+  Info,
+  Description,
+  Tags,
+  Filters,
+} from './styles';
 
 import api from '~/services/api';
 
@@ -15,30 +25,220 @@ const TrainerList = () => {
   }, []);
   return (
     <Container>
-      <h1>Contrate um treinador</h1>
       <TrainerContainer>
-        {trainer &&
-          trainer.map(traine => {
-            return (
-              <Trainer>
-                <img src="https://avatars3.githubusercontent.com/u/26778884?s=400&u=2f9ad4f573a416acac5e71ccfbaf087ce6ded96b&v=4" />
-                <footer>
-                  <strong>{traine.name}</strong> <span>****</span>
-                  <p>Treinador com 2 anos no mercado</p>
-                </footer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
 
-                {/* <div className="buttons">
-                  <button type="button">
-                    <img alt="Dislike" />
-                  </button>
-                  <button type="button">
-                    <img alt="Like" />
-                  </button>
-                </div> */}
-              </Trainer>
-            );
-          })}
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
+
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
+
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
+
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
+
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
+        <Trainer>
+          <PerfilArea>
+            <Info>
+              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <div>
+                Karine M<p>Agilidade e Eficiência!</p>
+              </div>
+            </Info>
+            <Description>
+              Sou proativa, objetiva, determinada, que sabe focar no que
+              realmente importa, que adora desafios e que se compromete a
+              finalizar qualquer projeto ou atividade que por ventura venha a se
+              envolver. Meu lema é "Não existe obstáculos quando há Foco, Força
+              e Fé".
+            </Description>
+
+            <Tags>
+              <ul>
+                <li>Hipertrofia</li>
+                <li>Emagrencimento</li>
+                <li>Aej</li>
+              </ul>
+            </Tags>
+          </PerfilArea>
+
+          <ContractArea>
+            <button>Contrate</button>
+            <small>Mensalidade:</small>
+            <p>R$ 50.00</p>
+
+            <small>Alunos ativos:10</small>
+
+            <small>Registrado desde: 1 mês</small>
+          </ContractArea>
+        </Trainer>
       </TrainerContainer>
+
+      <Filters>filtros</Filters>
     </Container>
   );
 };

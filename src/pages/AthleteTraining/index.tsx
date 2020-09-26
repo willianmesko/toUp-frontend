@@ -11,18 +11,18 @@ import {
   RoutineArea,
   Letter,
   WorkoutInfo,
+  ExerciceInfo,
 } from './styles';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 const AthleteTraining = () => {
   return (
     <Container>
-      <h1>Treino </h1>
       <WorkoutInfo>
-        <h6>Data de inicio: 05/01/2020</h6>
-        <h6>Data de termino: 05/01/2020</h6>
+        <p>Data de inicio: 05/01/2020</p>
+        <p>Data de termino: 05/01/2020</p>
 
-        <h6>Objetivo: Hipertrofia</h6>
-        <h6>Quantidade de exercicios: 8</h6>
+        <p>Objetivo: Hipertrofia</p>
+        <p>Quantidade de exercicios: 8</p>
       </WorkoutInfo>
 
       <Content>
@@ -31,17 +31,17 @@ const AthleteTraining = () => {
           <RoutineArea>
             <AiOutlineLeft size={60} />
             <Routine>
-              <Letter> A </Letter>
-              <h2>Bicps</h2>
+              {/* <Letter> A </Letter> */}
+              {/* <h2>Bicps</h2> */}
 
-              <ul>
+              {/* <ul>
                 <li>Gasto calorico</li>
                 <li>Volume total</li>
               </ul>
               <ul>
                 <li>Gasto calorico2</li>
                 <li>Volume total2</li>
-              </ul>
+              </ul> */}
             </Routine>
             <AiOutlineRight size={60} />
           </RoutineArea>
@@ -76,13 +76,13 @@ const AthleteTraining = () => {
         </WorkoutArea>
 
         <TrainerArea>
-          <h6>Treinador</h6>
           <TraineCard>
             <img src="https://avatars3.githubusercontent.com/u/26778884?s=400&u=2f9ad4f573a416acac5e71ccfbaf087ce6ded96b&v=4" />
-            <h2>Goku</h2>
+            <p>Goku</p>
           </TraineCard>
         </TrainerArea>
       </Content>
+      <ExerciceInfo></ExerciceInfo>
     </Container>
   );
 };

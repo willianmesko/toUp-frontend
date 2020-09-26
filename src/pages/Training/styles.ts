@@ -13,9 +13,9 @@ export const TrainingField = styled.div`
   input {
     padding: 12px;
     height: 50px;
-    border-radius: 5px;
-    width: 60%;
-    border: 2px solid rgb(135, 134, 139);
+    border-radius: 50px;
+    width: 80%;
+    border: none;
   }
   a {
     padding: 10px 10px;
@@ -69,9 +69,10 @@ export const TrainingCard = styled.div`
 
     &:hover {
       transform: scale(1.05);
-      border: 3px solid #000;
+      -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
       opacity: 1;
-      box-shadow: none;
     }
   }
 

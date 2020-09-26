@@ -34,7 +34,8 @@ const Route: React.FC<RouteProps> = ({
   if (user && !isPrivate) {
     if (role === 'trainer') {
       return <Redirect to="/athletes" />;
-    } else return <Redirect to="/workout" />;
+    }
+    return <Redirect to="/workout" />;
   }
   return (
     <ReactDOMRoute

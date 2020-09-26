@@ -5,6 +5,7 @@ import signInbackgroundImg from '~/assets/sign-in-background.png';
 
 export const Container = styled.div`
   display: flex;
+
   align-items: center;
   justify-content: center;
   img {
@@ -23,6 +24,7 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 700px;
+  height: 800px;
 
   /**
     place-content: center;

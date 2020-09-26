@@ -100,7 +100,18 @@ export const InputStyled = styled.input<InputProps>`
     border: 1px solid #93ccea;
   }
 `;
-export const Actions = styled.div``;
+export const Actions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  button {
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    background: #75a3bb;
+    width: 120px;
+    height: 30px;
+  }
+`;
 export const Header = styled.div`
   background: #75a3bb;
   color: #fff;

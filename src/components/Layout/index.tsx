@@ -25,7 +25,7 @@ import avaliacao from '~/assets/avaliacao.jpg';
 export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
   const [widthMenuLateral, setWidth] = useState(380);
   const location = useLocation();
-  const { role } = useAuth();
+  const { role, user } = useAuth();
   const renderComponentInfo = () => {
     switch (location.pathname) {
       case '/training':
@@ -46,7 +46,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
   return (
     <>
       <Header />
-
+      {console.log(user)}
       <Container>
         {sideMenu && (
           <SideMenu>
@@ -95,16 +95,18 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
               </div>
             ) : (
               <div>
-                <Link to="/trainer">
-                  <span
-                    className={
-                      location.pathname === '/trainer' ? 'active' : 'default'
-                    }
-                  >
-                    <GiStrong size={40} />
-                    Treinadores
-                  </span>
-                </Link>
+                {!user.trainer_id && (
+                  <Link to="/trainer">
+                    <span
+                      className={
+                        location.pathname === '/trainer' ? 'active' : 'default'
+                      }
+                    >
+                      <GiStrong size={40} />
+                      Treinadores
+                    </span>
+                  </Link>
+                )}
                 <Link to="/workout">
                   <span
                     className={

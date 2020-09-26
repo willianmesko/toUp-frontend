@@ -19,8 +19,8 @@ export const WorkoutInfo = styled.div`
 `;
 
 export const TrainerArea = styled.div`
-  width: 350px;
-  height: 250px;
+  width: 300px;
+  height: 400px;
   background: #fff;
   margin-left: 50px;
   border-radius: 6px;
@@ -33,12 +33,14 @@ export const TrainerArea = styled.div`
 `;
 
 export const TraineCard = styled.div`
-  width: 200px;
-  height: 200px;
-
+  padding: 30px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
   img {
-    width: 150px;
-    height: 150px;
+    margin-bottom: 10px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
   }
 `;
@@ -64,6 +66,15 @@ export const Routine = styled.div`
   -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: space-between;
+
+  ul {
+  }
+`;
+
+export const ExerciceInfo = styled.div`
+  width: 80px;
 `;
 
 export const Letter = styled.div`
@@ -89,7 +100,7 @@ export const Exercice = styled.div`
   margin-bottom: 15px;
   opacity: 0.8;
   cursor: pointer;
-  border-left: 10px solid rgb(42, 159, 255);
+  border-left: 6px solid rgb(42, 159, 255);
   -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);

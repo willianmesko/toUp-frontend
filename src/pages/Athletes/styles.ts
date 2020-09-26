@@ -6,6 +6,21 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
+export const LoadingMore = styled.div`
+  display: flex;
+
+  justify-content: center;
+  margin-top: 30px;
+  button {
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    background: #93ccea;
+    border: none;
+    color: #fff;
+  }
+`;
+
 export const AthleteField = styled.div`
   display: flex;
   margin-left: 30px;
@@ -16,9 +31,9 @@ export const AthleteField = styled.div`
   input {
     padding: 12px;
     height: 50px;
-    border-radius: 5px;
-    width: 60%;
-    border: 2px solid rgb(135, 134, 139);
+    border-radius: 50px;
+    width: 80%;
+    border: none;
   }
   span {
     cursor: pointer;
@@ -73,9 +88,10 @@ export const AthleteCard = styled.div`
 
     &:hover {
       transform: scale(1.05);
-      border: 3px solid #000;
+      -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
       opacity: 1;
-      box-shadow: none;
     }
   }
 

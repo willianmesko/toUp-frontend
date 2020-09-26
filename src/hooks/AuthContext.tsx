@@ -7,6 +7,7 @@ interface User {
   avatar_url: string;
   name: string;
   email: string;
+  trainer_id?: string;
 }
 
 interface SignInCredencials {
