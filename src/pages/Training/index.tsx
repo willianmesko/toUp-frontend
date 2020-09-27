@@ -5,6 +5,7 @@ import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import Alert from '~/components/Alert';
 import { Container, TrainingField } from './styles';
 import { GrAddCircle } from 'react-icons/gr';
+import { AiFillDelete } from 'react-icons/ai';
 import api from '~/services/api';
 import { useTraining } from '~/hooks/TrainingContext';
 import { useToast } from '~/hooks/ToastContext';
@@ -46,7 +47,10 @@ const Training: React.FC = () => {
     }
     getTraining();
   }, []);
-
+  const deleteTraining = async id => {
+    console.log(id);
+    await api.delete(`/training/${id}`);
+  };
   const cloneTraining = async () => {
     try {
       const response = await api.post(
@@ -132,11 +136,11 @@ const Training: React.FC = () => {
                       </span>
                     </div>
                     <div className="item">
+                      <AiFillDelete
+                        onClick={() => deleteTraining(trainin.id)}
+                      />
                       <span className="value">
-                        <p> kg </p>
-                      </span>
-                      <span className="label">
-                        <p>Peso</p>
+                        <p> Deletar </p>
                       </span>
                     </div>
                     <div className="item">

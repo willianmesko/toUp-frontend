@@ -35,7 +35,6 @@ export const TopArea = styled.div`
 `;
 
 export const Content = styled.main<ContentProps>`
-  max-width: 1366px;
   height: auto;
   display: flex;
   flex-direction: ${props => props.flexDirection};

@@ -17,12 +17,13 @@ import AthleteTraining from '~/pages/AthleteTraining';
 import AthleteEvaluation from '~/pages/AthleteEvaluation';
 import TrainerList from '~/pages/TrainerList';
 import Exercices from '~/pages/Exercices';
+import Me from '~/pages/Me';
 
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
     <Route path="/signup" component={SignUp} />
-
+    <Route path="/me" isPrivate component={Me} />
     <Route path="/dashboard" sideMenu component={Dashboard} isPrivate />
     <Route path="/profile" component={Profile} isPrivate />
     <Route path="/athletes" topBar sideMenu component={Athletes} isPrivate />

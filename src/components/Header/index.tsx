@@ -113,6 +113,9 @@ const Header = () => {
               <DropdownItem>
                 <Link to="/profile">Conta</Link>
               </DropdownItem>
+              <DropdownItem>
+                <Link to="/me">Meu perfil</Link>
+              </DropdownItem>
               <DropdownItem onClick={() => signOut()}>Sair</DropdownItem>
             </DropdownMenu>
           </Dropdown>

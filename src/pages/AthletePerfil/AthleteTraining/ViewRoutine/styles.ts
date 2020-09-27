@@ -21,8 +21,8 @@ export const Container = styled.div`
     #player {
       border-radius: 6px;
       border: solid 1px #999;
-      height: 30vh !important;
-      width: 30vw !important;
+      height: 40vh !important;
+      width: 50vw !important;
       z-index: 10;
 
       iframe {

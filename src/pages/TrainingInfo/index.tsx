@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Button from '~/components/Button';
 import { FiUser, FiEdit3, FiSave } from 'react-icons/fi';
+import { RiDeleteBin2Line } from 'react-icons/ri';
 import { FaThList } from 'react-icons/fa';
 import { GrCircleInformation } from 'react-icons/gr';
 import { BsGrid1X2Fill } from 'react-icons/bs';
@@ -227,6 +228,10 @@ const TrainingInfo: React.FC = () => {
 
     return letter[index];
   };
+
+  async function deleteRoutine(routine_id) {
+    await api.delete(`/routines/${routine_id}`);
+  }
 
   async function editRoutineExercice(
     e,
@@ -510,14 +515,19 @@ const TrainingInfo: React.FC = () => {
                             }
                           />
                         ) : (
-                          <FiEdit3
-                            onClick={() =>
-                              setEditRoutine({
-                                routineIndex: index,
-                                active: true,
-                              })
-                            }
-                          />
+                          <>
+                            <FiEdit3
+                              onClick={() =>
+                                setEditRoutine({
+                                  routineIndex: index,
+                                  active: true,
+                                })
+                              }
+                            />
+                            <RiDeleteBin2Line
+                              onClick={() => deleteRoutine(routine.id)}
+                            />
+                          </>
                         )}
                       </span>
                     </div>

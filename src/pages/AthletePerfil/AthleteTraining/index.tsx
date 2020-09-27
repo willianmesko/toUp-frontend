@@ -74,24 +74,6 @@ const AthleteTraining: React.FC = () => {
     <Content>
       {training.title ? (
         <TrainingContainer>
-          <div className="icons-action">
-            <span
-              onClick={() => {
-                setTraining(training);
-                setTimeout(() => history.push('/training-info'), 0);
-              }}
-            >
-              <MdRemoveRedEye size={25} />
-            </span>
-            <span>
-              <AddTraining
-                icon="change"
-                newTraining={setTrainings}
-                newRoutine={setRoutine}
-                newRoutines={setRoutines}
-              />
-            </span>
-          </div>
           <div className="training">
             <div className="training-image">
               <img
@@ -101,6 +83,24 @@ const AthleteTraining: React.FC = () => {
             <div className="training-about">
               <h4>{training.title}</h4>
               <p>Iniciante</p>
+              <div className="icons-action">
+                <span
+                  onClick={() => {
+                    setTraining(training);
+                    setTimeout(() => history.push('/training-info'), 0);
+                  }}
+                >
+                  <MdRemoveRedEye size={25} />
+                </span>
+                <span>
+                  <AddTraining
+                    icon="change"
+                    newTraining={setTrainings}
+                    newRoutine={setRoutine}
+                    newRoutines={setRoutines}
+                  />
+                </span>
+              </div>
             </div>
             <div className="routines">
               {routines.length > 0 &&

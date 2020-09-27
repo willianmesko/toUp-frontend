@@ -46,28 +46,7 @@ const ViewRoutine: React.FC<ModalProps> = ({ icon, routine }) => {
         </ModalHeader>
         <ModalBody>
           <Container>
-            <div className="exercice-info-modal">
-              <h3>Execução</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <td>Séries</td>
-                    <td>Repetições</td>
-                    <td>Carga</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>3</td>
-                    <td>20</td>
-                    <td>50kg</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
             <div className="exercice-video-modal">
-              <h3>Video</h3>
               <iframe
                 id="player"
                 src="http://www.youtube.com/embed/4m72jsC_5Ro"

@@ -46,7 +46,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
   return (
     <>
       <Header />
-      {console.log(user)}
+
       <Container>
         {sideMenu && (
           <SideMenu>
@@ -150,10 +150,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
           )}
 
           {sideBar && (
-            <MenuLateral
-              width={widthMenuLateral}
-              onClick={() => setWidth(5000)}
-            >
+            <MenuLateral width={widthMenuLateral}>
               {renderComponentInfo()}
             </MenuLateral>
           )}
