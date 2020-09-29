@@ -29,7 +29,14 @@ export const TrainingField = styled.div`
     }
   }
 `;
+export const NoTraining = styled.div`
+  display: 'flex';
 
+  .react-loading-skeleton {
+    margin-bottom: 10px;
+    border-radius: 10px !important;
+  }
+`;
 export const TrainingCard = styled.div`
   display: grid;
   grid-gap: 20px;

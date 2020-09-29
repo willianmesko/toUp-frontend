@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import { GrAddCircle } from 'react-icons/gr';
-import { Container, AthleteField, AthleteCard, LoadingMore } from './styles';
+import {
+  Container,
+  AthleteField,
+  AthleteCard,
+  LoadingMore,
+  NoAthlete,
+} from './styles';
 
 import api from '~/services/api';
 
 import { useAthlete } from '~/hooks/AthleteContext';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 interface Athlete {
   id: string;
@@ -38,12 +45,17 @@ const Athletes: React.FC = () => {
   const [visible, setVisible] = useState<number>(3);
   const [filter, setFilter] = useState('');
   const history = useHistory();
+  const [skeleton, setSkeleton] = useState(false);
 
   useEffect(() => {
     async function getAthletes(): Promise<void> {
       const { data } = await api.get('/athletes');
       setCopyAthletes(data);
-      setAthletes(data);
+      setSkeleton(true);
+      setTimeout(() => {
+        setAthletes(data);
+        setSkeleton(false);
+      }, 1000);
     }
 
     getAthletes();
@@ -148,19 +160,23 @@ const Athletes: React.FC = () => {
                           </span>
                         </div>
                       </div>
-                      {/* <div className="skills">
-                      <span className="value">
-                        Immeasurable Physical Prowess, Supernatural Reflexes and
-                        Senses, Invulnerability, Indomitable Will, Enhanced
-                        Fighting Skill
-                      </span>
-                    </div> */}
                     </div>
                   </div>
                 </div>
               );
             })}
         </AthleteCard>
+        {skeleton && (
+          <NoAthlete>
+            {copyAthletes.map(skeleton => {
+              return (
+                <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+                  <Skeleton width={700} height={200} duration={2} />
+                </SkeletonTheme>
+              );
+            })}
+          </NoAthlete>
+        )}
         {athletes.length > visible && (
           <LoadingMore>
             <button onClick={() => setVisible(visible + 3)}>

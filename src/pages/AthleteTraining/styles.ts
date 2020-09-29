@@ -12,12 +12,24 @@ export const WorkoutArea = styled.div`
 `;
 
 export const WorkoutInfo = styled.div`
+  margin-top: 30px;
   display: flex;
   width: 500px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  font-size: 14px;
+  font-weight: bold;
+
+  .training_date {
+    margin-left: 40px;
+  }
 `;
 
+export const TrainerAvatar = styled.div`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: purple;
+  margin-right: 10px;
+`;
 export const TrainerArea = styled.div`
   width: 300px;
   height: 400px;

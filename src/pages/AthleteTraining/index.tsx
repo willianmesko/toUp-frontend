@@ -10,6 +10,7 @@ import {
   Exercice,
   RoutineArea,
   Letter,
+  TrainerAvatar,
   WorkoutInfo,
   ExerciceInfo,
 } from './styles';
@@ -18,11 +19,22 @@ const AthleteTraining = () => {
   return (
     <Container>
       <WorkoutInfo>
+        <TrainerAvatar />
+        <div>
+          <p>Treinador: willian mesko </p>
+          <p>Objetivo: Hipertrofia </p>
+        </div>
+        <div className="training_date">
+          <p>Data de inicio: 05/01/2020</p>
+          <p>Data de termino: 05/01/2020</p>
+        </div>
+        {/*
+        {/*
         <p>Data de inicio: 05/01/2020</p>
         <p>Data de termino: 05/01/2020</p>
 
         <p>Objetivo: Hipertrofia</p>
-        <p>Quantidade de exercicios: 8</p>
+        <p>Quantidade de exercicios: 8</p> */}
       </WorkoutInfo>
 
       <Content>
@@ -74,13 +86,13 @@ const AthleteTraining = () => {
             <Exercice>3</Exercice>
           </ExerciceArea>
         </WorkoutArea>
-
+        {/* 
         <TrainerArea>
           <TraineCard>
             <img src="https://avatars3.githubusercontent.com/u/26778884?s=400&u=2f9ad4f573a416acac5e71ccfbaf087ce6ded96b&v=4" />
             <p>Goku</p>
           </TraineCard>
-        </TrainerArea>
+        </TrainerArea> */}
       </Content>
       <ExerciceInfo></ExerciceInfo>
     </Container>

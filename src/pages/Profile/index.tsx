@@ -1,10 +1,10 @@
-import React, { useRef, useCallback, ChangeEvent } from 'react';
-import { FiMail, FiLock, FiUser, FiCamera } from 'react-icons/fi';
+import React, { useRef, useCallback } from 'react';
+import { FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import { Content, AvatarInput } from './styles';
+import { Content } from './styles';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -89,26 +89,6 @@ const Profile: React.FC = () => {
     [addToast, updateUser, history],
   );
 
-  const handleChangeAvatar = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files) {
-        const data = new FormData();
-
-        data.append('avatar', e.target.files[0]);
-
-        api.patch('/users/avatar', data).then(response => {
-          updateUser(response.data);
-
-          addToast({
-            type: 'success',
-            title: 'Avatar atualizado',
-          });
-        });
-      }
-    },
-    [addToast, updateUser],
-  );
-
   return (
     <>
       <Content>
@@ -117,20 +97,6 @@ const Profile: React.FC = () => {
           ref={formRef}
           onSubmit={handleSubmit}
         >
-          <AvatarInput>
-            <img
-              src={
-                user.avatar_url ||
-                'https://yt3.ggpht.com/a-/AOh14GjDM_FdVyl5v7gQrGyIgjf770GJBujpn9Q3LLI2cTI=s88-c-k-c0xffffffff-no-rj-mo'
-              }
-              alt={user.name}
-            />
-            <label htmlFor="avatar">
-              <FiCamera />
-              <input type="file" id="avatar" onChange={handleChangeAvatar} />
-            </label>
-          </AvatarInput>
-
           <h1>Meu perfil</h1>
 
           <Input icon={FiUser} name="name" placeholder="Nome" />

@@ -14,7 +14,7 @@ import { FaThList } from 'react-icons/fa';
 import { GrCircleInformation } from 'react-icons/gr';
 import { BsGrid1X2Fill } from 'react-icons/bs';
 import { MdArrowBack, MdDescription } from 'react-icons/md';
-import { AiOutlineEye } from 'react-icons/ai';
+import { AiOutlineEye, AiOutlineDelete } from 'react-icons/ai';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 
@@ -35,12 +35,6 @@ import Chip from '@material-ui/core/Chip';
 import ReactTooltip from 'react-tooltip';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateExercice from './CreateExercice';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
 
 interface RoutineInterface {
   title: string;
@@ -229,8 +223,12 @@ const TrainingInfo: React.FC = () => {
     return letter[index];
   };
 
-  async function deleteRoutine(routine_id) {
+  async function deleteRoutine(routine_id): Promise<void> {
     await api.delete(`/routines/${routine_id}`);
+  }
+
+  async function deleteExercice(exercice_id): Promise<void> {
+    await api.delete(`/routine_exercice/${exercice_id}`);
   }
 
   async function editRoutineExercice(
@@ -673,6 +671,15 @@ const TrainingInfo: React.FC = () => {
                                                           routine_name:
                                                             routine.title,
                                                         });
+                                                      }}
+                                                    />
+                                                  </span>
+                                                  <span>
+                                                    <AiOutlineDelete
+                                                      onClick={() => {
+                                                        deleteExercice(
+                                                          exercice.exercice_id,
+                                                        );
                                                       }}
                                                     />
                                                   </span>

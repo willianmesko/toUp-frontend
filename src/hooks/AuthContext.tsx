@@ -1,14 +1,7 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
-import api from '../services/api';
 import jwt_decode from 'jwt-decode';
-
-interface User {
-  id: string;
-  avatar_url: string;
-  name: string;
-  email: string;
-  trainer_id?: string;
-}
+import api from '../services/api';
+import User from '../interfaces/userInterface';
 
 interface SignInCredencials {
   email: string;
@@ -89,7 +82,7 @@ const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-function useAuth() {
+function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
 
   if (!context) {

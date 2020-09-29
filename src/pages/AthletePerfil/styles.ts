@@ -63,7 +63,7 @@ export const TrainingContainer = styled.div`
   width: 95%;
   margin-top: 30px;
   color: #000;
-  height: 180px;
+  height: 160px;
   background: #fff;
   display: flex;
   flex-direction: column;

@@ -9,7 +9,8 @@ import { AiFillDelete } from 'react-icons/ai';
 import api from '~/services/api';
 import { useTraining } from '~/hooks/TrainingContext';
 import { useToast } from '~/hooks/ToastContext';
-import { TrainingCard } from './styles';
+import { TrainingCard, NoTraining } from './styles';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 interface Training {
   id: string;
@@ -22,6 +23,8 @@ interface Training {
 
 const Training: React.FC = () => {
   const [trainings, setTrainings] = useState<Training[]>([]);
+  const [copyTrainings, setCopyTranings] = useState<Training[]>([]);
+  const [skeleton, setSkeleton] = useState(false);
   const { setTraining } = useTraining();
   const history = useHistory();
   const [nameDuplicateTraining, setNameDuplicateTraining] = useState();
@@ -43,12 +46,17 @@ const Training: React.FC = () => {
         ...workout,
         objectiveLabel: formatObjective(workout.objective),
       }));
-      setTrainings(data);
+      setSkeleton(true);
+      setCopyTranings(data);
+      setTimeout(() => {
+        setTrainings(data);
+        setSkeleton(false);
+      }, 1000);
     }
     getTraining();
   }, []);
+
   const deleteTraining = async id => {
-    console.log(id);
     await api.delete(`/training/${id}`);
   };
   const cloneTraining = async () => {
@@ -82,8 +90,9 @@ const Training: React.FC = () => {
           <GrAddCircle size={40} color="#87868B" />
         </Link>
       </TrainingField>
+
       <TrainingCard>
-        {trainings &&
+        {trainings.length > 0 &&
           trainings.map(trainin => (
             <div>
               <div className="card-training">
@@ -137,6 +146,7 @@ const Training: React.FC = () => {
                     </div>
                     <div className="item">
                       <AiFillDelete
+                        size={20}
                         onClick={() => deleteTraining(trainin.id)}
                       />
                       <span className="value">
@@ -156,6 +166,17 @@ const Training: React.FC = () => {
               </div>
             </div>
           ))}
+        {skeleton && (
+          <NoTraining>
+            {copyTrainings.map(skeleton => {
+              return (
+                <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+                  <Skeleton width={700} height={200} duration={2} />
+                </SkeletonTheme>
+              );
+            })}
+          </NoTraining>
+        )}
       </TrainingCard>
     </Container>
   );

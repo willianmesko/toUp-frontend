@@ -38,7 +38,7 @@ const Routes: React.FC = () => (
     <Route path="/new-athlete" component={NewAthlete} isPrivate />
     <Route path="/perfil-athlete" sideBar component={AthletePerfil} isPrivate />
     <Route path="/new-training" component={NewTraining} isPrivate />
-    <Route path="/training-info" sideBar component={TrainingInfo} isPrivate />
+    <Route path="/training-info" component={TrainingInfo} isPrivate />
     <Route path="/workout" sideMenu component={AthleteTraining} isPrivate />
     <Route
       path="/evaluations"

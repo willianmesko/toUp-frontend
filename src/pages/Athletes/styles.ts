@@ -6,6 +6,15 @@ export const Container = styled.div`
   border-radius: 10px;
 `;
 
+export const NoAthlete = styled.div`
+  display: 'flex';
+
+  .react-loading-skeleton {
+    margin-bottom: 10px;
+    border-radius: 10px !important;
+  }
+`;
+
 export const LoadingMore = styled.div`
   display: flex;
 

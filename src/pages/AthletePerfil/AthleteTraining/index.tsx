@@ -70,6 +70,10 @@ const AthleteTraining: React.FC = () => {
     return exercice.name;
   };
 
+  async function deleteExercice(exercice_id): Promise<void> {
+    await api.delete(`/routine_exercice/${exercice_id}`);
+  }
+
   return (
     <Content>
       {training.title ? (
@@ -157,7 +161,10 @@ const AthleteTraining: React.FC = () => {
                       </p>
 
                       <p>
-                        <MdDelete size={25} />
+                        <MdDelete
+                          onClick={() => deleteExercice(exercice.exercice_id)}
+                          size={25}
+                        />
                       </p>
                     </div>
                   </div>

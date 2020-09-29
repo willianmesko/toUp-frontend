@@ -283,7 +283,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'subscapular_second',
@@ -297,7 +296,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'subscapular_third',
@@ -327,7 +325,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'tricipital_second',
@@ -341,7 +338,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue('tricipital_third', 'tricipital', 3)
                             }
@@ -371,7 +367,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'breastplate_second',
@@ -385,7 +380,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'breastplate_third',
@@ -415,7 +409,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue('axilar_second', 'axilar', 2)
                             }
@@ -424,7 +417,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         </td>
                         <td>
                           <Input
-                            placeholder="Ex: 30.0"
                             type="number"
                             onChange={() =>
                               getFieldValue('axilar_third', 'axilar', 3)
@@ -451,7 +443,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue(
                                 'suprailiac_second',
@@ -465,7 +456,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue('suprailiac_third', 'suprailiac', 3)
                             }
@@ -491,7 +481,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue('abdominal_second', 'abdominal', 2)
                             }
@@ -501,7 +490,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0"
                             onChange={() =>
                               getFieldValue('abdominal_third', 'abdominal', 3)
                             }
@@ -557,7 +545,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('chest_second', 'chest', 2)
                             }
@@ -567,7 +554,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('chest_third', 'chest', 3)
                             }
@@ -593,7 +579,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('waist_second', 'waist', 2)
                             }
@@ -603,7 +588,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('waist_third', 'waist', 3)
                             }
@@ -629,7 +613,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('abdomen_second', 'abdomen', 2)
                             }
@@ -639,7 +622,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('abdomen_third', 'abdomen', 3)
                             }
@@ -665,7 +647,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('hip_second', 'hip', 2)
                             }
@@ -675,7 +656,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('hip_third', 'hip', 2)
                             }
@@ -701,7 +681,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('rightArm_second', 'right_arm', 2)
                             }
@@ -711,7 +690,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('rightArm_third', 'right_arm', 3)
                             }
@@ -737,7 +715,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('leftArm_second', 'left_arm', 2)
                             }
@@ -747,7 +724,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('leftArm_third', 'left_arm', 3)
                             }
@@ -777,7 +753,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'rightThigh_second',
@@ -791,7 +766,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'rightThigh_third',
@@ -820,7 +794,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         </td>
                         <td>
                           <Input
-                            placeholder="Ex: 30.0cm"
                             type="number"
                             onChange={() =>
                               getFieldValue('leftThigh_second', 'left_thigh', 2)
@@ -830,7 +803,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         </td>
                         <td>
                           <Input
-                            placeholder="Ex: 30.0cm"
                             type="number"
                             onChange={() =>
                               getFieldValue('leftThigh_third', 'left_thigh', 3)
@@ -857,7 +829,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('rightLeg_second', 'right_leg', 2)
                             }
@@ -866,7 +837,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         </td>
                         <td>
                           <Input
-                            placeholder="Ex: 30.0cm"
                             type="number"
                             onChange={() =>
                               getFieldValue('rightLeg_third', 'right_leg', 3)
@@ -893,7 +863,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('leftLeg_second', 'left_leg', 2)
                             }
@@ -903,7 +872,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue('leftLeg_third', 'left_leg', 3)
                             }
@@ -933,7 +901,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'rightForearm_second',
@@ -947,7 +914,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'rightForearm_third',
@@ -981,7 +947,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'leftForearm_second',
@@ -995,7 +960,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                         <td>
                           <Input
                             type="number"
-                            placeholder="Ex: 30.0cm"
                             onChange={() =>
                               getFieldValue(
                                 'leftForearm_third',

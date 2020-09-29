@@ -111,7 +111,7 @@ const Header = () => {
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem>
-                <Link to="/profile">Conta</Link>
+                <Link to="/profile">Meus dados</Link>
               </DropdownItem>
               <DropdownItem>
                 <Link to="/me">Meu perfil</Link>

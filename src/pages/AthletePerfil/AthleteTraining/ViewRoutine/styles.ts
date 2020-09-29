@@ -22,7 +22,7 @@ export const Container = styled.div`
       border-radius: 6px;
       border: solid 1px #999;
       height: 40vh !important;
-      width: 50vw !important;
+      width: 100%;
       z-index: 10;
 
       iframe {
