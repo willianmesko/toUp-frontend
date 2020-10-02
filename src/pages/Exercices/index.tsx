@@ -19,7 +19,7 @@ const Exercices = () => {
   const [exercices, setExercices] = useState([]);
 
   useEffect(() => {
-    async function getExercices() {
+    async function getExercices(): Promise<void> {
       const response = await api.get('/exercices');
       setExercices(response.data);
     }

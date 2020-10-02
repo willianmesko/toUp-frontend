@@ -61,39 +61,51 @@ export const MemberSince = styled.div`
 `;
 
 export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: -50px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
-  h3 {
-    font-weight: 600;
-  }
-  .adress {
-    display: flex;
-    margin-top: 20px;
-    h6 {
+
+  border-bottom: 4px solid #666666;
+  .userName {
+    h1 {
       font-weight: bold;
     }
-    svg {
-      margin-right: 6px;
+    p {
+      font-size: 16px;
+      cursor: pointer;
+      color: #1c3f7f;
+    }
+    h6 {
+      font-weight: 600;
+      color: #808080;
     }
   }
 
-  input {
-    align-self: center;
-    border: none;
-    border-bottom: 1px solid #d3d3d3;
-    width: 50%;
-
-    &:focus {
-      border-bottom: 1px solid #75a3bb;
+  .editUser {
+    form {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-self: center;
+      justify-content: center;
+      align-items: center;
+      div {
+        width: 70% !important;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        button {
+          width: 40% !important;
+        }
+      }
     }
   }
 `;
 export const Medias = styled.div``;
 export const AboutMe = styled.div`
   width: 800px;
-  height: 200px;
+  min-height: 200px;
   border-radius: 6px;
   background: #fff;
   padding: 25px;
@@ -115,6 +127,10 @@ export const AboutMe = styled.div`
 
 export const Bio = styled.div`
   margin-top: 30px;
+  textarea {
+    width: 100%;
+    border: none;
+  }
 `;
 
 export const LinkPerfil = styled.div`
@@ -160,25 +176,34 @@ export const LeftBox = styled.div`
 `;
 
 export const RightBox = styled.div`
-  width: 60%;
-
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    justify-content: space-around;
+    div {
+      border: none;
+      width: 49% !important;
+    }
+  }
 `;
 
 export const Avatar = styled.div`
-  position: relative;
-  margin-top: -60px;
+  margin-top: -150px;
   align-self: center;
   border: 6px solid #75a3bb;
   border-radius: 50%;
-  padding: 5px;
+
+  position: relative;
 
   img {
-    width: 160px;
-    height: 160px;
+    padding: 3px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
   }
-
   label {
     position: absolute;
     width: 48px;

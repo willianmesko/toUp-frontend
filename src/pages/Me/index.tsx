@@ -1,57 +1,59 @@
-import React, { useState, useEffect, useCallback, ChangeEvent } from 'react';
-import Switch from '@material-ui/core/Switch';
-import api from '../../services/api';
-import { useToast } from '~/hooks/ToastContext';
-import { useAuth } from '~/hooks/AuthContext';
-import User from '~/interfaces/userInterface';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import React, { useState, useRef, useCallback, ChangeEvent } from 'react';
+import { Form } from '@unform/web';
+
+import { Editor, EditorState } from 'draft-js';
+import { FiCamera } from 'react-icons/fi';
 import {
   AiFillEdit,
   AiFillInstagram,
   AiFillMail,
   AiFillSave,
 } from 'react-icons/ai';
-import { HiLocationMarker } from 'react-icons/hi';
-import { Editor } from 'react-draft-wysiwyg';
-import { FiCamera } from 'react-icons/fi';
-
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
+import { FaCity, FaMoneyBillAlt, FaUser } from 'react-icons/fa';
+import { MdVisibility } from 'react-icons/md';
+import { GiWorld } from 'react-icons/gi';
+import api from '../../services/api';
+import Button from '~/components/Button';
+import { useToast } from '~/hooks/ToastContext';
+import { useAuth } from '~/hooks/AuthContext';
+import User from '~/interfaces/userInterface';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import Input from '~/components/Inputs/Text';
+import { FormHandles } from '@unform/core';
+import Select from '~/components/Inputs/Select';
 import {
   Container,
   Cover,
-  Profile,
-  LeftBox,
   RightBox,
   AboutMe,
   Skills,
   Avatar,
-  MemberSince,
   Info,
   Bio,
   Tags,
   Tag,
-  Medias,
-  LinkPerfil,
 } from './styles';
 
+interface EditProfileData {
+  name: string;
+  city: string;
+  state: string;
+  country: string;
+}
+
+interface EditextraInformationsData {
+  is_public: number;
+  amount_value: number;
+}
+
 const Me: React.FC = () => {
-  const [state, setState] = useState(true);
   const { user, updateUser } = useAuth();
   const { addToast } = useToast();
-  const [editorState, setEditorState] = useState();
+  const [bio, setBio] = useState('');
   const [enableEditBio, setEnableEditBio] = useState(false);
   const [enableEditPerfil, setEnableEditPerfil] = useState(false);
+  const formRef = useRef<FormHandles>(null);
 
   const handleChangeAvatar = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,131 +75,152 @@ const Me: React.FC = () => {
     [addToast, updateUser],
   );
 
-  async function editUserAdress(): Promise<User> {
-    setEnableEditPerfil(false);
+  const handleUpdateBio = async (): Promise<void> => {
+    setEnableEditBio(false);
 
-    const response = await api.put('/users/adress', {
-      city: 'Porto Alegre2',
-      state: 'RS2',
-      country: 'BR2',
+    await api.put('/profile', {
+      bio,
     });
 
-    user.address.city = 'Porto alegre2';
-    user.address.state = 'RS2';
-    user.address.country = 'BR2';
-
+    user.bio = bio;
     updateUser(user);
+  };
+  const handleEditProfile = useCallback(
+    async (data: EditProfileData) => {
+      const { name, city, state, country } = data;
 
-    return user;
-  }
+      await api.put('/users/adress', {
+        city,
+        state,
+        country,
+      });
+
+      user.address.city = city;
+      user.address.state = state;
+      user.address.country = country;
+      setEnableEditPerfil(false);
+      updateUser(user);
+    },
+    [user],
+  );
+
+  const handleEditExtraInformation = useCallback(
+    async (data: EditextraInformationsData) => {
+      const { is_public, amount_value } = data;
+
+      await api.put('/profile', {
+        is_public,
+        amount_value,
+      });
+
+      setEnableEditPerfil(false);
+      updateUser(user);
+    },
+    [user],
+  );
+
   return (
     <>
       <Cover>a</Cover>
-      {console.log(user.address)}
+
       <Container>
-        {/* <LeftBox>
-          <Profile>
-            <span>
-              {enableEditPerfil ? (
-                <AiFillSave size={20} onClick={() => editUserAdress()} />
-              ) : (
-                <AiFillEdit
-                  size={20}
-                  onClick={() => setEnableEditPerfil(true)}
-                />
-              )}
-            </span>
-            <Avatar>
-              <img
-                loading="lazy"
-                src="https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.0-9/116793868_3401975769853663_97784688088945879_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=bTtYiEapZdoAX8Rj7pf&_nc_ht=scontent.fpoa13-1.fna&oh=7b703c5d9c3d69366a49c12e1816e252&oe=5F95E47D"
-                alt="profile"
-              />
-
-              <label htmlFor="avatar">
-                <FiCamera />
-                <input type="file" id="avatar" onChange={handleChangeAvatar} />
-              </label>
-            </Avatar>
-            <Info>
-              {enableEditPerfil ? (
-                <>
-                  <input placeholder="Nome" />
-                  <div className="adress">
-                    <HiLocationMarker />
-                    <input placeholder="Cidade"></input>
-                    <input placeholder="Estado"></input>
-                    <input placeholder="Pais"></input>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h3>{user.name}</h3>
-                  <div className="adress">
-                    <HiLocationMarker />
-                    <h6>
-                      {user.address?.city}, {user.address?.state},
-                      {user.address?.country}
-                    </h6>
-                  </div>
-
-                  <Medias>
-                    <AiFillInstagram size={30} />
-
-                    <AiFillMail size={30} />
-                  </Medias>
-                </>
-              )}
-            </Info>
-            <MemberSince>MEMBRO DESDE AGOSTO, 2020</MemberSince>
-          </Profile>
-          <LinkPerfil>
-            <p>Link perfil</p>
-            <input value="willian.mesko" />
-          </LinkPerfil>
-        </LeftBox> */}
         <RightBox>
-          {/* <InputLabel htmlFor="input-with-icon-adornment">
-            Valor da mensalidade
-          </InputLabel>
-          <Input
-            type="number"
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <AttachMoneyIcon />
-              </InputAdornment>
-            }
-          />
+          <Avatar>
+            <img
+              loading="lazy"
+              src="https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.0-9/116793868_3401975769853663_97784688088945879_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=bTtYiEapZdoAX8Rj7pf&_nc_ht=scontent.fpoa13-1.fna&oh=7b703c5d9c3d69366a49c12e1816e252&oe=5F95E47D"
+              alt="profile"
+            />
 
-          <FormControlLabel
-            value="top"
-            control={<Switch color="primary" />}
-            label="Vsivel publicamente"
-            labelPlacement="top"
-          /> */}
+            <label htmlFor="avatar">
+              <FiCamera />
+              <input type="file" id="avatar" onChange={handleChangeAvatar} />
+            </label>
+          </Avatar>
+
+          <Info>
+            {!enableEditPerfil ? (
+              <div className="userName">
+                <h1>{user.name}</h1>
+                {user.address ? (
+                  <h6>
+                    {user.address.city}, {user.address.state},{' '}
+                    {user.address.country}
+                  </h6>
+                ) : (
+                  <h6>Cidade, Estado, Pais</h6>
+                )}
+
+                <p onClick={() => setEnableEditPerfil(true)}>Editar</p>
+              </div>
+            ) : (
+              <div className="editUser">
+                <Form ref={formRef} onSubmit={handleEditProfile}>
+                  <Input
+                    name="public_name"
+                    type="text"
+                    placeholder="Nome publico"
+                    icon={FaUser}
+                  />
+                  <Input
+                    name="city"
+                    type="text"
+                    placeholder="Cidade"
+                    icon={FaCity}
+                  />
+                  <Input
+                    name="state"
+                    type="text"
+                    placeholder="Estato"
+                    icon={FaMoneyBillAlt}
+                  />
+                  <Input
+                    name="country"
+                    type="text"
+                    placeholder="Pais"
+                    icon={GiWorld}
+                  />
+                  <div className="buttons">
+                    <Button onClick={() => setEnableEditPerfil(false)}>
+                      Cancelar
+                    </Button>
+                    <Button type="submit">Salvar</Button>
+                  </div>
+                </Form>
+              </div>
+            )}
+          </Info>
+          <Form ref={formRef} onSubmit={handleEditExtraInformation}>
+            <Input
+              name="amount_value"
+              type="number"
+              placeholder="Valor mensalidade R$"
+              icon={FaMoneyBillAlt}
+            />
+            <Select
+              icon={MdVisibility}
+              label="Vísivel publicamente"
+              options={[
+                { key: 'Sim', value: 0 },
+                { key: 'Não', value: 1 },
+              ]}
+              name="is_public"
+            />
+          </Form>
           <AboutMe>
             <header>
               <h2>Sobre mim</h2>
               {enableEditBio ? (
-                <AiFillSave size={20} onClick={() => setEnableEditBio(false)} />
+                <AiFillSave size={20} onClick={() => handleUpdateBio()} />
               ) : (
                 <AiFillEdit size={20} onClick={() => setEnableEditBio(true)} />
               )}
             </header>
             <Bio>
               {enableEditBio ? (
-                <Editor
-                  editorState={editorState}
-                  toolbarClassName="toolbarClassName"
-                  wrapperClassName="wrapperClassName"
-                  editorClassName="editorClassName"
-                  onEditorStateChange={editorState =>
-                    setEditorState(editorState)
-                  }
-                />
+                <textarea value={bio} onChange={e => setBio(e.target.value)} />
               ) : (
-                <p>vou atualiza</p>
+                <p>{user.bio}</p>
               )}
             </Bio>
           </AboutMe>

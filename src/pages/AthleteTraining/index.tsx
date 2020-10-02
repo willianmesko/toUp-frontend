@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import {
   Container,
   Content,
@@ -14,7 +15,7 @@ import {
   WorkoutInfo,
   ExerciceInfo,
 } from './styles';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+
 const AthleteTraining = () => {
   return (
     <Container>
@@ -28,13 +29,6 @@ const AthleteTraining = () => {
           <p>Data de inicio: 05/01/2020</p>
           <p>Data de termino: 05/01/2020</p>
         </div>
-        {/*
-        {/*
-        <p>Data de inicio: 05/01/2020</p>
-        <p>Data de termino: 05/01/2020</p>
-
-        <p>Objetivo: Hipertrofia</p>
-        <p>Quantidade de exercicios: 8</p> */}
       </WorkoutInfo>
 
       <Content>

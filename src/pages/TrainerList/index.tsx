@@ -64,7 +64,10 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img
+                src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498"
+                alt="trainaravatar"
+              />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -87,7 +90,7 @@ const TrainerList = () => {
           </PerfilArea>
 
           <ContractArea>
-            <button>Contrate</button>
+            <button type="button">Contrate</button>
             <small>Mensalidade:</small>
             <p>R$ 50.00</p>
 

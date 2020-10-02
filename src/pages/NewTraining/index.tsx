@@ -17,7 +17,7 @@ import Select from '~/components/Inputs/Select';
 
 import Button from '~/components/Button';
 
-import { Container, Cover, Content, TrainingArea, RoutineArea } from './styles';
+import { Container, Content, TrainingArea } from './styles';
 
 interface NewTrainingFormData {
   title: string;
@@ -93,7 +93,6 @@ const NewTraining: React.FC = () => {
 
   return (
     <Container>
-      {/* <Cover /> */}
       <Content>
         <TrainingArea>
           <h1>Cadastre um novo treino</h1>
@@ -142,7 +141,6 @@ const NewTraining: React.FC = () => {
             <Button type="submit">Cadastrar</Button>
           </Form>
         </TrainingArea>
-        <RoutineArea></RoutineArea>
       </Content>
     </Container>
   );

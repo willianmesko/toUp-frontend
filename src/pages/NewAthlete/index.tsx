@@ -26,7 +26,7 @@ import Select from '~/components/Inputs/Select';
 import { useAthlete } from '~/hooks/AthleteContext';
 import Button from '~/components/Button';
 
-import { Container, Content, AvatarInput } from './styles';
+import { Container, Content } from './styles';
 
 interface NewAthleteFormData {
   name: string;
@@ -130,7 +130,7 @@ const NewAthlete: React.FC = () => {
           aerobic_profile,
           training_level,
         });
-        console.log(response);
+
         addToast({
           type: 'success',
           title: 'Cadastro realizado! 🏋 ',

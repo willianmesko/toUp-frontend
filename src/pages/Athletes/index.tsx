@@ -60,14 +60,19 @@ const Athletes: React.FC = () => {
 
     getAthletes();
   }, []);
+
   const filterAthlete = value => {
     setFilter(value);
 
     const filterab: Athlete[] = athletes.filter(athlete => {
       return athlete.name.toLowerCase().startsWith(value);
     });
+    setSkeleton(true);
 
-    setAthletes(value.length >= 2 ? filterab : copyAthletes);
+    setTimeout(() => {
+      setAthletes(value.length >= 2 ? filterab : copyAthletes);
+      setSkeleton(false);
+    }, 500);
   };
   return (
     <>

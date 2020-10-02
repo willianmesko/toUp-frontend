@@ -31,6 +31,11 @@ const Training: React.FC = () => {
   const [duplicateTraining, setDuplicateTraining] = useState<Training>();
   const { addToast } = useToast();
 
+  enum objectiveLabel {
+    1 = 'HIpertrofia',
+    2 = 'Emagrecimento',
+    3 = 'Resistencia',
+  }
   function formatObjective(objective: number): string {
     let label;
     if (objective === 1) label = 'Hipertrofia';
