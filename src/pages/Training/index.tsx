@@ -32,9 +32,9 @@ const Training: React.FC = () => {
   const { addToast } = useToast();
 
   enum objectiveLabel {
-    1 = 'HIpertrofia',
-    2 = 'Emagrecimento',
-    3 = 'Resistencia',
+    'HIpertrofia',
+    'Emagrecimento',
+    'Resistencia',
   }
   function formatObjective(objective: number): string {
     let label;

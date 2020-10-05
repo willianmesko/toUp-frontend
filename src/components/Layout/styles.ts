@@ -11,7 +11,6 @@ interface ContentProps {
 
 export const Container = styled.div`
   display: flex;
-  height: auto;
 `;
 export const TopArea = styled.div`
   max-width: 1366px;
@@ -35,10 +34,9 @@ export const TopArea = styled.div`
 `;
 
 export const Content = styled.main<ContentProps>`
-  height: auto;
   display: flex;
   flex-direction: ${props => props.flexDirection};
-
+  height: calc(100vh);
   margin: 100px ${props => props.margin};
 `;
 
@@ -88,7 +86,7 @@ export const SideMenu = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  min-height: 100vh;
+
   div {
     display: flex;
     width: 120px;

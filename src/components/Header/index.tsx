@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/athletes">
             <img src={logo} alt="ToUp" />
           </Link>
-          <Link to={lastLocation ? lastLocation : '/dashboard'}>
+          <Link to={lastLocation || '/dashboard'}>
             <FiArrowLeft /> Voltar
           </Link>
         </nav>
