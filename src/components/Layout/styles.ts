@@ -36,7 +36,8 @@ export const TopArea = styled.div`
 export const Content = styled.main<ContentProps>`
   display: flex;
   flex-direction: ${props => props.flexDirection};
-  height: calc(100vh);
+  height: auto;
+  min-height: 100vh;
   margin: 100px ${props => props.margin};
 `;
 
@@ -82,12 +83,14 @@ export const Post = styled.div`
 export const SideMenu = styled.div`
   width: 120px;
   background: #fff;
-  bottom: 0;
+
   display: flex;
+  min-height: auto;
   justify-content: center;
   align-content: center;
 
   div {
+    min-height: auto;
     display: flex;
     width: 120px;
     position: fixed;
@@ -158,7 +161,7 @@ export const SideMenu = styled.div`
 `;
 
 export const MenuLateral = styled.aside`
-  height: 650px;
+  height: 670px;
   width: 390px;
   background: linear-gradient(
     to top,

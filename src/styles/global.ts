@@ -14,9 +14,16 @@ export default createGlobalStyle`
     @media (max-width: 1300px) {
       zoom: .9;
       .modal-backdrop {
-    zoom: 2 !important;
+    zoom: 3 !important;
   }
+  #___reactour {
+   div {
+    svg {
+      zoom: 2 !important;
     }
+   }
+  }
+   }
 
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
