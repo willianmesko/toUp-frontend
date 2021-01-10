@@ -61,7 +61,9 @@ const CreateExercice: React.FC<ModalProps> = props => {
     { key: 'Abdomen', value: 7 },
   ];
 
-  const handleSubmitExercice = useCallback(
+
+
+  const handleSubmitExercice =
     async ({
       name,
       muscle_group_id,
@@ -71,8 +73,11 @@ const CreateExercice: React.FC<ModalProps> = props => {
     }: ExerciceFormData) => {
       try {
         const muscle_group_name = exercicesOptions.find(
-          exercice => exercice.value === muscle_group_id,
+          exercice => exercice.value == muscle_group_id,
         );
+
+        console.log(muscle_group_id)
+
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -102,6 +107,8 @@ const CreateExercice: React.FC<ModalProps> = props => {
           muscle_group_name: muscle_group_name.key,
         });
 
+        console.log(response)
+
         addExercice(state => [...state, response.data]);
 
         setModal(false);
@@ -126,9 +133,10 @@ const CreateExercice: React.FC<ModalProps> = props => {
           description: 'Ocorreu um erro ao fazer cadastro, tente novamente.',
         });
       }
-    },
-    [addToast,addExercice,exercicesOptions],
-  );
+    }
+
+
+
 
   return (
     <div>

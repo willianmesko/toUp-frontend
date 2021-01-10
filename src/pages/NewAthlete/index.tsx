@@ -140,6 +140,7 @@ const NewAthlete: React.FC = () => {
         setAthlete(response.data);
         setTimeout(() => history.push('/perfil-athlete'), [1000]);
       } catch (err) {
+        console.log(err)
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 

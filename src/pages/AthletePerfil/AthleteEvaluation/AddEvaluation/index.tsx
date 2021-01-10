@@ -223,19 +223,11 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                     <label>Percentual %G Desejado</label>
                     <Input type="number" name="desired_fat_percentage" />
                   </div>
-                  <div className="input-area">
-                    <label>Sexo</label>
-                    <Input
-                      type="number"
-                      name="athlete_sexo"
-                      value="Masculino"
-                      disabled
-                    />
-                  </div>
-                  <div className="date">
+
+                  {/* <div className="date">
                     <label>Data </label>
                     <DayPickerInput onDayChange={day => console.log(day)} />
-                  </div>
+                  </div> */}
                 </div>
               )}
             </AthleteInfo>

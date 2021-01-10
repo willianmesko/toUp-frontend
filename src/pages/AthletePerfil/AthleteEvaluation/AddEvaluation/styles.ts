@@ -18,7 +18,7 @@ export const AthleteInfo = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+
     transition: all ease 0.25s;
     .date {
       width: 100%;
