@@ -3,15 +3,7 @@ import {
   Container,
   ExerciceCard,
   SearchField,
-  GroupMuscleFilter,
-  GroupMuscle,
 } from './styles';
-import bicps from '~/assets/bicps.png';
-import tricps from '~/assets/tricps.png';
-import leg from '~/assets/leg.png';
-import costas from '~/assets/costas.jpg';
-import abdomen from '~/assets/abdomen.svg';
-
 import CreateExercice from '~/pages/TrainingInfo/CreateExercice';
 import api from '~/services/api';
 

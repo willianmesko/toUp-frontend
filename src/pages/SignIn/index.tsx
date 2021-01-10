@@ -15,7 +15,7 @@ import Button from '~/components/Button';
 
 import logoImg from '~/assets/to-up2.png';
 
-import { Container, Content, AnimationContainer, Background } from './styles';
+import { Container, Content, AnimationContainer } from './styles';
 
 interface SignInFormData {
   email: string;

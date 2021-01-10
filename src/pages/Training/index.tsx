@@ -31,11 +31,7 @@ const Training: React.FC = () => {
   const [duplicateTraining, setDuplicateTraining] = useState<Training>();
   const { addToast } = useToast();
 
-  enum objectiveLabel {
-    'HIpertrofia',
-    'Emagrecimento',
-    'Resistencia',
-  }
+
   function formatObjective(objective: number): string {
     let label;
     if (objective === 1) label = 'Hipertrofia';
@@ -63,6 +59,7 @@ const Training: React.FC = () => {
 
   const deleteTraining = async id => {
     await api.delete(`/training/${id}`);
+    setTrainings(trainings.filter(training => training.id !== id));
   };
   const cloneTraining = async () => {
     try {

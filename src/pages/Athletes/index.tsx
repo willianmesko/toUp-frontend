@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import { GrAddCircle } from 'react-icons/gr';
 import {
@@ -43,7 +43,7 @@ const Athletes: React.FC = () => {
   const { setAthlete } = useAthlete();
   const [loadingBar, setLoadingBar] = useState<number>(0);
   const [visible, setVisible] = useState<number>(3);
-  const [filter, setFilter] = useState('');
+  const [, setFilter] = useState('');
   const history = useHistory();
   const [skeleton, setSkeleton] = useState(false);
 

@@ -155,7 +155,7 @@ const NewAthlete: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast, history, setAthlete],
   );
 
   return (

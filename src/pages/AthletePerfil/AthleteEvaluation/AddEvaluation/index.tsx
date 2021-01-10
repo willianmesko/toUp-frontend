@@ -32,18 +32,18 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
   addEvaluation,
 }) => {
   const [evaluation, setEvaluation] = useState<boolean>(false);
-  const [createNewEvaluation, setCreateNewEvaluation] = useState(false);
+  const [, setCreateNewEvaluation] = useState(false);
   const [showDados, setShowDados] = useState(true);
   const [type, setType] = useState({ id: 0, title: '' });
   const [showDobrasCutaneas, setShowDobrasCutaneas] = useState(true);
   const [showPerimetrosCorporais, setShowPerimetrosCorporais] = useState(true);
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date('2014-08-18T21:11:54'),
-  );
+  // const [, setSelectedDate] = React.useState(
+  //   new Date('2014-08-18T21:11:54'),
+  // );
   const { addToast } = useToast();
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
+  // const handleDateChange = date => {
+  //   setSelectedDate(date);
+  // };
   const formRef = useRef(null);
 
   console.log(athlete.age);
@@ -109,7 +109,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
     right_forearm,
   }): Promise<void> => {
     try {
-      const now = new Date();
+
       const response = await api.post('/evaluation', {
         type: type.id,
         type_title: type.title,

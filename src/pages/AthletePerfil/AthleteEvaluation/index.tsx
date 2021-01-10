@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Button from '~/components/Button';
-import { Container, EvaluationCard, Filter } from './styles';
+import { Container } from './styles';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { MdDelete, MdEdit, MdSave } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 import background from '~/assets/icons/adipometro.svg';
 import Athlete from '~/interfaces/athleteInterface';
 import Evaluation from '~/interfaces/evaluationInterface';

@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import bg from '~/assets/background-content.png';
 import bg3 from '~/assets/bg4.png';
 export default createGlobalStyle`
   * {
@@ -18,7 +17,7 @@ export default createGlobalStyle`
     zoom: 2 !important;
   }
     }
-  
+
     background: rgba(242, 243, 245, 0.9);
     background-image: url(${bg3});
     background-size: 70%;

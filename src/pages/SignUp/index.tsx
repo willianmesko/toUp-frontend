@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, {  useRef, useState } from 'react';
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -20,8 +20,8 @@ import {
   Container,
   Content,
   AnimationContainer,
-  Background,
-  ContactTo,
+
+
   SexoInput,
 } from './styles';
 

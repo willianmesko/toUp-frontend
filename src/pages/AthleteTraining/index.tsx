@@ -4,13 +4,10 @@ import {
   Container,
   Content,
   WorkoutArea,
-  TrainerArea,
-  TraineCard,
   Routine,
   ExerciceArea,
   Exercice,
   RoutineArea,
-  Letter,
   TrainerAvatar,
   WorkoutInfo,
   ExerciceInfo,
@@ -80,7 +77,7 @@ const AthleteTraining = () => {
             <Exercice>3</Exercice>
           </ExerciceArea>
         </WorkoutArea>
-        {/* 
+        {/*
         <TrainerArea>
           <TraineCard>
             <img src="https://avatars3.githubusercontent.com/u/26778884?s=400&u=2f9ad4f573a416acac5e71ccfbaf087ce6ded96b&v=4" />

@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import Input from '~/components/Input';
 import { MdRemoveRedEye, MdDescription } from 'react-icons/md';
-import api from '~/services/api';
 import { Container } from './styles';
 
 interface RoutineInterface {
@@ -48,6 +46,7 @@ const ViewRoutine: React.FC<ModalProps> = ({ icon, routine }) => {
           <Container>
             <div className="exercice-video-modal">
               <iframe
+                title='video_routine'
                 id="player"
                 src="http://www.youtube.com/embed/4m72jsC_5Ro"
                 frameBorder="0"

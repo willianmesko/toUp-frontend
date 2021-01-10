@@ -1,12 +1,8 @@
 import React, { useState, useRef, useCallback, ChangeEvent } from 'react';
 import { Form } from '@unform/web';
-
-import { Editor, EditorState } from 'draft-js';
 import { FiCamera } from 'react-icons/fi';
 import {
   AiFillEdit,
-  AiFillInstagram,
-  AiFillMail,
   AiFillSave,
 } from 'react-icons/ai';
 import { FaCity, FaMoneyBillAlt, FaUser } from 'react-icons/fa';
@@ -16,9 +12,7 @@ import api from '../../services/api';
 import Button from '~/components/Button';
 import { useToast } from '~/hooks/ToastContext';
 import { useAuth } from '~/hooks/AuthContext';
-import User from '~/interfaces/userInterface';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
 import Select from '~/components/Inputs/Select';
@@ -87,7 +81,7 @@ const Me: React.FC = () => {
   };
   const handleEditProfile = useCallback(
     async (data: EditProfileData) => {
-      const { name, city, state, country } = data;
+      const {  city, state, country } = data;
 
       await api.put('/users/adress', {
         city,
@@ -101,7 +95,7 @@ const Me: React.FC = () => {
       setEnableEditPerfil(false);
       updateUser(user);
     },
-    [user],
+    [user, updateUser],
   );
 
   const handleEditExtraInformation = useCallback(
@@ -116,7 +110,7 @@ const Me: React.FC = () => {
       setEnableEditPerfil(false);
       updateUser(user);
     },
-    [user],
+    [user, updateUser],
   );
 
   return (

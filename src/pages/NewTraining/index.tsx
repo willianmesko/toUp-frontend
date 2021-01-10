@@ -88,7 +88,7 @@ const NewTraining: React.FC = () => {
         });
       }
     },
-    [addToast, history],
+    [addToast, history, setTraining],
   );
 
   return (

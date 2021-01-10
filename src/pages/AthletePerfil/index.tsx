@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useAthlete } from '~/hooks/AthleteContext';
 import { Container, Content } from './styles';
-import Button from '~/components/Button';
-import { MdDelete, MdEdit, MdSave } from 'react-icons/md';
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import AthleteTraining from './AthleteTraining';
 import AthleteEvaluation from './AthleteEvaluation';

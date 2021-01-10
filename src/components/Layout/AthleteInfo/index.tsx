@@ -38,7 +38,7 @@ const AthleteInfo: React.FC = () => {
         });
       }
     },
-    [setAthlete],
+    [setAthlete, athlete.id],
   );
 
   return (

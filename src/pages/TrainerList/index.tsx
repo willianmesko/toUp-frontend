@@ -14,7 +14,7 @@ import {
 import api from '~/services/api';
 
 const TrainerList = () => {
-  const [trainer, setTrainer] = useState([]);
+  const [, setTrainer] = useState([]);
 
   useEffect(() => {
     async function getExercices() {
@@ -29,7 +29,7 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img alt='alt' src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -102,7 +102,7 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img alt='alt' src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -137,7 +137,7 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img alt='alt' src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -172,7 +172,7 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img alt='alt' src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -207,7 +207,7 @@ const TrainerList = () => {
         <Trainer>
           <PerfilArea>
             <Info>
-              <img src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
+              <img alt='alt' src="https://www.allthetests.com/quiz22/picture_thumb/pic_1171831236_1.png?1592828498" />
               <div>
                 Karine M<p>Agilidade e Eficiência!</p>
               </div>
@@ -241,7 +241,7 @@ const TrainerList = () => {
         </Trainer>
       </TrainerContainer>
 
-      <Filters>filtros</Filters>
+      {/* <Filters>filtros</Filters> */}
     </Container>
   );
 };

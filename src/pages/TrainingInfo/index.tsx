@@ -32,7 +32,6 @@ import AddAthletes from './AddAthletes';
 import TableRow from '@material-ui/core/TableRow';
 import ReactCardFlip from 'react-card-flip';
 import Chip from '@material-ui/core/Chip';
-import ReactTooltip from 'react-tooltip';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import CreateExercice from './CreateExercice';
 
@@ -63,14 +62,14 @@ const TrainingInfo: React.FC = () => {
   const { training } = useTraining();
   const [routines, setRoutines] = useState([]);
   const [exercices, setExercices] = useState([]);
-  const [trainin, setTraining] = useState<TrainingInterface>(
-    {} as TrainingInterface,
-  );
+  // const [trainin, setTraining] = useState<TrainingInterface>(
+  //   {} as TrainingInterface,
+  // );
   const [flipped, setFlipped] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [startStep, setStartStep] = useState(0);
-  const [playVideo, setPlayVideo] = useState(0);
+  const [, setPlayVideo] = useState(0);
   const [exerciceDragged, setExerciceDragged] = useState('');
   const [editRoutine, setEditRoutine] = useState({
     routineIndex: 0,
@@ -102,7 +101,7 @@ const TrainingInfo: React.FC = () => {
     routine_name: '',
   });
   const [activeView, setActiveView] = useState('list');
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
   //Onloadig
   const steps = [
     {
@@ -131,7 +130,7 @@ const TrainingInfo: React.FC = () => {
       setRoutines(routinesData.data);
     }
     getTraining();
-  }, []);
+  }, [training.id]);
 
   const exerciceName = id => {
     const exercice = exercices.find(exercice => exercice.id === id);
@@ -140,7 +139,7 @@ const TrainingInfo: React.FC = () => {
   };
 
   const dragStart = (e, id) => {
-    const { target } = e;
+    // const { target } = e;
     setExerciceDragged(id);
     console.log(id);
     setTimeout(() => {
@@ -163,9 +162,9 @@ const TrainingInfo: React.FC = () => {
 
   // Change order exercice
 
-  const dropExercice = async (e, id) => {
-    console.log(id);
-  };
+  // const dropExercice = async (e, id) => {
+  //   console.log(id);
+  // };
   // Add exerice to routine
   const dropRoutine = async (e, id) => {
     e.preventDefault();
@@ -198,10 +197,10 @@ const TrainingInfo: React.FC = () => {
 
         return;
       }
-      var maior = editRoutine[index].routineExercice.reduce(
-        (a, b) => b.volume,
-        0,
-      );
+      // var maior = editRoutine[index].routineExercice.reduce(
+      //   (a, b) => b.volume,
+      //   0,
+      // );
 
       const response = await api.post('/routine_exercice', {
         exercice_id: exerciceDragged,
@@ -801,6 +800,7 @@ const TrainingInfo: React.FC = () => {
                   <div className="routine_flipped">
                     <div className="exercice-video-view">
                       <iframe
+                        title='title'
                         id="player"
                         height="250"
                         src="http://www.youtube.com/embed/4m72jsC_5Ro"

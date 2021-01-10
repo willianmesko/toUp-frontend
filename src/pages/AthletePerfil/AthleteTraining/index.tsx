@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { MdDelete, MdEdit, MdSave, MdRemoveRedEye } from 'react-icons/md';
+import { MdDelete, MdEdit,  MdRemoveRedEye } from 'react-icons/md';
 import { useAthlete } from '~/hooks/AthleteContext';
 import { Content, TrainingContainer, RoutineInfo } from '../styles';
 import AddTraining from './AddTraining';
@@ -81,6 +81,7 @@ const AthleteTraining: React.FC = () => {
           <div className="training">
             <div className="training-image">
               <img
+                alt='training'
                 src={training.objective === 1 ? hipertrofia : emagrecimento}
               />
             </div>

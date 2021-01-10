@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 import Autocomplete, {
   createFilterOptions,
 } from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useAthlete } from '~/hooks/AthleteContext';
 import Button from '@material-ui/core/Button';
@@ -45,7 +44,7 @@ const AddTraining: React.FC<ModalProps> = ({
   const [modal, setModal] = useState(false);
   const [training, setTraining] = useState({} as TrainingInterface);
   const [options, setOptions] = useState([]);
-  const { athlete, setAthlete } = useAthlete();
+  const { athlete } = useAthlete();
   const history = useHistory();
   const toggle = async () => {
     setModal(!modal);
@@ -64,7 +63,7 @@ const AddTraining: React.FC<ModalProps> = ({
       //recebe um array no backend
       const athletes_ids = [athlete.id];
 
-      const responseT = await api.post('/training/athletes', {
+      await api.post('/training/athletes', {
         athletes_ids,
         training_id: training.id,
       });

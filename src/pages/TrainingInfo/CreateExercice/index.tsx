@@ -2,7 +2,9 @@ import React, { useState, useCallback, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { GrAddCircle } from 'react-icons/gr';
-import { FiYoutube } from 'react-icons/fi';
+import { GiDuration } from 'react-icons/gi';
+import { FiYoutube, FiUser } from 'react-icons/fi';
+import { FaWeight } from 'react-icons/fa';
 import * as Yup from 'yup';
 import Input from '~/components/Inputs/Text';
 import Select from '~/components/Inputs/Select';
@@ -10,7 +12,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { useToast } from '~/hooks/ToastContext';
 import Button from '~/components/Button';
-import { FiUser } from 'react-icons/fi';
+
 import getValidationErrors from '~/utils/getValidationErrors';
 import api from '~/services/api';
 
@@ -24,6 +26,8 @@ interface ExerciceInterface {
 interface ExerciceFormData {
   name: string;
   muscle_group_id?: number;
+  calorie?: number;
+  duration?: string;
   youtube_video_id?: string;
 }
 interface ExerciceInterface {
@@ -44,7 +48,7 @@ const CreateExercice: React.FC<ModalProps> = props => {
   const [modal, setModal] = useState(false);
   const formRef = useRef<FormHandles>(null);
   const toggle = () => setModal(!modal);
-  const { addExercice, exercices } = props;
+  const { addExercice } = props;
 
   const { addToast } = useToast();
   const exercicesOptions = [
@@ -58,10 +62,16 @@ const CreateExercice: React.FC<ModalProps> = props => {
   ];
 
   const handleSubmitExercice = useCallback(
-    async ({ name, muscle_group_id, youtube_video_id }: ExerciceFormData) => {
+    async ({
+      name,
+      muscle_group_id,
+      youtube_video_id,
+      calorie,
+      duration,
+    }: ExerciceFormData) => {
       try {
         const muscle_group_name = exercicesOptions.find(
-          exercice => exercice.value == muscle_group_id,
+          exercice => exercice.value === muscle_group_id,
         );
         formRef.current?.setErrors({});
 
@@ -87,6 +97,8 @@ const CreateExercice: React.FC<ModalProps> = props => {
           name,
           muscle_group_id,
           youtube_video_id,
+          calorie,
+          duration,
           muscle_group_name: muscle_group_name.key,
         });
 
@@ -115,7 +127,7 @@ const CreateExercice: React.FC<ModalProps> = props => {
         });
       }
     },
-    [],
+    [addToast,addExercice,exercicesOptions],
   );
 
   return (
@@ -140,6 +152,12 @@ const CreateExercice: React.FC<ModalProps> = props => {
               icon={FiYoutube}
               placeholder="Youtube Video"
             />
+            <Input
+              name="calorie"
+              icon={FaWeight}
+              placeholder="Gasto calórico"
+            />
+            <Input name="duration" icon={GiDuration} placeholder="Duraçao" />
 
             <Button type="submit">Cadastrar</Button>
           </Form>

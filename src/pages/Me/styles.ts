@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Cover = styled.div`
-  height: 200px;
+  min-height: 200px;
 
   width: 100vw;
   background: #93ccea;

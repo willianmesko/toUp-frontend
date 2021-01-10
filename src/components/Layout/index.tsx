@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GiWeightLiftingUp, GiWeightLiftingDown } from 'react-icons/gi';
 import { AiOutlineDashboard } from 'react-icons/ai';
 import { useLocation, Link } from 'react-router-dom';
@@ -23,23 +23,22 @@ import articleTrainer from '~/assets/utils.jpg';
 import avaliacao from '~/assets/avaliacao.jpg';
 
 export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
-  const [widthMenuLateral, setWidth] = useState(380);
   const location = useLocation();
   const { role, user } = useAuth();
   const renderComponentInfo = () => {
     switch (location.pathname) {
       case '/training':
         return <UserInfo />;
-        break;
+
       case '/athletes':
         return <UserInfo />;
-        break;
+
       case '/perfil-athlete':
         return <AthleteInfo />;
-        break;
+
       case '/training-info':
         return <TrainingInfo />;
-        break;
+
     }
   };
 
@@ -149,11 +148,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
             </>
           )}
 
-          {sideBar && (
-            <MenuLateral width={widthMenuLateral}>
-              {renderComponentInfo()}
-            </MenuLateral>
-          )}
+          {sideBar && <MenuLateral>{renderComponentInfo()}</MenuLateral>}
           {children}
         </Content>
         {linksUtils && (

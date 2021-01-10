@@ -157,8 +157,8 @@ export const SideMenu = styled.div`
   }
 `;
 
-export const MenuLateral = styled.aside<AsideProps>`
-  height: 800px;
+export const MenuLateral = styled.aside`
+  height: 650px;
   width: 390px;
   background: linear-gradient(
     to top,
@@ -185,7 +185,7 @@ export const MenuLateral = styled.aside<AsideProps>`
       flex-direction: row;
       align-self: center;
       width: 60%;
-      margin-top: 80px;
+
       justify-content: center;
       align-items: center;
 

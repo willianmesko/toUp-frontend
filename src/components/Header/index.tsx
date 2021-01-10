@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Notification from './Notification';
 import { GiWeightLiftingDown } from 'react-icons/gi';
 import { IoIosFitness } from 'react-icons/io';

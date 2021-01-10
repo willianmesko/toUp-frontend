@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-
-import Input from '~/components/Inputs/Text';
-import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
-import { useToast } from '~/hooks/ToastContext';
 import Button from '~/components/Button';
 
 import api from '~/services/api';
@@ -34,7 +29,7 @@ const AddAthletes: React.FC<ModalProps> = ({ training_id }) => {
     e.preventDefault();
     {
       const athletes_ids = selectedAthletes.map(athlete => athlete.id);
-      const response = await api.post('/training/athletes', {
+      await api.post('/training/athletes', {
         athletes_ids,
         training_id,
       });
