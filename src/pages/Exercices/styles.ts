@@ -17,10 +17,53 @@ export const ExerciceCard = styled.div`
   margin-bottom: 10px;
   background: #fff;
   cursor: pointer;
-
+  display: flex;
   -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+
+  &:hover {
+      opacity: 0.8;
+    }
+
+  .thumbnail {
+ 
+    align-items: center;
+    align-content: center;
+    display: flex;
+    margin: 10px;
+    border-radius: 2px;
+    img {
+      width: 150px;
+      height: 120px;
+    }
+  }
+
+  .exerciceInfo {
+    display: flex;
+    color: #555;
+    margin: 10px;
+    flex-direction: column;
+    width: 250px;
+
+    p{
+      font-size: 14px;
+      font-weight: 20;
+    }
+
+    .exerciceExtraInfo {
+      display: flex;
+      align-self: flex-end;
+      font-size: 10px;
+      span {
+        margin:10px;
+      }
+      svg {
+       
+       display: block;
+      }
+    }
+   }
 `;
 
 export const SearchField = styled.div`
@@ -38,6 +81,17 @@ export const SearchField = styled.div`
     border-radius: 50px;
     width: 400px;
     border: none;
+    color: #555;
+    
+   &:focus {
+     border: 2px solid rgb(42, 159, 255);
+      transition: all ease 0.25s; 
+    }
+    option {
+        width: 100px;
+       
+      
+    }
   }
   span {
     cursor: pointer;

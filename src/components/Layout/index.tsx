@@ -93,43 +93,43 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                 </Link>
               </div>
             ) : (
-              <div>
-                {!user.trainer_id && (
-                  <Link to="/trainer">
-                    <span
-                      className={
-                        location.pathname === '/trainer' ? 'active' : 'default'
-                      }
-                    >
-                      <GiStrong size={35} />
+                <div>
+                  {!user.trainer_id && (
+                    <Link to="/trainer">
+                      <span
+                        className={
+                          location.pathname === '/trainer' ? 'active' : 'default'
+                        }
+                      >
+                        <GiStrong size={35} />
                       Treinadores
                     </span>
-                  </Link>
-                )}
-                <Link to="/workout">
-                  <span
-                    className={
-                      location.pathname === '/workout' ? 'active' : 'default'
-                    }
-                  >
-                    <GiWeightLiftingDown size={35} />
+                    </Link>
+                  )}
+                  <Link to="/workout">
+                    <span
+                      className={
+                        location.pathname === '/workout' ? 'active' : 'default'
+                      }
+                    >
+                      <GiWeightLiftingDown size={35} />
                     Treino
                   </span>
-                </Link>
-                <Link to="/evaluations">
-                  <span
-                    className={
-                      location.pathname === '/evaluations'
-                        ? 'active'
-                        : 'default'
-                    }
-                  >
-                    <FaRuler size={40} />
+                  </Link>
+                  <Link to="/evaluations">
+                    <span
+                      className={
+                        location.pathname === '/evaluations'
+                          ? 'active'
+                          : 'default'
+                      }
+                    >
+                      <FaRuler size={40} />
                     Avaliaçoes
                   </span>
-                </Link>
-              </div>
-            )}
+                  </Link>
+                </div>
+              )}
           </SideMenu>
         )}
 

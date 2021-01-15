@@ -64,9 +64,9 @@ const NewTraining: React.FC = () => {
         });
 
         setTraining(response.data);
-        setTimeout(() => history.push(`/training-info/${response.data.id}`), [
+        setTimeout(() => history.push(`/training-info/${response.data.id}`),
           1000,
-        ]);
+        );
         addToast({
           type: 'success',
           title: 'Cadastro realizado! 🏋 ',

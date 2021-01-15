@@ -6,6 +6,9 @@ import {
 } from './styles';
 import CreateExercice from '~/pages/TrainingInfo/CreateExercice';
 import api from '~/services/api';
+import { GiDuration } from 'react-icons/gi';
+import { FaWeight } from 'react-icons/fa';
+import { MdRemoveRedEye } from 'react-icons/md';
 
 const Exercices = () => {
   const [exercices, setExercices] = useState([]);
@@ -22,7 +25,7 @@ const Exercices = () => {
       <h1>Exercicios</h1>
       <hr />
       <SearchField>
-        <input placeholder="buscar" />
+        <input placeholder="Pesquisar" />
         <select>
           <option>Bicps</option>
           <option>Tricps</option>
@@ -59,10 +62,30 @@ const Exercices = () => {
         {exercices &&
           exercices.map((exercice, index) => {
             return <ExerciceCard>
-              <img src='https://img.youtube.com/vi/HatfXZY3EOQ/default.jpg' />
-              {exercice.name}
-              {exercice.muscle_group_name}
-              </ExerciceCard>;
+              <div className="thumbnail">
+                <img src='https://img.youtube.com/vi/edTQcwjf5lk/hqdefault.jpg' />
+              </div>
+              <div className="exerciceInfo">
+                <div className="exerciceAbout">
+                  <h4>{exercice.name}</h4>
+                  <p>Músculo: {exercice.muscle_group_name}</p>
+                </div>
+                <div className="exerciceExtraInfo">
+                  <span>
+                    <MdRemoveRedEye size={22} />
+                    Ver
+                  </span>
+                  <span>
+                    <FaWeight size={20} />
+                   250cal
+                  </span>
+                  <span>
+                    <GiDuration size={20} />
+                   250cal</span>
+                </div>
+              </div>
+
+            </ExerciceCard>;
           })}
       </Container>
     </>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
 import { GrAddCircle } from 'react-icons/gr';
 import {
@@ -87,7 +87,7 @@ const Athletes: React.FC = () => {
           {athletes.length > 0 && (
             <input
               onChange={e => filterAthlete(e.target.value)}
-              placeholder="buscar"
+              placeholder="Pesquisar"
             />
           )}
 
@@ -95,7 +95,7 @@ const Athletes: React.FC = () => {
             <GrAddCircle
               onClick={() => {
                 setLoadingBar(100);
-                setTimeout(() => history.push('new-athlete'), [180]);
+                setTimeout(() => history.push('new-athlete'), 180);
               }}
               size={40}
               color="#87868B"
@@ -121,10 +121,10 @@ const Athletes: React.FC = () => {
                       {athlete.avatar_url ? (
                         <img src={athlete.avatar_url} alt={athlete.name} />
                       ) : (
-                        <div>
-                          <p>{athlete.name.charAt(0)}</p>
-                        </div>
-                      )}
+                          <div>
+                            <p>{athlete.name.charAt(0)}</p>
+                          </div>
+                        )}
                     </div>
                     <div className="card-details">
                       <div className="name">

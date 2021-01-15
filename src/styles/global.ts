@@ -11,15 +11,15 @@ export default createGlobalStyle`
 
   body, html {
 
-    @media (max-width: 1300px) {
-      zoom: .9;
+    
+      zoom: .93;
       .modal-backdrop {
     zoom: 3 !important;
-  }
+
   #___reactour {
    div {
     svg {
-      zoom: 2 !important;
+      zoom: 0.5 !important;
     }
    }
   }

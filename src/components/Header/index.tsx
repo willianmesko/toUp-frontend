@@ -6,7 +6,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import logo from '~/assets/to-up2.png';
 import { useAuth } from '~/hooks/AuthContext';
-import { Container, Content, Profile, Menu } from './styles';
+import { Container, Content, Profile, Menu, Upgrade } from './styles';
 import { useLastLocation } from 'react-router-last-location';
 import LoadingBar from 'react-top-loading-bar';
 import {
@@ -48,46 +48,49 @@ const Header = () => {
         </nav>
         {(location.pathname === '/perfil-athlete' ||
           location.pathname === '/training-info') && (
-          <Menu>
-            <LoadingBar
-              progress={loadingBar}
-              height={5}
-              continuousStart={20}
-              color="#054f77"
-              onLoaderFinished={() => completeLoading()}
-            />
-            <li
-              className={
-                location.pathname === '/perfil-athlete' ? 'active' : ''
-              }
-              onClick={() => {
-                completeLoading('/athletes');
-              }}
-            >
-              <GiWeightLiftingDown size={35} />
-              <small>Alunos</small>
-            </li>
-            <li
-              className={location.pathname === '/training-info' ? 'active' : ''}
-              onClick={() => {
-                completeLoading('/training');
-              }}
-            >
-              <GiWeightLiftingDown size={35} />
-              <small>Treinos</small>
-            </li>
-            <li
-              onClick={() => {
-                completeLoading('/exercices');
-              }}
-            >
-              <IoIosFitness size={35} />
-              <small>Exercícios</small>
-            </li>
-          </Menu>
-        )}
+            <Menu>
+              <LoadingBar
+                progress={loadingBar}
+                height={5}
+                continuousStart={20}
+                color="#054f77"
+                onLoaderFinished={() => completeLoading()}
+              />
+              <li
+                className={
+                  location.pathname === '/perfil-athlete' ? 'active' : ''
+                }
+                onClick={() => {
+                  completeLoading('/athletes');
+                }}
+              >
+                <GiWeightLiftingDown size={35} />
+                <small>Alunos</small>
+              </li>
+              <li
+                className={location.pathname === '/training-info' ? 'active' : ''}
+                onClick={() => {
+                  completeLoading('/training');
+                }}
+              >
+                <GiWeightLiftingDown size={35} />
+                <small>Treinos</small>
+              </li>
+              <li
+                onClick={() => {
+                  completeLoading('/exercices');
+                }}
+              >
+                <IoIosFitness size={35} />
+                <small>Exercícios</small>
+              </li>
+            </Menu>
+          )}
 
         <aside>
+          <Upgrade>
+            <p>Fazer Upgrade</p>
+          </Upgrade>
           <Notification />
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle
@@ -100,10 +103,10 @@ const Header = () => {
                 {user.avatar_url ? (
                   <img src={user.avatar_url} alt="avatarfake" />
                 ) : (
-                  <div className="no-image">
-                    <p>{user.name.charAt(0)}</p>
-                  </div>
-                )}
+                    <div className="no-image">
+                      <p>{user.name.charAt(0)}</p>
+                    </div>
+                  )}
               </Profile>
             </DropdownToggle>
             <DropdownMenu>

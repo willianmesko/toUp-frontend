@@ -38,7 +38,7 @@ export const Content = styled.main<ContentProps>`
   flex-direction: ${props => props.flexDirection};
   height: auto;
   min-height: 100vh;
-  min-width: 50vw;
+ 
   margin: 100px ${props => props.margin};
 `;
 

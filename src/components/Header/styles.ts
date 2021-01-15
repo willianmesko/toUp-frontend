@@ -12,8 +12,8 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   height: 70px;
-
-  margin: 0 auto;
+  width: auto;
+  
   display: flex;
 
   justify-content: space-between;
@@ -35,8 +35,27 @@ export const Content = styled.div`
   }
   aside {
     display: flex;
+    
     align-items: center;
   }
+`;
+
+export const Upgrade = styled.div`
+background: linear-gradient(to right top, #6ba0d1, #5797d6, #438dda, #3182de, #2477e0, #1582e6, #058ceb, #0096ef, #47b5f0, #85d0ef, #c1e9f2, #fdffff);
+border-radius: 5px;
+color: #fff;
+font-size: 15px;
+width: 150px;
+height:30px;
+text-align: center;
+margin-right: 20px;
+font-weight: bold;
+
+  &:hover {
+    cursor:pointer;
+    opacity: 0.9;
+  }
+
 `;
 
 export const Profile = styled.div`
@@ -85,7 +104,7 @@ export const Profile = styled.div`
 
 export const Menu = styled.div`
   display: flex;
-  margin-left: 100px;
+ 
   li {
     display: flex;
     text-align: center;
