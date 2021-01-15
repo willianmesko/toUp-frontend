@@ -139,11 +139,11 @@ const TrainingInfo: React.FC = () => {
   };
 
   const dragStart = (e, id) => {
-    // const { target } = e;
+     const { target } = e;
     setExerciceDragged(id);
     console.log(id);
     setTimeout(() => {
-      // target.style.display = 'none';
+      target.style.display = 'none';
     }, 0);
   };
 
@@ -469,7 +469,7 @@ const TrainingInfo: React.FC = () => {
           routines.map((routine, index) => {
             return (
               <ReactCardFlip
-                isFlipped={flipped.find(flippp => flippp === index)}
+                isFlipped={flipped.find(flippp => flippp === index + 1)}
                 flipDirection="horizontal"
               >
                 <DragDropContext onDragEnd={value => {}}>
@@ -661,7 +661,7 @@ const TrainingInfo: React.FC = () => {
                                                       onClick={() => {
                                                         setFlipped(state => [
                                                           ...state,
-                                                          index,
+                                                          index + 1 ,
                                                         ]);
                                                         setFlippedExercice({
                                                           name: exerciceName(
@@ -785,14 +785,14 @@ const TrainingInfo: React.FC = () => {
                     <span
                       onClick={() =>
                         setFlipped(state =>
-                          state.filter(flipp => flipp !== index),
+                          state.filter(flipp => flipp !== index + 1),
                         )
                       }
                     >
                       <MdArrowBack />
                     </span>
                     <span>
-                      {flippedExercice.routine_name} `{'>'}`{' '}
+
                       {flippedExercice.name}
                     </span>
                     <span></span>

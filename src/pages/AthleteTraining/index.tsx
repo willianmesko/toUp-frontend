@@ -18,37 +18,34 @@ const AthleteTraining = () => {
     <Container>
       <WorkoutInfo>
         <TrainerAvatar />
-        <div>
+
           <p>Treinador: willian mesko </p>
-          <p>Objetivo: Hipertrofia </p>
-        </div>
-        <div className="training_date">
-          <p>Data de inicio: 05/01/2020</p>
-          <p>Data de termino: 05/01/2020</p>
-        </div>
+
+
+
       </WorkoutInfo>
 
       <Content>
         <WorkoutArea>
-          <h6>Rotina a ser executada</h6>
+
           <RoutineArea>
-            <AiOutlineLeft size={60} />
+            <AiOutlineLeft size={40} />
             <Routine>
               {/* <Letter> A </Letter> */}
-              {/* <h2>Bicps</h2> */}
+              <h2>Bicps</h2>
 
-              {/* <ul>
+              <ul>
                 <li>Gasto calorico</li>
                 <li>Volume total</li>
               </ul>
               <ul>
                 <li>Gasto calorico2</li>
                 <li>Volume total2</li>
-              </ul> */}
+              </ul>
             </Routine>
-            <AiOutlineRight size={60} />
+            <AiOutlineRight size={40} />
           </RoutineArea>
-          <h6>Exercicios</h6>
+
           <hr />
           <ExerciceArea>
             <Exercice>

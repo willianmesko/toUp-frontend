@@ -11,9 +11,9 @@ export const Container = styled.div`
 `;
 
 export const Cover = styled.div`
-  min-height: 200px;
+  min-height: 250px;
 
-  width: 100vw;
+  width: 1300px;
   background: #93ccea;
 `;
 
@@ -71,7 +71,8 @@ export const Info = styled.div`
       font-weight: bold;
     }
     p {
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: bold;
       cursor: pointer;
       color: #1c3f7f;
     }

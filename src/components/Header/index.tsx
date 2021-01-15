@@ -64,7 +64,7 @@ const Header = () => {
                 completeLoading('/athletes');
               }}
             >
-              <GiWeightLiftingDown size={40} />
+              <GiWeightLiftingDown size={35} />
               <small>Alunos</small>
             </li>
             <li
@@ -73,7 +73,7 @@ const Header = () => {
                 completeLoading('/training');
               }}
             >
-              <GiWeightLiftingDown size={40} />
+              <GiWeightLiftingDown size={35} />
               <small>Treinos</small>
             </li>
             <li
@@ -81,7 +81,7 @@ const Header = () => {
                 completeLoading('/exercices');
               }}
             >
-              <IoIosFitness size={40} />
+              <IoIosFitness size={35} />
               <small>Exercícios</small>
             </li>
           </Menu>
@@ -96,15 +96,12 @@ const Header = () => {
               aria-expanded={dropdownOpen}
             >
               <Profile>
-                <div>
-                  <strong>{user.name}</strong>
-                  <Link to="/profile">{user.email}</Link>
-                </div>
+
                 {user.avatar_url ? (
                   <img src={user.avatar_url} alt="avatarfake" />
                 ) : (
                   <div className="no-image">
-                    <h1>{user.name.charAt(0)}</h1>
+                    <p>{user.name.charAt(0)}</p>
                   </div>
                 )}
               </Profile>

@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 90px;
+  height: 70px;
 
   margin: 0 auto;
   display: flex;
@@ -22,8 +22,8 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     img {
-      width: 100px;
-      height: 80px;
+      width: 80px;
+      height: 60px;
       margin-left: -15px;
 
       padding-right: 20px;
@@ -64,18 +64,17 @@ export const Profile = styled.div`
 
   .no-image {
     text-align: center;
-    width: 56px;
-    height: 56px;
+    font-size: 30px;
+    width: 45px;
+    height: 45px;
     border-width: 3px;
     background: #f8f8f8;
-    border-style: solid;
-    border-color: rgb(135, 134, 139);
     color: rgb(135, 134, 139);
     border-radius: 50%;
   }
   img {
-    width: 56px;
-    height: 56px;
+    width: 45px;
+    height: 45px;
     border-width: 3px;
     border-style: solid;
     border-color: rgb(135, 134, 139);
@@ -93,6 +92,7 @@ export const Menu = styled.div`
     flex-direction: column;
     color: #a9a9a9;
     margin: 0 20px 0 20px;
+    height: 90%;
     &.active {
       border-bottom: 2px solid #3bb9e3;
       color: #3bb9e3;

@@ -99,7 +99,7 @@ const SignIn: React.FC = () => {
 
           <Link to="signup">
             <FiLogIn />
-            Criar conta
+            Não tem uma conta? Registre-se
           </Link>
         </AnimationContainer>
       </Content>

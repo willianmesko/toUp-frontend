@@ -4,6 +4,7 @@ import { shade } from 'polished';
 interface InputProps {
   ref?: string;
 }
+
 export const Container = styled.div``;
 
 export const AthleteInfo = styled.div`
@@ -18,7 +19,6 @@ export const AthleteInfo = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-
     transition: all ease 0.25s;
     .date {
       width: 100%;

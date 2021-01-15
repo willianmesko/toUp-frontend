@@ -49,7 +49,7 @@ const AthleteInfo: React.FC = () => {
             <img src={athlete.avatar_url} alt={athlete.name} />
           ) : (
             <div className="no-image">
-              <p>{athlete.name ? athlete.name.charAt(0) : 'A'}</p>
+              <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
             </div>
           )}
           <label htmlFor="avatar">

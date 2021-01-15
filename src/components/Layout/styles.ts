@@ -38,6 +38,7 @@ export const Content = styled.main<ContentProps>`
   flex-direction: ${props => props.flexDirection};
   height: auto;
   min-height: 100vh;
+  min-width: 50vw;
   margin: 100px ${props => props.margin};
 `;
 
@@ -81,7 +82,7 @@ export const Post = styled.div`
   }
 `;
 export const SideMenu = styled.div`
-  width: 120px;
+  width: 90px;
   background: #fff;
 
   display: flex;
@@ -92,7 +93,7 @@ export const SideMenu = styled.div`
   div {
     min-height: auto;
     display: flex;
-    width: 120px;
+    width: 90px;
     position: fixed;
     flex-direction: column;
 

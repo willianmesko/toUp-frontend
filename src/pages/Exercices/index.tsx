@@ -23,6 +23,10 @@ const Exercices = () => {
       <hr />
       <SearchField>
         <input placeholder="buscar" />
+        <select>
+          <option>Bicps</option>
+          <option>Tricps</option>
+        </select>
 
         <span>
           <CreateExercice addExercice={setExercices} />
@@ -54,7 +58,11 @@ const Exercices = () => {
       <Container>
         {exercices &&
           exercices.map((exercice, index) => {
-            return <ExerciceCard> {exercice.name} </ExerciceCard>;
+            return <ExerciceCard>
+              <img src='https://img.youtube.com/vi/HatfXZY3EOQ/default.jpg' />
+              {exercice.name}
+              {exercice.muscle_group_name}
+              </ExerciceCard>;
           })}
       </Container>
     </>

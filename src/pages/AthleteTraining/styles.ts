@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Content = styled.div`
   display: flex;
-  margin-top: 50px;
 `;
 
 export const Container = styled.div``;
@@ -12,20 +11,15 @@ export const WorkoutArea = styled.div`
 `;
 
 export const WorkoutInfo = styled.div`
-  margin-top: 30px;
   display: flex;
   width: 500px;
   font-size: 14px;
   font-weight: bold;
-
-  .training_date {
-    margin-left: 40px;
-  }
 `;
 
 export const TrainerAvatar = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: purple;
   margin-right: 10px;
@@ -63,6 +57,7 @@ export const RoutineArea = styled.div`
   align-items: center;
 
   svg {
+    margin-top: -20px;
     cursor: pointer;
   }
 `;

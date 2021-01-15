@@ -4,6 +4,9 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 1333px;
+  h1 {
+    font-weight: bold;
+  }
 `;
 
 export const ExerciceCard = styled.div`
@@ -27,12 +30,14 @@ export const SearchField = styled.div`
   align-content: flex-end;
   margin-bottom: 15px;
   justify-content: space-around;
-  input {
+  input,
+  select {
     padding: 12px;
+    margin: 10px;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 50px;
     width: 400px;
-    border: 2px solid rgb(135, 134, 139);
+    border: none;
   }
   span {
     cursor: pointer;

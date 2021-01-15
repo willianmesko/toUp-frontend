@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useEffect, useState, useRef } from 'react';
+import React, { InputHTMLAttributes, useMemo, useEffect, useState, useRef } from 'react';
 import { useField } from '@unform/core';
 import { Form } from '@unform/web';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
@@ -33,8 +33,8 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
 }) => {
   const [evaluation, setEvaluation] = useState<boolean>(false);
   const [, setCreateNewEvaluation] = useState(false);
-  const [showDados, setShowDados] = useState(true);
   const [type, setType] = useState({ id: 0, title: '' });
+  const [showDados, setShowDados] = useState(true);
   const [showDobrasCutaneas, setShowDobrasCutaneas] = useState(true);
   const [showPerimetrosCorporais, setShowPerimetrosCorporais] = useState(true);
   // const [, setSelectedDate] = React.useState(
@@ -46,7 +46,11 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
   // };
   const formRef = useRef(null);
 
-  console.log(athlete.age);
+
+
+  const showCALL = useMemo(() => {
+      return !showDados;
+  }, [showDados]);
   const getFieldValue = (
     input: string,
     inputMedia: string,
@@ -192,7 +196,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
               <button type="submit">Salvar</button>
             </Actions>
 
-            <AthleteInfo>
+            <AthleteInfo >
               <Header onClick={() => setShowDados(!showDados)}>
                 <p>Dados</p>
                 {showDados ? (
@@ -201,11 +205,13 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                   <ArrowDropDownIcon fontSize="large" />
                 )}
               </Header>
-              {showDados && (
-                <div className="content">
+
+              {showCALL &&
+
+                <div className="content"  >
                   <div className="input-area">
                     <label>Idade</label>
-                    <Input type="number" name="athlete_age" />
+                    <Input defaultValue={athlete.age} type="number" name="athlete_age" />
                   </div>
                   <div className="input-area">
                     <label>Etnia</label>
@@ -213,11 +219,11 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                   </div>
                   <div className="input-area">
                     <label>Altura</label>
-                    <Input type="number" name="athlete_height" />
+                    <Input  defaultValue={athlete.stature} type="number" name="athlete_height" />
                   </div>
                   <div className="input-area">
                     <label>Peso</label>
-                    <Input type="number" name="athlete_weight" />
+                    <Input defaultValue={athlete.body_mass} type="number" name="athlete_weight" />
                   </div>
                   <div className="input-area">
                     <label>Percentual %G Desejado</label>
@@ -229,7 +235,8 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                     <DayPickerInput onDayChange={day => console.log(day)} />
                   </div> */}
                 </div>
-              )}
+}
+
             </AthleteInfo>
 
             <Evaluation>

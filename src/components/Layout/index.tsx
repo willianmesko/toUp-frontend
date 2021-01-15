@@ -57,7 +57,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                       location.pathname === '/dashboard' ? 'active' : 'default'
                     }
                   >
-                    <AiOutlineDashboard size={40} />
+                    <AiOutlineDashboard size={35} />
                     Dashboard
                   </span>
                 </Link>
@@ -67,7 +67,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                       location.pathname === '/athletes' ? 'active' : 'default'
                     }
                   >
-                    <GiWeightLiftingUp size={50} />
+                    <GiWeightLiftingUp size={35} />
                     Alunos
                   </span>
                 </Link>
@@ -77,7 +77,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                       location.pathname === '/training' ? 'active' : 'default'
                     }
                   >
-                    <GiWeightLiftingDown size={50} />
+                    <GiWeightLiftingDown size={35} />
                     Treinos
                   </span>
                 </Link>
@@ -101,7 +101,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                         location.pathname === '/trainer' ? 'active' : 'default'
                       }
                     >
-                      <GiStrong size={40} />
+                      <GiStrong size={35} />
                       Treinadores
                     </span>
                   </Link>
@@ -112,7 +112,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
                       location.pathname === '/workout' ? 'active' : 'default'
                     }
                   >
-                    <GiWeightLiftingDown size={50} />
+                    <GiWeightLiftingDown size={35} />
                     Treino
                   </span>
                 </Link>

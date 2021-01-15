@@ -122,7 +122,7 @@ const Me: React.FC = () => {
           <Avatar>
             <img
               loading="lazy"
-              src="https://scontent.fpoa13-1.fna.fbcdn.net/v/t1.0-9/116793868_3401975769853663_97784688088945879_o.jpg?_nc_cat=103&_nc_sid=09cbfe&_nc_ohc=bTtYiEapZdoAX8Rj7pf&_nc_ht=scontent.fpoa13-1.fna&oh=7b703c5d9c3d69366a49c12e1816e252&oe=5F95E47D"
+              src="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/136055153_3844327295618506_1204292927982679153_o.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=2Zrm17vwFiEAX_y4fmK&_nc_oc=AQkpNsTGhT1ZlQx-KW6ZWvjesRMlQoy-4KnXPb2GI0l98Jcv_7UjlseNkY_asRM-Q34&_nc_ht=scontent.faly3-1.fna&oh=37be2f86b005a82f15994cc236f334f8&oe=6022AD14"
               alt="profile"
             />
 
@@ -133,13 +133,15 @@ const Me: React.FC = () => {
           </Avatar>
 
           <Info>
+
             {!enableEditPerfil ? (
               <div className="userName">
                 <h1>{user.name}</h1>
+
                 {user.address ? (
                   <h6>
-                    {user.address.city}, {user.address.state},{' '}
-                    {user.address.country}
+                    {user.address?.city}, {user.address?.state},{' '}
+                    {user.address?.country}
                   </h6>
                 ) : (
                   <h6>Cidade, Estado, Pais</h6>
@@ -165,7 +167,7 @@ const Me: React.FC = () => {
                   <Input
                     name="state"
                     type="text"
-                    placeholder="Estato"
+                    placeholder="Estado"
                     icon={FaMoneyBillAlt}
                   />
                   <Input
