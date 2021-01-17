@@ -16,6 +16,10 @@ export const TrainingField = styled.div`
     border-radius: 50px;
     width: 80%;
     border: none;
+    &:focus {
+      border: 2px solid rgb(42, 159, 255);
+      transition: all ease 0.25s;
+    }
   }
   a {
     padding: 10px 10px;

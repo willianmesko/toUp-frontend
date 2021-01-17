@@ -49,8 +49,8 @@ export const Content = styled.div`
 
   img {
     margin-top: 20px;
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
   }
 
   /**
@@ -106,7 +106,7 @@ export const AnimationContainer = styled.div`
     a {
       color: #000;
       display: block;
-      margin-top: 24px;
+      margin-top: 10px;
       text-decoration: none;
       transition: color 0.2s;
 

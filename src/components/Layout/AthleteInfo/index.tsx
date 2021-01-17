@@ -60,7 +60,7 @@ const AthleteInfo: React.FC = () => {
 
         <h2>{athlete.name}</h2>
         <hr />
-
+        <h5>Plano basic</h5>
         <div className="information-area">
           <li>
             <p>
@@ -78,18 +78,18 @@ const AthleteInfo: React.FC = () => {
             </p>
           </li>
 
-          <li>
+          {/* <li>
             <p>
               <AiFillCalculator /> {imcClassification()}
             </p>
-          </li>
+          </li> */}
         </div>
 
         <div className="mediasocial-area">
           <AiFillInstagram size={30} />
           <AiFillFacebook size={30} />
           <AiOutlineWhatsApp size={30} />
-          <AiFillMail size={30} />
+
         </div>
 
         <Button>Desativar Conta</Button>

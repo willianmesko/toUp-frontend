@@ -110,7 +110,7 @@ const SignUp: React.FC = () => {
       <Content>
         <AnimationContainer>
           <img src={logoImg} alt="TO UP" />
-          <h1>Cadastre-se</h1>
+          <h2>Cadastre-se</h2>
           <ul>
             <li
               onClick={() => setTypeProfile(0)}
@@ -167,7 +167,7 @@ const SignUp: React.FC = () => {
 
           <Link to="/">
             <FiArrowLeft />
-            Voltar para Logon
+            Voltar para Login
           </Link>
         </AnimationContainer>
       </Content>

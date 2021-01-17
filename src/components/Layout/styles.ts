@@ -38,7 +38,6 @@ export const Content = styled.main<ContentProps>`
   flex-direction: ${props => props.flexDirection};
   height: auto;
   min-height: 100vh;
- 
   margin: 100px ${props => props.margin};
 `;
 
@@ -223,7 +222,7 @@ export const MenuLateral = styled.aside`
       text-align: center;
       font-size: 90px;
 
-      border-width: 4px;
+      border-width: 2px;
       border-style: solid;
       border-color: rgb(135, 134, 139);
       border-image: initial;
@@ -234,7 +233,8 @@ export const MenuLateral = styled.aside`
       }
     }
 
-    h2 {
+    h2,
+    h5 {
       text-align: center;
       margin: 5px;
     }

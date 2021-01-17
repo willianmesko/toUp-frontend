@@ -10,8 +10,8 @@ export const Container = styled.div`
   justify-content: center;
   img {
     margin-top: 20px;
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
   }
 `;
 

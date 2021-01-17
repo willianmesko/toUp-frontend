@@ -213,10 +213,10 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                     <label>Idade</label>
                     <Input defaultValue={athlete.age} type="number" name="athlete_age" />
                   </div>
-                  <div className="input-area">
+                  {/* <div className="input-area">
                     <label>Etnia</label>
                     <Input type="number" name="athlete_ethnicity" />
-                  </div>
+                  </div> */}
                   <div className="input-area">
                     <label>Altura</label>
                     <Input  defaultValue={athlete.stature} type="number" name="athlete_height" />
@@ -226,7 +226,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                     <Input defaultValue={athlete.body_mass} type="number" name="athlete_weight" />
                   </div>
                   <div className="input-area">
-                    <label>Percentual %G Desejado</label>
+                    <label>%G Desejado</label>
                     <Input type="number" name="desired_fat_percentage" />
                   </div>
 

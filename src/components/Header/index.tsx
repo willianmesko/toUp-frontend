@@ -88,9 +88,11 @@ const Header = () => {
           )}
 
         <aside>
+        <Link to="/upgrade-plan">
           <Upgrade>
             <p>Fazer Upgrade</p>
           </Upgrade>
+        </Link>
           <Notification />
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle

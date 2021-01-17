@@ -18,7 +18,7 @@ import AthleteEvaluation from '~/pages/AthleteEvaluation';
 import TrainerList from '~/pages/TrainerList';
 import Exercices from '~/pages/Exercices';
 import Me from '~/pages/Me';
-
+import UpgradePlan from '~/pages/UpgradePlan';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
@@ -48,6 +48,7 @@ const Routes: React.FC = () => (
     />
     <Route path="/trainer" sideMenu component={TrainerList} isPrivate />
     <Route path="/exercices" sideMenu component={Exercices} isPrivate />
+    <Route path="/upgrade-plan"  component={UpgradePlan} isPrivate />
   </Switch>
 );
 

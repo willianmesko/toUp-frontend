@@ -11,8 +11,8 @@ export default createGlobalStyle`
 
   body, html {
 
-    
-      zoom: .93;
+
+      zoom: .9;
       .modal-backdrop {
     zoom: 3 !important;
 

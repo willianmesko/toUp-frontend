@@ -86,7 +86,7 @@ const Training: React.FC = () => {
   return (
     <Container>
       <TrainingField>
-        {trainings.length > 0 && <input placeholder="buscar" />}
+        {trainings.length > 0 && <input placeholder="Pesquisar" />}
 
         <Link to="new-training">
           <GrAddCircle size={40} color="#87868B" />
