@@ -82,6 +82,8 @@ const TrainingInfo: React.FC = () => {
   });
   const [newExerciceInRoutine, setNewExerciceInRoutine] = useState({
     id: {},
+
+    name: '',
     volume: '',
     repetitions: '',
     sequence: '',
@@ -138,83 +140,83 @@ const TrainingInfo: React.FC = () => {
     return exercice.name;
   };
 
-  const dragStart = (e, id) => {
-     const { target } = e;
-    setExerciceDragged(id);
-    console.log(id);
-    setTimeout(() => {
-      target.style.display = 'none';
-    }, 0);
-  };
-
-  const dragEnd = async (e, id) => {
-    const { target } = e;
-
-    setTimeout(() => {
-      target.style.display = 'flex';
-    }, 0);
-  };
-
-  const dragOver = e => {
-    e.stopPropagation();
-    e.preventDefault();
-  };
-
-  // Change order exercice
-
-  // const dropExercice = async (e, id) => {
+  // const dragStart = (e, id) => {
+  //    const { target } = e;
+  //   setExerciceDragged(id);
   //   console.log(id);
+  //   setTimeout(() => {
+  //     target.style.display = 'none';
+  //   }, 0);
   // };
-  // Add exerice to routine
-  const dropRoutine = async (e, id) => {
-    e.preventDefault();
 
-    try {
-      const editRoutine = [...routines];
-      const index = editRoutine.findIndex(r => r.id === id);
+  // const dragEnd = async (e, id) => {
+  //   const { target } = e;
 
-      if (editRoutine[index].routineExercice.length >= 10) {
-        addToast({
-          type: 'error',
-          title: 'Erro no cadastro',
-          description: 'Limite de 10 exercícios por rotina',
-        });
-        return;
-      }
+  //   setTimeout(() => {
+  //     target.style.display = 'flex';
+  //   }, 0);
+  // };
 
-      // Verifica se exercício já existe na rotina
+  // const dragOver = e => {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  // };
 
-      const exerciceIndex = editRoutine[index].routineExercice.findIndex(
-        exercice => exercice.exercice_id === exerciceDragged,
-      );
+  // // Change order exercice
 
-      if (exerciceIndex >= 0) {
-        addToast({
-          type: 'error',
-          title: 'Erro no cadastro',
-          description: 'Exercício já vinculado a esta rotina',
-        });
+  // // const dropExercice = async (e, id) => {
+  // //   console.log(id);
+  // // };
+  // // Add exerice to routine
+  // const dropRoutine = async (e, id) => {
+  //   e.preventDefault();
 
-        return;
-      }
-      // var maior = editRoutine[index].routineExercice.reduce(
-      //   (a, b) => b.volume,
-      //   0,
-      // );
+  //   try {
+  //     const editRoutine = [...routines];
+  //     const index = editRoutine.findIndex(r => r.id === id);
 
-      const response = await api.post('/routine_exercice', {
-        exercice_id: exerciceDragged,
-        routine_id: id,
-        volume: 10,
-        repetitions: 10,
-        sequence: 4,
-      });
+  //     if (editRoutine[index].routineExercice.length >= 10) {
+  //       addToast({
+  //         type: 'error',
+  //         title: 'Erro no cadastro',
+  //         description: 'Limite de 10 exercícios por rotina',
+  //       });
+  //       return;
+  //     }
 
-      editRoutine[index].routineExercice.push(response.data);
+  //     // Verifica se exercício já existe na rotina
 
-      setRoutines(editRoutine);
-    } catch (error) {}
-  };
+  //     const exerciceIndex = editRoutine[index].routineExercice.findIndex(
+  //       exercice => exercice.exercice_id === exerciceDragged,
+  //     );
+
+  //     if (exerciceIndex >= 0) {
+  //       addToast({
+  //         type: 'error',
+  //         title: 'Erro no cadastro',
+  //         description: 'Exercício já vinculado a esta rotina',
+  //       });
+
+  //       return;
+  //     }
+  //     // var maior = editRoutine[index].routineExercice.reduce(
+  //     //   (a, b) => b.volume,
+  //     //   0,
+  //     // );
+
+  //     const response = await api.post('/routine_exercice', {
+  //       exercice_id: exerciceDragged,
+  //       routine_id: id,
+  //       volume: 10,
+  //       repetitions: 10,
+  //       sequence: 4,
+  //     });
+
+  //     editRoutine[index].routineExercice.push(response.data);
+
+  //     setRoutines(editRoutine);
+  //   } catch (error) {}
+  // };
 
   const getLetterTraining = index => {
     const letter = ['A', 'B', 'C', 'D', 'E', 'F'];
@@ -224,10 +226,13 @@ const TrainingInfo: React.FC = () => {
 
   async function deleteRoutine(routine_id): Promise<void> {
     await api.delete(`/routines/${routine_id}`);
+    setRoutines(routines.filter(routine => routine.id !== routine_id));
+
   }
 
   async function deleteExercice(exercice_id): Promise<void> {
     await api.delete(`/routine_exercice/${exercice_id}`);
+
   }
 
   async function editRoutineExercice(
@@ -254,12 +259,20 @@ const TrainingInfo: React.FC = () => {
       editR.push(edit[routineIndex].routineExercice[routineExerciceIndex]);
     }
     setEditedRoutine(editR);
+
   }
 
   async function handleEditRoutine(): Promise<void> {
-    await api.put('/routine_exercice', editedRoutine);
+
+    await api.put('/routine_exercice', {editedRoutine});
     setEditRoutine({ routineIndex: 0, active: false });
-  }
+    setNewExerciceInRoutine({
+      id: {},
+      name: '',
+      volume: '',
+      repetitions: '',
+      sequence: '',})
+    }
 
   // cria exercicio e adiciona na rotina
   async function handleAddExerciceInRoutine(routine_id): Promise<void> {
@@ -294,6 +307,7 @@ const TrainingInfo: React.FC = () => {
       }
       const routineExerciceResponse = await api.post('/routine_exercice', {
         exercice_id: newExerciceInRoutine.id,
+        exercice_name: newExerciceInRoutine.name,
         routine_id,
         volume: newExerciceInRoutine.volume,
         repetitions: newExerciceInRoutine.repetitions,
@@ -305,6 +319,13 @@ const TrainingInfo: React.FC = () => {
 
         setAddExerciceToRotine({ routineIndex: 0, active: false });
         setRoutines(findRoutine);
+        setNewExerciceInRoutine({
+          id: {},
+          name: '',
+          volume: '',
+          repetitions: '',
+          sequence: '',})
+
       }
     } catch (error) {}
   }
@@ -402,7 +423,7 @@ const TrainingInfo: React.FC = () => {
         isOpen={isTourOpen}
         onRequestClose={() => setIsTourOpen(false)}
       />
-
+{/*
       <ExerciceArea data-tut="reactour__add_exercice">
         {exercices &&
           exercices.map((exercice, index) => (
@@ -429,7 +450,7 @@ const TrainingInfo: React.FC = () => {
                 label={exercice.name}
               />
 
-              {/* <ReactTooltip
+              <ReactTooltip
                 delayShow={2000}
                 id={`tooltip${index}`}
                 clickable={true}
@@ -441,14 +462,14 @@ const TrainingInfo: React.FC = () => {
                   height="315"
                   src="https://www.youtube.com/embed/tgbNymZ7vqY"
                 />
-              </ReactTooltip> */}
+              </ReactTooltip>
             </div>
           ))}
 
         <span>
           <CreateExercice exercices={exercices} addExercice={setExercices} />
         </span>
-      </ExerciceArea>
+      </ExerciceArea> */}
 
       <RoutinesArea>
         <View>
@@ -531,8 +552,8 @@ const TrainingInfo: React.FC = () => {
 
                     <>
                       <TableContainer
-                        onDrop={e => dropRoutine(e, routine.id)}
-                        onDragOver={dragOver}
+                        // onDrop={e => dropRoutine(e, routine.id)}
+                        // onDragOver={dragOver}
                         className="table-container"
                       >
                         <Droppable droppableId={routine.id}>
@@ -567,9 +588,10 @@ const TrainingInfo: React.FC = () => {
                                       <TableCell>
                                         <Autocomplete
                                           id="combo-box-demo"
-                                          onChange={(e, newValue) => {
+                                          onChange={(e, exercice) => {
                                             setNewExerciceInRoutine({
-                                              id: newValue.id,
+                                              id: exercice.id,
+                                              name:exercice.name,
                                               volume:
                                                 newExerciceInRoutine.volume,
                                               sequence:
@@ -590,6 +612,7 @@ const TrainingInfo: React.FC = () => {
                                           onChange={e => {
                                             setNewExerciceInRoutine({
                                               id: newExerciceInRoutine.id,
+                                              name: newExerciceInRoutine.name,
                                               volume:
                                                 newExerciceInRoutine.volume,
                                               sequence: e.target.value,
@@ -605,6 +628,7 @@ const TrainingInfo: React.FC = () => {
                                           onChange={e => {
                                             setNewExerciceInRoutine({
                                               id: newExerciceInRoutine.id,
+                                              name: newExerciceInRoutine.name,
                                               volume:
                                                 newExerciceInRoutine.volume,
                                               sequence:
@@ -623,6 +647,8 @@ const TrainingInfo: React.FC = () => {
                                             setNewExerciceInRoutine({
                                               id: newExerciceInRoutine.id,
                                               volume: e.target.value,
+
+                                              name: newExerciceInRoutine.name,
                                               sequence:
                                                 newExerciceInRoutine.sequence,
                                               repetitions:

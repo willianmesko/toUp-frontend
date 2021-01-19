@@ -46,11 +46,6 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
   // };
   const formRef = useRef(null);
 
-
-
-  const showCALL = useMemo(() => {
-      return !showDados;
-  }, [showDados]);
   const getFieldValue = (
     input: string,
     inputMedia: string,
@@ -198,7 +193,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
 
             <AthleteInfo >
               <Header onClick={() => setShowDados(!showDados)}>
-                <p>Dados</p>
+                <p>Geral</p>
                 {showDados ? (
                   <ArrowDropUpIcon fontSize="large" />
                 ) : (
@@ -206,7 +201,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                 )}
               </Header>
 
-              {showCALL &&
+              {showDados &&
 
                 <div className="content"  >
                   <div className="input-area">

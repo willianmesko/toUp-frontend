@@ -19,6 +19,7 @@ import TrainerList from '~/pages/TrainerList';
 import Exercices from '~/pages/Exercices';
 import Me from '~/pages/Me';
 import UpgradePlan from '~/pages/UpgradePlan';
+import Workout from '~/pages/Workout';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
@@ -38,7 +39,7 @@ const Routes: React.FC = () => (
     <Route path="/new-athlete" component={NewAthlete} isPrivate />
     <Route path="/perfil-athlete" sideBar component={AthletePerfil} isPrivate />
     <Route path="/new-training" component={NewTraining} isPrivate />
-    <Route path="/training-info" component={TrainingInfo} isPrivate />
+    <Route path="/training-info" component={Workout} isPrivate />
     <Route path="/workout" sideMenu component={AthleteTraining} isPrivate />
     <Route
       path="/evaluations"

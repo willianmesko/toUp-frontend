@@ -49,6 +49,92 @@ export const Content = styled.div`
   min-height: 800px;
   max-height: 10000px;
   border-radius: 4px;
+  .exercice-info {
+    margin-top: 20px;
+
+    border-radius: 6px;
+    height: 500px;
+    width: 95%;
+
+    ul {
+      justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      li {
+        opacity: 0.8;
+        border-radius: 6px;
+        display: flex;
+        transition: all ease 0.25s;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        width: 45%;
+        height: 120px;
+        background: #fff;
+        color: #000;
+        -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+        &:hover {
+          opacity: 1;
+        }
+        .exercice-border {
+          align-items: center;
+          width: 5%;
+          height: 100%;
+          border-left: 8px solid rgb(42, 159, 255);
+          border-radius: 6px 0 0 6px;
+        }
+        .exercice-info {
+          width: 95%;
+          padding: 5px;
+          height: 35px;
+          text-align: center;
+
+          font-size: 18px;
+
+          table {
+            width: 100%;
+            font-size: 14px;
+          }
+
+          .exercice-title {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            .exercice-icons {
+              display: none;
+              transition: all ease 0.25s;
+              p {
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                width: 30px;
+
+                border-radius: 6px;
+                margin-left: 6px;
+
+                &:hover {
+                  background: rgba(106, 161, 169, 0.29);
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          .exercice-title {
+            .exercice-icons {
+              display: flex;
+            }
+          }
+        }
+      }
+    }
+
+    .exercice-modal {
+      background: pink;
+    }
+  }
 
   .no-training {
     text-align: center;
@@ -167,89 +253,4 @@ export const TrainingContainer = styled.div`
   }
 `;
 
-export const RoutineInfo = styled.div`
-  margin-top: 20px;
-
-  border-radius: 6px;
-  height: 500px;
-  width: 95%;
-
-  ul {
-    justify-content: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    li {
-      opacity: 0.8;
-      border-radius: 6px;
-      display: flex;
-      transition: all ease 0.25s;
-      margin-left: 15px;
-      margin-bottom: 15px;
-      width: 45%;
-      height: 120px;
-      background: #fff;
-      color: #000;
-      -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-      &:hover {
-        opacity: 1;
-      }
-      .exercice-video {
-        align-items: center;
-        width: 5%;
-        height: 100%;
-        border-left: 8px solid rgb(42, 159, 255);
-        border-radius: 6px 0 0 6px;
-      }
-      .exercice-info {
-        width: 95%;
-        padding: 5px;
-        height: 35px;
-        text-align: center;
-
-        font-size: 18px;
-
-        table {
-          width: 100%;
-          font-size: 14px;
-        }
-
-        .exercice-title {
-          margin-top: 10px;
-          display: flex;
-          justify-content: space-between;
-          .exercice-icons {
-            display: none;
-            transition: all ease 0.25s;
-            p {
-              justify-content: center;
-              align-items: center;
-              display: flex;
-              width: 30px;
-
-              border-radius: 6px;
-              margin-left: 6px;
-
-              &:hover {
-                background: rgba(106, 161, 169, 0.29);
-              }
-            }
-          }
-        }
-      }
-      &:hover {
-        .exercice-title {
-          .exercice-icons {
-            display: flex;
-          }
-        }
-      }
-    }
-  }
-
-  .exercice-modal {
-    background: pink;
-  }
-`;
+export const RoutineInfo = styled.div``;

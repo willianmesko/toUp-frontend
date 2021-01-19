@@ -9,9 +9,7 @@ import {
   LoadingMore,
   NoAthlete,
 } from './styles';
-
 import api from '~/services/api';
-
 import { useAthlete } from '~/hooks/AthleteContext';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
@@ -129,11 +127,7 @@ const Athletes: React.FC = () => {
                     <div className="card-details">
                       <div className="name">
                         <div>{athlete.name}</div>
-                        {/* <div className="icons">
-                        <GiWeight />
-                        <GiWeightLiftingUp />
-                        <GiBodyHeight />
-                      </div> */}
+
                       </div>
                       <div className="occupation">
                         <p>{objective[athlete.objective]}</p>

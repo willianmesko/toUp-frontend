@@ -117,11 +117,7 @@ const Training: React.FC = () => {
                 <div className="card-details">
                   <div className="name">
                     <div>{trainin.title}</div>
-                    {/* <div className="icons">
-                    <GiWeight />
-                    <GiWeightLiftingUp />
-                    <GiBodyHeight />
-                  </div> */}
+
                   </div>
                   <div className="occupation">
                     <p>{trainin.objectiveLabel}</p>
@@ -143,7 +139,7 @@ const Training: React.FC = () => {
                         />
                       </span>
                       <span className="label">
-                        <p>Duplicar</p>
+                        <p>Clonar</p>
                       </span>
                     </div>
                     <div className="item">
@@ -151,16 +147,17 @@ const Training: React.FC = () => {
                         size={20}
                         onClick={() => deleteTraining(trainin.id)}
                       />
-                      <span className="value">
-                        <p> Deletar </p>
+                      <span className="label">
+                        <p>Deletar</p>
                       </span>
                     </div>
                     <div className="item">
-                      <span className="value">
-                        <p> cm</p>
-                      </span>
+                    <AiFillDelete
+                        size={20}
+                        onClick={() => deleteTraining(trainin.id)}
+                      />
                       <span className="label">
-                        <p>Altura</p>
+                        <p>Editar</p>
                       </span>
                     </div>
                   </div>

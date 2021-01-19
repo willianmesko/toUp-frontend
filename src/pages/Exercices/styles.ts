@@ -21,13 +21,12 @@ export const ExerciceCard = styled.div`
   -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-
+  border-left: 6px solid rgb(42, 159, 255);
   &:hover {
-      opacity: 0.8;
-    }
+    opacity: 0.8;
+  }
 
   .thumbnail {
- 
     align-items: center;
     align-content: center;
     display: flex;
@@ -46,7 +45,7 @@ export const ExerciceCard = styled.div`
     flex-direction: column;
     width: 250px;
 
-    p{
+    p {
       font-size: 14px;
       font-weight: 20;
     }
@@ -56,14 +55,13 @@ export const ExerciceCard = styled.div`
       align-self: flex-end;
       font-size: 10px;
       span {
-        margin:10px;
+        margin: 10px;
       }
       svg {
-       
-       display: block;
+        display: block;
       }
     }
-   }
+  }
 `;
 
 export const SearchField = styled.div`
@@ -82,15 +80,13 @@ export const SearchField = styled.div`
     width: 400px;
     border: none;
     color: #555;
-    
-   &:focus {
-     border: 2px solid rgb(42, 159, 255);
-      transition: all ease 0.25s; 
+
+    &:focus {
+      border: 2px solid rgb(42, 159, 255);
+      transition: all ease 0.25s;
     }
     option {
-        width: 100px;
-       
-      
+      width: 100px;
     }
   }
   span {

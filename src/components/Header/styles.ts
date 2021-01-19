@@ -8,12 +8,13 @@ export const Container = styled.div`
   top: 0;
   width: 100%;
   position: fixed;
+  align-items: center;
 `;
 
 export const Content = styled.div`
   height: 70px;
-  width: auto;
-
+  max-width: auto;
+  margin: 0 auto;
   display: flex;
 
   justify-content: space-between;
@@ -21,6 +22,7 @@ export const Content = styled.div`
   nav {
     display: flex;
     align-items: center;
+
     img {
       width: 80px;
       height: 60px;
@@ -118,6 +120,7 @@ export const Profile = styled.div`
 
 export const Menu = styled.div`
   display: flex;
+  margin-left: 150px;
 
   li {
     display: flex;

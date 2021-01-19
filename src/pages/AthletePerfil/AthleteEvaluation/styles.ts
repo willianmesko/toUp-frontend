@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  .evaluationCard {
+    h3 {
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 export const EvaluationCard = styled.div`

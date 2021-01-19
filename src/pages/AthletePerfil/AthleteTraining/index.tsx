@@ -9,6 +9,7 @@ import hipertrofia from '~/assets/icons/hipertrofia.svg';
 import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import api from '~/services/api';
 import { useTraining } from '~/hooks/TrainingContext';
+import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 
 interface RoutineExerciceInterface {
   exercice_id: string;
@@ -38,16 +39,13 @@ const AthleteTraining: React.FC = () => {
   const [training, setTrainings] = useState({} as TrainingInterface);
   const [routines, setRoutines] = useState([]);
   const [routine, setRoutine] = useState<RoutineInterface>();
-  const [exercices, setExercices] = useState([]);
   const { setTraining } = useTraining();
   const history = useHistory();
 
   useEffect(() => {
     async function getTraining(): Promise<void> {
       try {
-        const exercicesData = await api.get('/exercices');
 
-        setExercices(exercicesData.data);
         if (athlete.trainings) {
           const response = await api.get(
             `/routines/${athlete.trainings[0].id}`,
@@ -64,15 +62,78 @@ const AthleteTraining: React.FC = () => {
     getTraining();
   }, [athlete, training]);
 
-  const exerciceName = id => {
-    const exercice = exercices.find(exercice => exercice.id === id);
 
-    return exercice.name;
-  };
 
   async function deleteExercice(exercice_id): Promise<void> {
     await api.delete(`/routine_exercice/${exercice_id}`);
   }
+  const SortableItem = SortableElement(({exercice}) => {return (
+    <li>
+    <div className="exercice-border">
+      {/* <iframe
+              width="80%"
+              height="80%"
+              style={{ borderRadius: '6px', marginTop: '15px' }}
+              src={`https://www.youtube.com/embed/tgbNymZ7vqY`}
+            /> */}
+    </div>
+    <div className="exercice-info">
+      <div className="exercice-title">
+        <p>{exercice.exercice_name}</p>
+        <div className="exercice-icons">
+          <p>
+            <ViewRoutine icon="view" />
+          </p>
+          <p>
+            <MdEdit size={25} />
+          </p>
+
+          <p>
+            <MdDelete
+              onClick={() => deleteExercice(exercice.exercice_id)}
+              size={25}
+            />
+          </p>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <td>Séries</td>
+            <td>Repetições</td>
+            <td>Carga</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{exercice.sequence}</td>
+            <td>{exercice.repetitions}</td>
+            <td>{exercice.volume}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </li>
+  )});
+
+const SortableList = SortableContainer(({items}) => {
+  return (
+    <div className='exercice-info'>
+    <ul>
+      {items.map((value, index) => (
+        <SortableItem key={`item-${value}`} index={index} exercice={value} />
+      ))}
+    </ul>
+    </div>
+  );
+});
+
+const onSortEnd = ({oldIndex, newIndex}) => {
+  console.log('aw')
+  // setRoutine(() => ({
+  //   items: arrayMove(items, oldIndex, newIndex),
+}
+
 
   return (
     <Content>
@@ -128,7 +189,7 @@ const AthleteTraining: React.FC = () => {
         </TrainingContainer>
       ) : (
         <div className="no-training">
-          <h2>Nenhum treino vinculado a esse aluno</h2>
+          <h2>Ainda nao foram criados treinos para esse cliente</h2>
           <AddTraining
             newTraining={setTrainings}
             newRoutine={setRoutine}
@@ -136,60 +197,12 @@ const AthleteTraining: React.FC = () => {
           />
         </div>
       )}
-      <RoutineInfo>
-        <ul>
-          {routine &&
-            routine.routineExercice.length > 0 &&
-            routine.routineExercice.map(exercice => (
-              <li>
-                <div className="exercice-video">
-                  {/* <iframe
-                          width="80%"
-                          height="80%"
-                          style={{ borderRadius: '6px', marginTop: '15px' }}
-                          src={`https://www.youtube.com/embed/tgbNymZ7vqY`}
-                        /> */}
-                </div>
-                <div className="exercice-info">
-                  <div className="exercice-title">
-                    <p>{exerciceName(exercice.exercice_id)}</p>
-                    <div className="exercice-icons">
-                      <p>
-                        <ViewRoutine icon="view" />
-                      </p>
-                      <p>
-                        <MdEdit size={25} />
-                      </p>
+      {routine && routine.routineExercice &&
 
-                      <p>
-                        <MdDelete
-                          onClick={() => deleteExercice(exercice.exercice_id)}
-                          size={25}
-                        />
-                      </p>
-                    </div>
-                  </div>
-                  <table>
-                    <thead>
-                      <tr>
-                        <td>Séries</td>
-                        <td>Repetições</td>
-                        <td>Carga</td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>{exercice.sequence}</td>
-                        <td>{exercice.repetitions}</td>
-                        <td>{exercice.volume}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </li>
-            ))}
-        </ul>
-      </RoutineInfo>
+       <SortableList axis='xy' items={routine.routineExercice} onSortEnd={() => {}}/>
+
+        }
+
     </Content>
   );
 };

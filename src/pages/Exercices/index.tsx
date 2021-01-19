@@ -35,29 +35,6 @@ const Exercices = () => {
           <CreateExercice addExercice={setExercices} />
         </span>
       </SearchField>
-      {/* <GroupMuscleFilter>
-        <GroupMuscle>
-          <img src={bicps} />
-          <small>Biceps</small>
-        </GroupMuscle>
-        <GroupMuscle>
-          <img src={tricps} />
-          <small>Tricpes</small>
-        </GroupMuscle>
-
-        <GroupMuscle>
-          <img src={abdomen} />
-          <small>Abdomen</small>
-        </GroupMuscle>
-        <GroupMuscle>
-          <img src={leg} />
-          <small>Perna</small>
-        </GroupMuscle>
-        <GroupMuscle>
-          <img src={costas} />
-          <small>Dorsal</small>
-        </GroupMuscle>
-      </GroupMuscleFilter> */}
       <Container>
         {exercices &&
           exercices.map((exercice, index) => {
@@ -73,7 +50,7 @@ const Exercices = () => {
                 <div className="exerciceExtraInfo">
                   <span>
                     <MdRemoveRedEye size={22} />
-                    Ver
+
                   </span>
                   <span>
                     <FaWeight size={20} />

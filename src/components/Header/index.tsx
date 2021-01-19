@@ -47,7 +47,7 @@ const Header = () => {
           </Link>
         </nav>
         {(location.pathname === '/perfil-athlete' ||
-          location.pathname === '/training-info') && (
+          location.pathname === '/training-info' || location.pathname === '/me' ) && (
             <Menu>
               <LoadingBar
                 progress={loadingBar}
@@ -84,6 +84,8 @@ const Header = () => {
                 <IoIosFitness size={35} />
                 <small>Exercícios</small>
               </li>
+
+
             </Menu>
           )}
 

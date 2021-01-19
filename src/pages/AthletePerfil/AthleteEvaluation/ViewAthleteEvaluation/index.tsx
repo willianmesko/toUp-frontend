@@ -23,14 +23,9 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
   viewEvaluation,
 }) => {
   const data = [
-    { country: 'Russia', area: 12 },
-    { country: 'Canada', area: 7 },
-    { country: 'USA', area: 7 },
-    { country: 'China', area: 7 },
-    { country: 'Brazil', area: 6 },
-    { country: 'Australia', area: 5 },
-    { country: 'India', area: 2 },
-    { country: 'Others', area: 55 },
+    { country: 'Músculo', area: 70 },
+    { country: 'Gordura', area: 30 },
+
   ];
 
    const ageStructure = [{
@@ -43,16 +38,6 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
     young: 9.6,
     middle: 43.4,
     older: 9,
-  }, {
-    state: 'Russia',
-    young: 13.5,
-    middle: 49,
-    older: 5.8,
-  }, {
-    state: 'USA',
-    young: 30,
-    middle: 90.3,
-    older: 14.5,
   }];
   return (
     <Container>
@@ -67,7 +52,7 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
 
       <Content>
         <EvaluationInfo>
-          <h2>Pollock 7 Dobras</h2>
+          <h3>Pollock 7 Dobras</h3>
 
         <div>
           <div>
@@ -116,14 +101,22 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
         </EvaluationInfo>
 
       <ChartArea>
-      <h2>Resultado</h2>
-      <div>
+        <h3>Resultado</h3>
+
+      <div className="charts">
+
         <div className='chartResult'>
           <p><b>Percentual de Gordura</b></p>
+          <div className="legend">
+            <div className="legend-1"/> <p>Gordura - 30%</p>
+            <div className="legend-2"/> <p>Massa Magra - 70%</p>
+          </div>
         <Chart
-           width={300}
-           height={250}
+
+           width={250}
+           height={200}
           data={data}
+
         >
           <PieSeries
             valueField="area"
@@ -134,9 +127,13 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
 
     <div className='chartResult'>
     <p><b>Massa Magra x Mass Gorda</b></p>
+    <div className="legend">
+      <div className="legend-1"></div><p>Massa Gorda - 24.6kg</p>
+      <div className="legend-2"></div><p>Massa Magra - 67.6kg</p>
+    </div>
     <Chart
-       width={400}
-       height={250}
+       width={350}
+       height={200}
           data={ageStructure}
         >
            <ArgumentScale factory={scaleBand} />
@@ -162,11 +159,27 @@ const ViewAthleteEvaluation: React.FC<ViewAthleteEvaluation> = ({
         </Chart>
     </div>
   </div>
+  <div className='infoResult'>
+        <ol>
+          <li><b>IMC: </b>27.8 Sobrepeso.</li>
+          <li><b>RCQ: </b>2</li>
+
+          <li><b>Perimetria:</b> 330cm</li>
+          <li><b>Antrometria:</b> 210mm</li>
+
+          <li><b>Peso Ideal:</b> 30Kgs</li>
+          <li><b>% Proposta:</b> 14%</li>
+          <li><b>Gordura Ideal:</b> 4.2Kgs</li>
+          <li><b>Massa Ideal:</b> 25.8Kgs</li>
+          <li><b>Gordura Excedente:</b> 4.2Kgs - 24.43Kgs = 20.23Kgs</li>
+          <li><b>Carência Muscular: </b>20.23Kgs</li>
+        </ol>
+
+    </div>
+
+
       </ChartArea>
-
-
-
-      </Content>
+</Content>
     </Container>
   );
 };

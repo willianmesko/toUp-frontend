@@ -43,7 +43,7 @@ const AthleteEvaluation: React.FC<AthleteEvaluationProps> = ({
             {evaluations.length > 0 &&
               evaluations.map(evaluatio => (
                 <VerticalTimelineElement
-                  className="vertical-timeline-element--work"
+                  className="evaluationCard"
                   contentStyle={{
                     color: '#000',
                     height: '200px',
@@ -75,6 +75,7 @@ const AthleteEvaluation: React.FC<AthleteEvaluationProps> = ({
                   >
                     {evaluatio.type_title}
                   </h3>{' '}
+                  <b>Data:</b> 20/10/2020
                 </VerticalTimelineElement>
               ))}
           </VerticalTimeline>

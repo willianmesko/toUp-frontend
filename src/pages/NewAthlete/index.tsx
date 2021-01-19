@@ -162,18 +162,6 @@ const NewAthlete: React.FC = () => {
   return (
     <Container>
       <Content>
-        {/* <AvatarInput>
-          <img
-            src={
-              'https://yt3.ggpht.com/a-/AOh14GjDM_FdVyl5v7gQrGyIgjf770GJBujpn9Q3LLI2cTI=s88-c-k-c0xffffffff-no-rj-mo'
-            }
-            alt="{user.name}"
-          />
-          <label htmlFor="avatar">
-            <FiCamera />
-            <input type="file" id="avatar" onChange={() => {}} />
-          </label>
-        </AvatarInput> */}
         <div>
           <h1>Cadastre um novo aluno</h1>
 
@@ -266,26 +254,6 @@ const NewAthlete: React.FC = () => {
                 ]}
                 name="sexo"
               />
-              {/* <SexoInput>
-                <div>
-                  <input
-                    type="radio"
-                    checked={sexo === 0}
-                    onChange={() => setSexo(0)}
-                    value={sexo}
-                  />{' '}
-                  <label>Masculino</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    checked={sexo === 1}
-                    onChange={() => setSexo(1)}
-                    value={sexo}
-                  />{' '}
-                  <label>Feminino</label>
-                </div>
-              </SexoInput> */}
             </div>
             <Button type="submit">Cadastrar</Button>
           </Form>
