@@ -170,12 +170,8 @@ const Athletes: React.FC = () => {
             <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
               <Skeleton width="270px" height="375px" duration={2} />
             </SkeletonTheme>
-            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-              <Skeleton width="270px" height="375px" duration={2} />
-            </SkeletonTheme>
-            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-              <Skeleton width="270px" height="375px" duration={2} />
-            </SkeletonTheme>
+
+
 
 
           </Content>
