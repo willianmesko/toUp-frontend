@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 70px;
+  height: 80px;
   max-width: auto;
   margin: 0 auto;
   display: flex;
@@ -121,23 +121,24 @@ export const Profile = styled.div`
 export const Menu = styled.div`
   display: flex;
   margin-left: 150px;
-
+  
   li {
     display: flex;
     text-align: center;
     flex-direction: column;
     color: #a9a9a9;
     margin: 0 20px 0 20px;
-    height: 90%;
+    height: 100%;
     &.active {
-      border-bottom: 2px solid #3bb9e3;
+      border-bottom: 1px solid #3bb9e3;
       color: #3bb9e3;
+      
       &:hover {
         border-radius: 0px !important;
         background: rgb(248, 248, 255) !important;
       }
       svg {
-        margin: 10px 25px;
+        
         fill: rgb(42, 159, 255) !important;
         stroke-width: 0 !important;
         stroke: rgb(42, 159, 255) !important;

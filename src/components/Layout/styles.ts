@@ -134,7 +134,7 @@ export const SideMenu = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-
+      
       height: 80px;
       color: rgb(42, 159, 255);
       text-align: center;

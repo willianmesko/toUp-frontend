@@ -18,7 +18,7 @@ export const Container = styled.div`
       height: 40px;
       font-weight: bolder;
       border-bottom: 2px solid rgb(42, 159, 255);
-
+      line-height: 40px;
       transition: all ease 0.25s;
 
       &:hover {
@@ -31,6 +31,7 @@ export const Container = styled.div`
         background: rgba(106, 161, 169, 0.29);
         color: rgb(42, 159, 255);
       }
+      line-height: 40px;
       height: 40px;
       transition: all ease 0.25s;
       width: 50%;
@@ -68,6 +69,7 @@ export const Content = styled.div`
         transition: all ease 0.25s;
         margin-left: 15px;
         margin-bottom: 15px;
+         
         width: 45%;
         height: 120px;
         background: #fff;

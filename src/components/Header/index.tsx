@@ -64,7 +64,7 @@ const Header = () => {
                   completeLoading('/athletes');
                 }}
               >
-                <GiWeightLiftingDown size={35} />
+                <GiWeightLiftingDown size={40} />
                 <small>Alunos</small>
               </li>
               <li
@@ -73,7 +73,7 @@ const Header = () => {
                   completeLoading('/training');
                 }}
               >
-                <GiWeightLiftingDown size={35} />
+                <GiWeightLiftingDown size={40} />
                 <small>Treinos</small>
               </li>
               <li
@@ -81,7 +81,7 @@ const Header = () => {
                   completeLoading('/exercices');
                 }}
               >
-                <IoIosFitness size={35} />
+                <IoIosFitness size={40} />
                 <small>Exercícios</small>
               </li>
 
