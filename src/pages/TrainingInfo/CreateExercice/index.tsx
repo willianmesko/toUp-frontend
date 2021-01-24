@@ -25,7 +25,7 @@ interface ExerciceInterface {
 
 interface ExerciceFormData {
   name: string;
-  muscle_group_id?: number;
+  muscle_group_id?: string;
   calorie?: number;
   duration?: string;
   youtube_video_id?: string;
@@ -52,13 +52,13 @@ const CreateExercice: React.FC<ModalProps> = props => {
 
   const { addToast } = useToast();
   const exercicesOptions = [
-    { key: 'Bícepes', value: 1 },
-    { key: 'Tríceps', value: 2 },
-    { key: 'Perna', value: 3 },
-    { key: 'Ombro', value: 4 },
-    { key: 'Peitoral', value: 5 },
-    { key: 'Costas', value: 6 },
-    { key: 'Abdomen', value: 7 },
+    { key: 'Bícepes', value: '1' },
+    { key: 'Tríceps', value: '2' },
+    { key: 'Perna', value: '3' },
+    { key: 'Ombro', value: '4' },
+    { key: 'Peitoral', value: '5' },
+    { key: 'Costas', value: '6' },
+    { key: 'Abdomen', value: '7' },
   ];
 
 
