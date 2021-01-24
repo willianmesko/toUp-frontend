@@ -23,7 +23,7 @@ interface Training {
 
 const Training: React.FC = () => {
   const [trainings, setTrainings] = useState<Training[]>([]);
-  const [copyTrainings, setCopyTranings] = useState<Training[]>([]);
+  const [, setCopyTranings] = useState<Training[]>([]);
   const [skeleton, setSkeleton] = useState(false);
   const { setTraining } = useTraining();
   const history = useHistory();
