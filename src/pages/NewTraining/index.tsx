@@ -14,7 +14,7 @@ import getValidationErrors from '~/utils/getValidationErrors';
 import { useTraining } from '~/hooks/TrainingContext';
 import Input from '~/components/Inputs/Text';
 import Select from '~/components/Inputs/Select';
-import LazyLoading from '~/components/LazyLoading';
+import Loading from '~/components/Loading';
 import Button from '~/components/Button';
 
 import { Container, Content, TrainingArea } from './styles';
@@ -94,7 +94,7 @@ const NewTraining: React.FC = () => {
 
   return (
     <>
-      {loading && <LazyLoading />}
+      {loading && <Loading />}
       <Container>
 
         <Content>

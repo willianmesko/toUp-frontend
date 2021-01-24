@@ -19,13 +19,11 @@ import { useToast } from '~/hooks/ToastContext';
 import 'react-datepicker/dist/react-datepicker.css';
 import api from '~/services/api';
 import getValidationErrors from '~/utils/getValidationErrors';
-import LazyLoading from '~/components/LazyLoading';
 import Input from '~/components/Inputs/Text';
 import Select from '~/components/Inputs/Select';
-
 import { useAthlete } from '~/hooks/AthleteContext';
 import Button from '~/components/Button';
-
+import Loading from '~/components/Loading';
 import { Container, Content } from './styles';
 
 interface NewAthleteFormData {
@@ -163,10 +161,11 @@ const NewAthlete: React.FC = () => {
 
   return (
     <>
-      {loading && <LazyLoading />}
+      {loading && <Loading />}
       <Container>
 
         <Content>
+
           <div>
             <h1>Cadastre um novo aluno</h1>
 

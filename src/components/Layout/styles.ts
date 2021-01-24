@@ -36,7 +36,6 @@ export const TopArea = styled.div`
 export const Content = styled.main<ContentProps>`
   display: flex;
   flex-direction: ${props => props.flexDirection};
-  height: auto;
   min-height: 100vh;
   margin: 100px ${props => props.margin};
 `;

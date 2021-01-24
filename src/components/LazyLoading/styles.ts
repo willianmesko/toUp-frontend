@@ -13,15 +13,12 @@ const moveUpDown = keyframes`
 
 
 export const AnimationContainer = styled.div`
- width: 100%;
- display: flex;
- height: 100vh;
+ 
  animation: ${moveUpDown} 3s ease-in-out 0s infinite normal none running;
- color: #fff;
- text-align: center;
- font-size: 130px;
-justify-content: center;
-align-items: center;
+ position:absolute;
+left:45%;
+right:0;
+
  img {
      width: 180px;
      height: 180px;

@@ -16,7 +16,7 @@ import Button from '~/components/Button';
 import logoImg from '~/assets/to-up2.png';
 
 import { Container, Content, AnimationContainer } from './styles';
-import LazyLoading from '~/components/LazyLoading';
+import Loading from '~/components/Loading';
 
 interface SignInFormData {
   email: string;
@@ -75,7 +75,7 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-      { loading && <LazyLoading />}
+      { loading && <Loading />}
       <Container>
 
         <Content>
