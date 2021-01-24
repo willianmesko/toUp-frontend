@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import SignIn from '~/pages/SignIn';
-import SignUp from '~/pages/SignUp';
-import Dashboard from '~/pages/Dashboard';
-import Athletes from '~/pages/Athletes';
-import Profile from '~/pages/Profile';
-import Training from '~/pages/Training';
-import NewAthlete from '~/pages/NewAthlete';
-import AthletePerfil from '~/pages/AthletePerfil';
-import NewTraining from '~/pages/NewTraining';
-import TrainingInfo from '~/pages/TrainingInfo';
-import AthleteTraining from '~/pages/AthleteTraining';
-import AthleteEvaluation from '~/pages/AthleteEvaluation';
-import TrainerList from '~/pages/TrainerList';
-import Exercices from '~/pages/Exercices';
-import Me from '~/pages/Me';
-import UpgradePlan from '~/pages/UpgradePlan';
+const SignIn = lazy(() => import('~/pages/SignIn'));
+const SignUp = lazy(() => import('~/pages/SignUp'));
+const Dashboard = lazy(() => import('~/pages/Dashboard'));
+const Athletes = lazy(() => import('~/pages/Athletes'));
+const Profile = lazy(() => import('~/pages/Profile'));
+const Training = lazy(() => import('~/pages/Training'));
+const NewAthlete = lazy(() => import('~/pages/NewAthlete'));
+const AthletePerfil = lazy(() => import('~/pages/AthletePerfil'));
+const NewTraining = lazy(() => import('~/pages/NewTraining'));
+const TrainingInfo = lazy(() => import('~/pages/TrainingInfo'));
+const AthleteTraining = lazy(() => import('~/pages/AthleteTraining'));
+const AthleteEvaluation = lazy(() => import('~/pages/AthleteEvaluation'));
+const TrainerList = lazy(() => import('~/pages/TrainerList'));
+const Exercices = lazy(() => import('~/pages/Exercices'));
+const Me = lazy(() => import('~/pages/Me'));
+const UpgradePlan = lazy(() => import('~/pages/UpgradePlan'));
 
 const Routes: React.FC = () => (
   <Switch>
