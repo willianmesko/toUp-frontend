@@ -47,9 +47,10 @@ const Athletes: React.FC = () => {
 
   useEffect(() => {
     async function getAthletes(): Promise<void> {
+      setSkeleton(true);
       const { data } = await api.get('/athletes');
       setCopyAthletes(data);
-      setSkeleton(true);
+
       setAthletes(data);
       setSkeleton(false);
 
