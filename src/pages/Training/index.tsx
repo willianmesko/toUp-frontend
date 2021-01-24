@@ -42,17 +42,18 @@ const Training: React.FC = () => {
 
   useEffect(() => {
     async function getTraining(): Promise<void> {
+      setSkeleton(true);
       const response = await api.get('/training');
       const data = response.data.map(workout => ({
         ...workout,
         objectiveLabel: formatObjective(workout.objective),
       }));
-      setSkeleton(true);
+
       setCopyTranings(data);
-      setTimeout(() => {
-        setTrainings(data);
-        setSkeleton(false);
-      }, 1000);
+      setTrainings(data);
+      setSkeleton(false);
+
+
     }
     getTraining();
   }, []);
@@ -152,7 +153,7 @@ const Training: React.FC = () => {
                       </span>
                     </div>
                     <div className="item">
-                    <AiFillDelete
+                      <AiFillDelete
                         size={20}
                         onClick={() => deleteTraining(trainin.id)}
                       />
@@ -167,13 +168,17 @@ const Training: React.FC = () => {
           ))}
         {skeleton && (
           <NoTraining>
-            {copyTrainings.map(skeleton => {
-              return (
-                <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-                  <Skeleton width={700} height={200} duration={2} />
-                </SkeletonTheme>
-              );
-            })}
+
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+
           </NoTraining>
         )}
       </TrainingCard>

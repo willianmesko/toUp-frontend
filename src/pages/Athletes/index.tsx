@@ -50,10 +50,10 @@ const Athletes: React.FC = () => {
       const { data } = await api.get('/athletes');
       setCopyAthletes(data);
       setSkeleton(true);
-      setTimeout(() => {
-        setAthletes(data);
-        setSkeleton(false);
-      }, 1000);
+      setAthletes(data);
+      setSkeleton(false);
+
+
     }
 
     getAthletes();
@@ -167,13 +167,18 @@ const Athletes: React.FC = () => {
         </AthleteCard>
         {skeleton && (
           <NoAthlete>
-            {copyAthletes.map(skeleton => {
-              return (
-                <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-                  <Skeleton width={700} height={200} duration={2} />
-                </SkeletonTheme>
-              );
-            })}
+
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width={700} height={200} duration={2} />
+            </SkeletonTheme>
+
+
           </NoAthlete>
         )}
         {athletes.length > visible && (
