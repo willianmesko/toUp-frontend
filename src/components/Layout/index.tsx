@@ -94,7 +94,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
               </div>
             ) : (
                 <div>
-                  {!user.trainer_id && (
+                  {user.trainer_id && (
                     <Link to="/trainer">
                       <span
                         className={
