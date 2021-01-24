@@ -1,7 +1,6 @@
-import React, { InputHTMLAttributes, useMemo, useEffect, useState, useRef } from 'react';
+import React, { InputHTMLAttributes, useEffect, useState, useRef } from 'react';
 import { useField } from '@unform/core';
 import { Form } from '@unform/web';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { useToast } from '~/hooks/ToastContext';
@@ -197,8 +196,8 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                 {showDados ? (
                   <ArrowDropUpIcon fontSize="large" />
                 ) : (
-                  <ArrowDropDownIcon fontSize="large" />
-                )}
+                    <ArrowDropDownIcon fontSize="large" />
+                  )}
               </Header>
 
               {showDados &&
@@ -214,7 +213,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                   </div> */}
                   <div className="input-area">
                     <label>Altura</label>
-                    <Input  defaultValue={athlete.stature} type="number" name="athlete_height" />
+                    <Input defaultValue={athlete.stature} type="number" name="athlete_height" />
                   </div>
                   <div className="input-area">
                     <label>Peso</label>
@@ -230,7 +229,7 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                     <DayPickerInput onDayChange={day => console.log(day)} />
                   </div> */}
                 </div>
-}
+              }
 
             </AthleteInfo>
 
@@ -243,8 +242,8 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                   {showDobrasCutaneas ? (
                     <ArrowDropUpIcon fontSize="large" />
                   ) : (
-                    <ArrowDropDownIcon fontSize="large" />
-                  )}
+                      <ArrowDropDownIcon fontSize="large" />
+                    )}
                 </Header>
                 {showDobrasCutaneas && (
                   <table>
@@ -509,8 +508,8 @@ const AddEvaluation: React.FC<AddEvaluationProps> = ({
                   {showPerimetrosCorporais ? (
                     <ArrowDropUpIcon />
                   ) : (
-                    <ArrowDropDownIcon />
-                  )}
+                      <ArrowDropDownIcon />
+                    )}
                 </Header>
                 {showPerimetrosCorporais && (
                   <table>

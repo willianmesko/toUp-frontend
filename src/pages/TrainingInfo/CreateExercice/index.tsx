@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { GrAddCircle } from 'react-icons/gr';
@@ -73,10 +73,9 @@ const CreateExercice: React.FC<ModalProps> = props => {
     }: ExerciceFormData) => {
       try {
         const muscle_group_name = exercicesOptions.find(
-          exercice => exercice.value == muscle_group_id,
+          exercice => exercice.value === muscle_group_id,
         );
 
-        console.log(muscle_group_id)
 
         formRef.current?.setErrors({});
 

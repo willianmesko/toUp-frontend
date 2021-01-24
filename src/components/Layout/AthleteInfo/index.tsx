@@ -1,11 +1,9 @@
 import React, { useCallback, ChangeEvent } from 'react';
 import { GiWeight, GiBodyHeight } from 'react-icons/gi';
 import {
-  AiFillCalculator,
   AiFillInstagram,
   AiFillFacebook,
   AiOutlineWhatsApp,
-  AiFillMail,
 } from 'react-icons/ai';
 import { FaBirthdayCake } from 'react-icons/fa';
 import { FiCamera } from 'react-icons/fi';
@@ -17,14 +15,7 @@ import api from '~/services/api';
 
 const AthleteInfo: React.FC = () => {
   const { athlete, setAthlete } = useAthlete();
-  function imcClassification(): string {
-    let category;
-    if (athlete.imc < 18.5) category = 'Abaixo do peso';
-    if (athlete.imc > 18.5 && athlete.imc < 24.9) category = 'Peso Normal';
-    if (athlete.imc >= 25.0 && athlete.imc <= 29.9) category = 'Peso Normal';
-    if (athlete.imc >= 30) category = 'Obesidade';
-    return category;
-  }
+
 
   const handleChangeAvatar = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,10 +39,10 @@ const AthleteInfo: React.FC = () => {
           {athlete.avatar_url ? (
             <img src={athlete.avatar_url} alt={athlete.name} />
           ) : (
-            <div className="no-image">
-              <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
-            </div>
-          )}
+              <div className="no-image">
+                <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
+              </div>
+            )}
           <label htmlFor="avatar">
             <FiCamera />
             <input type="file" id="avatar" onChange={handleChangeAvatar} />

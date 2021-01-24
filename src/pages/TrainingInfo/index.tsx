@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTraining } from '~/hooks/TrainingContext';
-import { Container, RoutinesArea, Routine, ExerciceArea, View } from './styles';
+import { Container, RoutinesArea, Routine } from './styles';
 import ModalContainer from '~/components/ModalContainer';
 import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
@@ -31,9 +31,8 @@ import TableHead from '@material-ui/core/TableHead';
 import AddAthletes from './AddAthletes';
 import TableRow from '@material-ui/core/TableRow';
 import ReactCardFlip from 'react-card-flip';
-import Chip from '@material-ui/core/Chip';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import CreateExercice from './CreateExercice';
+
 
 interface RoutineInterface {
   title: string;
@@ -69,8 +68,6 @@ const TrainingInfo: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [startStep, setStartStep] = useState(0);
-  const [, setPlayVideo] = useState(0);
-  const [exerciceDragged, setExerciceDragged] = useState('');
   const [editRoutine, setEditRoutine] = useState({
     routineIndex: 0,
     active: false,
@@ -264,15 +261,16 @@ const TrainingInfo: React.FC = () => {
 
   async function handleEditRoutine(): Promise<void> {
 
-    await api.put('/routine_exercice', {editedRoutine});
+    await api.put('/routine_exercice', { editedRoutine });
     setEditRoutine({ routineIndex: 0, active: false });
     setNewExerciceInRoutine({
       id: {},
       name: '',
       volume: '',
       repetitions: '',
-      sequence: '',})
-    }
+      sequence: '',
+    })
+  }
 
   // cria exercicio e adiciona na rotina
   async function handleAddExerciceInRoutine(routine_id): Promise<void> {
@@ -324,10 +322,11 @@ const TrainingInfo: React.FC = () => {
           name: '',
           volume: '',
           repetitions: '',
-          sequence: '',})
+          sequence: '',
+        })
 
       }
-    } catch (error) {}
+    } catch (error) { }
   }
 
   async function handleSubmitRoutine({
@@ -423,7 +422,7 @@ const TrainingInfo: React.FC = () => {
         isOpen={isTourOpen}
         onRequestClose={() => setIsTourOpen(false)}
       />
-{/*
+      {/*
       <ExerciceArea data-tut="reactour__add_exercice">
         {exercices &&
           exercices.map((exercice, index) => (
@@ -493,7 +492,7 @@ const TrainingInfo: React.FC = () => {
                 isFlipped={flipped.find(flippp => flippp === index + 1)}
                 flipDirection="horizontal"
               >
-                <DragDropContext onDragEnd={value => {}}>
+                <DragDropContext onDragEnd={value => { }}>
                   <Routine
                     show={
                       showRoutine.find(show => show === index + 1)
@@ -513,40 +512,40 @@ const TrainingInfo: React.FC = () => {
                             }
                           />
                         ) : (
-                          <ArrowDropUpIcon
-                            onClick={() =>
-                              setShowRoutine(state =>
-                                state.filter(s => s !== index + 1),
-                              )
-                            }
-                          />
-                        )}
-                        {(editRoutine.routineIndex === index &&
-                          editRoutine.active) ||
-                        (addExerciceToRotine.routineIndex === index &&
-                          addExerciceToRotine.active) ? (
-                          <FiSave
-                            onClick={() =>
-                              editRoutine.active
-                                ? handleEditRoutine()
-                                : handleAddExerciceInRoutine(routine.id)
-                            }
-                          />
-                        ) : (
-                          <>
-                            <FiEdit3
+                            <ArrowDropUpIcon
                               onClick={() =>
-                                setEditRoutine({
-                                  routineIndex: index,
-                                  active: true,
-                                })
+                                setShowRoutine(state =>
+                                  state.filter(s => s !== index + 1),
+                                )
                               }
                             />
-                            <RiDeleteBin2Line
-                              onClick={() => deleteRoutine(routine.id)}
+                          )}
+                        {(editRoutine.routineIndex === index &&
+                          editRoutine.active) ||
+                          (addExerciceToRotine.routineIndex === index &&
+                            addExerciceToRotine.active) ? (
+                            <FiSave
+                              onClick={() =>
+                                editRoutine.active
+                                  ? handleEditRoutine()
+                                  : handleAddExerciceInRoutine(routine.id)
+                              }
                             />
-                          </>
-                        )}
+                          ) : (
+                            <>
+                              <FiEdit3
+                                onClick={() =>
+                                  setEditRoutine({
+                                    routineIndex: index,
+                                    active: true,
+                                  })
+                                }
+                              />
+                              <RiDeleteBin2Line
+                                onClick={() => deleteRoutine(routine.id)}
+                              />
+                            </>
+                          )}
                       </span>
                     </div>
 
@@ -591,7 +590,7 @@ const TrainingInfo: React.FC = () => {
                                           onChange={(e, exercice) => {
                                             setNewExerciceInRoutine({
                                               id: exercice.id,
-                                              name:exercice.name,
+                                              name: exercice.name,
                                               volume:
                                                 newExerciceInRoutine.volume,
                                               sequence:
@@ -687,7 +686,7 @@ const TrainingInfo: React.FC = () => {
                                                       onClick={() => {
                                                         setFlipped(state => [
                                                           ...state,
-                                                          index + 1 ,
+                                                          index + 1,
                                                         ]);
                                                         setFlippedExercice({
                                                           name: exerciceName(
@@ -712,63 +711,63 @@ const TrainingInfo: React.FC = () => {
                                               </TableCell>
                                               {editRoutine.routineIndex ===
                                                 index && editRoutine.active ? (
-                                                <>
-                                                  <TableCell>
-                                                    <input
-                                                      onChange={e => {
-                                                        editRoutineExercice(
-                                                          e,
-                                                          routine.id,
-                                                          exercice.id,
-                                                          'sequence',
-                                                        );
-                                                      }}
-                                                      value={exercice.sequence}
-                                                    />
-                                                  </TableCell>
-                                                  <TableCell>
-                                                    <input
-                                                      onChange={e => {
-                                                        editRoutineExercice(
-                                                          e,
-                                                          routine.id,
-                                                          exercice.id,
-                                                          'repetitions',
-                                                        );
-                                                      }}
-                                                      value={
-                                                        exercice.repetitions
-                                                      }
-                                                    />
-                                                  </TableCell>
-                                                  <TableCell>
-                                                    <input
-                                                      onChange={e => {
-                                                        editRoutineExercice(
-                                                          e,
-                                                          routine.id,
-                                                          exercice.id,
-                                                          'volume',
-                                                        );
-                                                      }}
-                                                      value={exercice.volume}
-                                                    />{' '}
+                                                  <>
+                                                    <TableCell>
+                                                      <input
+                                                        onChange={e => {
+                                                          editRoutineExercice(
+                                                            e,
+                                                            routine.id,
+                                                            exercice.id,
+                                                            'sequence',
+                                                          );
+                                                        }}
+                                                        value={exercice.sequence}
+                                                      />
+                                                    </TableCell>
+                                                    <TableCell>
+                                                      <input
+                                                        onChange={e => {
+                                                          editRoutineExercice(
+                                                            e,
+                                                            routine.id,
+                                                            exercice.id,
+                                                            'repetitions',
+                                                          );
+                                                        }}
+                                                        value={
+                                                          exercice.repetitions
+                                                        }
+                                                      />
+                                                    </TableCell>
+                                                    <TableCell>
+                                                      <input
+                                                        onChange={e => {
+                                                          editRoutineExercice(
+                                                            e,
+                                                            routine.id,
+                                                            exercice.id,
+                                                            'volume',
+                                                          );
+                                                        }}
+                                                        value={exercice.volume}
+                                                      />{' '}
                                                     kg
                                                   </TableCell>
-                                                </>
-                                              ) : (
-                                                <>
-                                                  <TableCell>
-                                                    {exercice.sequence}
+                                                  </>
+                                                ) : (
+                                                  <>
+                                                    <TableCell>
+                                                      {exercice.sequence}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                      {exercice.repetitions}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                      {exercice.volume} kg
                                                   </TableCell>
-                                                  <TableCell>
-                                                    {exercice.repetitions}
-                                                  </TableCell>
-                                                  <TableCell>
-                                                    {exercice.volume} kg
-                                                  </TableCell>
-                                                </>
-                                              )}
+                                                  </>
+                                                )}
                                             </TableRow>
                                           )}
                                         </Draggable>
@@ -855,7 +854,7 @@ const TrainingInfo: React.FC = () => {
                       <Form
                         initialData={{ note: 'Executar após supino' }}
                         ref={formRef}
-                        onSubmit={() => {}}
+                        onSubmit={() => { }}
                       >
                         <Input
                           id="note"

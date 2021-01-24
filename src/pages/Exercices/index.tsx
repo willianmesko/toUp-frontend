@@ -40,7 +40,7 @@ const Exercices = () => {
           exercices.map((exercice, index) => {
             return <ExerciceCard>
               <div className="thumbnail">
-                <img src='https://img.youtube.com/vi/edTQcwjf5lk/hqdefault.jpg' />
+                <img alt="exerciced" src='https://img.youtube.com/vi/edTQcwjf5lk/hqdefault.jpg' />
               </div>
               <div className="exerciceInfo">
                 <div className="exerciceAbout">

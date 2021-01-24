@@ -8,7 +8,7 @@ import {
   Info,
   Description,
   Tags,
-  Filters,
+
 } from './styles';
 
 import api from '~/services/api';

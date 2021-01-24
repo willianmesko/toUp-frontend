@@ -19,7 +19,7 @@ import TrainerList from '~/pages/TrainerList';
 import Exercices from '~/pages/Exercices';
 import Me from '~/pages/Me';
 import UpgradePlan from '~/pages/UpgradePlan';
-import Workout from '~/pages/Workout';
+
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
