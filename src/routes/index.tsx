@@ -20,6 +20,7 @@ const Exercices = lazy(() => import('~/pages/Exercices'));
 const Me = lazy(() => import('~/pages/Me'));
 const UpgradePlan = lazy(() => import('~/pages/UpgradePlan'));
 
+
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />

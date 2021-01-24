@@ -8,17 +8,18 @@ import Routes from '~/routes';
 import GlobalStyle from '~/styles/global';
 
 const App = () => (
+  <Suspense fallback={<LazyLoading />}>
+    <BrowserRouter >
+      <LastLocationProvider>
+        <AppProvider>
 
-  <BrowserRouter >
-    <LastLocationProvider>
-      <AppProvider>
-        <Suspense fallback={<LazyLoading />}>
           <Routes />
-        </Suspense>
-      </AppProvider>
-      <GlobalStyle />
-    </LastLocationProvider>
-  </BrowserRouter>
+
+        </AppProvider>
+        <GlobalStyle />
+      </LastLocationProvider>
+    </BrowserRouter>
+  </Suspense>
 
 );
 

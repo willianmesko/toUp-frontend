@@ -1,14 +1,14 @@
 import React from 'react';
-
-import { Container } from './styles';
+import logoImg from '~/assets/to-up2.png';
+import { AnimationContainer } from './styles';
 
 
 
 const LazyLoading: React.FC = () => {
     return (
-        <Container>
-            <h1>LOADING..</h1>
-        </Container>
+        <AnimationContainer>
+            <img src={logoImg} alt="To Up" />
+        </AnimationContainer>
     );
 };
 
