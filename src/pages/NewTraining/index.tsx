@@ -93,58 +93,61 @@ const NewTraining: React.FC = () => {
   );
 
   return (
-    <Container>
+    <>
       {loading && <LazyLoading />}
-      <Content>
-        <TrainingArea>
-          <h1>Cadastre um novo treino</h1>
+      <Container>
 
-          <Form ref={formRef} onSubmit={handleSubmit}>
-            <div>
-              <div id="title">
-                <Input name="title" icon={MdTitle} placeholder="Titulo" />
+        <Content>
+          <TrainingArea>
+            <h1>Cadastre um novo treino</h1>
+
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <div>
+                <div id="title">
+                  <Input name="title" icon={MdTitle} placeholder="Titulo" />
+                </div>
+                <div id="cycle">
+                  <Select
+                    label="Modelo"
+                    icon={GiCycle}
+                    options={[
+                      { key: 'Nenhum', value: 0 },
+                      { key: 'A B', value: 2 },
+                      { key: 'A B C', value: 3 },
+                      { key: 'A B C D', value: 4 },
+                      { key: 'A B C D E', value: 5 },
+                      { key: 'A B C D E F', value: 6 },
+                      { key: 'A B C D E F G', value: 7 },
+                    ]}
+                    name="cycle"
+                  />
+                </div>
+                <div id="objective">
+                  <Select
+                    label="Objetivo"
+                    icon={GiStairsGoal}
+                    options={[
+                      { key: 'Hipertrofia', value: 1 },
+                      { key: 'Emagrecimento', value: 2 },
+                      { key: 'Resistencia', value: 3 },
+                    ]}
+                    name="objective"
+                  />
+                </div>
+                <div id="description">
+                  <Input
+                    name="description"
+                    icon={MdDescription}
+                    placeholder="Descrição"
+                  />
+                </div>
               </div>
-              <div id="cycle">
-                <Select
-                  label="Modelo"
-                  icon={GiCycle}
-                  options={[
-                    { key: 'Nenhum', value: 0 },
-                    { key: 'A B', value: 2 },
-                    { key: 'A B C', value: 3 },
-                    { key: 'A B C D', value: 4 },
-                    { key: 'A B C D E', value: 5 },
-                    { key: 'A B C D E F', value: 6 },
-                    { key: 'A B C D E F G', value: 7 },
-                  ]}
-                  name="cycle"
-                />
-              </div>
-              <div id="objective">
-                <Select
-                  label="Objetivo"
-                  icon={GiStairsGoal}
-                  options={[
-                    { key: 'Hipertrofia', value: 1 },
-                    { key: 'Emagrecimento', value: 2 },
-                    { key: 'Resistencia', value: 3 },
-                  ]}
-                  name="objective"
-                />
-              </div>
-              <div id="description">
-                <Input
-                  name="description"
-                  icon={MdDescription}
-                  placeholder="Descrição"
-                />
-              </div>
-            </div>
-            <Button type="submit">Cadastrar</Button>
-          </Form>
-        </TrainingArea>
-      </Content>
-    </Container>
+              <Button type="submit">Cadastrar</Button>
+            </Form>
+          </TrainingArea>
+        </Content>
+      </Container>
+    </>
   );
 };
 

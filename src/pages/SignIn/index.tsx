@@ -74,42 +74,45 @@ const SignIn: React.FC = () => {
   );
 
   return (
-    <Container>
-      {loading && <LazyLoading />}
-      <Content>
-        <AnimationContainer>
-          <img src={logoImg} alt="To Up" />
+    <>
+      { loading && <LazyLoading />}
+      <Container>
 
-          <Form ref={formRef} onSubmit={handleSubmit}>
-            <h2>Entre em sua conta</h2>
+        <Content>
+          <AnimationContainer>
+            <img src={logoImg} alt="To Up" />
 
-            <Input
-              name="email"
-              type="email"
-              placeholder="E-mail"
-              icon={FiMail}
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="Senha"
-              icon={FiLock}
-            />
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <h2>Entre em sua conta</h2>
 
-            <Button type="submit">Entrar</Button>
+              <Input
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                icon={FiMail}
+              />
+              <Input
+                name="password"
+                type="password"
+                placeholder="Senha"
+                icon={FiLock}
+              />
 
-            <a href="forgot">Esqueci minha senha</a>
-          </Form>
+              <Button type="submit">Entrar</Button>
 
-          <Link to="signup">
-            <FiLogIn />
+              <a href="forgot">Esqueci minha senha</a>
+            </Form>
+
+            <Link to="signup">
+              <FiLogIn />
             Não tem uma conta? Registre-se
           </Link>
-        </AnimationContainer>
-      </Content>
-      {/* <Background /> */}
-    </Container>
+          </AnimationContainer>
+        </Content>
+        {/* <Background /> */}
+      </Container>
   );
+    </>
 };
 
 export default SignIn;

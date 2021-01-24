@@ -162,108 +162,111 @@ const NewAthlete: React.FC = () => {
   );
 
   return (
-    <Container>
+    <>
       {loading && <LazyLoading />}
-      <Content>
-        <div>
-          <h1>Cadastre um novo aluno</h1>
+      <Container>
 
-          <Form ref={formRef} onSubmit={handleSubmit}>
-            <div>
-              <Input name="name" icon={FiUser} placeholder="Nome" />
-              <Input name="surname" icon={FiUser} placeholder="Sobrenome" />
-              <Input name="email" icon={FiMail} placeholder="Email" />
-              <Select
-                icon={GiRun}
-                label="Etnia"
-                options={[
-                  { key: 'Branca', value: 0 },
-                  { key: 'Preta', value: 1.1 },
-                  { key: 'Asiática', value: 2 },
-                ]}
-                name="ethnicity"
-              />
-              <Input
-                name="body_mass"
-                icon={GiWeight}
-                type="number"
-                placeholder="Peso em kg"
-              />
-              <Input
-                name="stature"
-                icon={GiBodyHeight}
-                type="number"
-                placeholder="Altura em cm"
-              />
-              <InputMask maskPlaceholder="Data de nascimento" mask="99/99/9999">
-                {inputProps => (
-                  <Input
-                    name="date_of_birth"
-                    icon={FaBirthdayCake}
-                    placeholder="Data de nascimento"
-                  />
-                )}
-              </InputMask>
+        <Content>
+          <div>
+            <h1>Cadastre um novo aluno</h1>
 
-              <Select
-                icon={GiRun}
-                label="Perfil Aeróbico"
-                options={[
-                  { key: 'Destreinado', value: 1 },
-                  { key: 'Treinado', value: 2 },
-                  { key: 'Atleta', value: 3 },
-                  { key: 'Obeso', value: 4 },
-                  { key: 'Cardiopata', value: 5 },
-                  { key: 'Hipertenso', value: 6 },
-                  { key: 'Diabético', value: 7 },
-                ]}
-                name="aerobic_profile"
-              />
-              <Select
-                label="Nível Musculação"
-                icon={GiWeightLiftingUp}
-                options={[
-                  { key: 'Iniciante', value: 1 },
-                  { key: 'Intermediário', value: 2 },
-                  { key: 'Avançado', value: 3 },
-                ]}
-                name="training_level"
-              />
-              <Select
-                icon={GiWeightLiftingDown}
-                label="Atividade Fisica"
-                options={[
-                  { key: 'Inativo Fisicamente', value: 1 },
-                  { key: 'Moderatamente', value: 2 },
-                  { key: 'Ativo Fisicamente', value: 3 },
-                ]}
-                name="physical_activity"
-              />
-              <Select
-                label="Objetivo"
-                icon={GiStairsGoal}
-                options={[
-                  { key: 'Emagrecimento', value: 1 },
-                  { key: 'Hipertrofia', value: 2 },
-                ]}
-                name="objective"
-              />
-              <Select
-                label="Sexo"
-                icon={GiStairsGoal}
-                options={[
-                  { key: 'Masculino', value: 0 },
-                  { key: 'Feminino', value: 1 },
-                ]}
-                name="sexo"
-              />
-            </div>
-            <Button type="submit">Cadastrar</Button>
-          </Form>
-        </div>
-      </Content>
-    </Container>
+            <Form ref={formRef} onSubmit={handleSubmit}>
+              <div>
+                <Input name="name" icon={FiUser} placeholder="Nome" />
+                <Input name="surname" icon={FiUser} placeholder="Sobrenome" />
+                <Input name="email" icon={FiMail} placeholder="Email" />
+                <Select
+                  icon={GiRun}
+                  label="Etnia"
+                  options={[
+                    { key: 'Branca', value: 0 },
+                    { key: 'Preta', value: 1.1 },
+                    { key: 'Asiática', value: 2 },
+                  ]}
+                  name="ethnicity"
+                />
+                <Input
+                  name="body_mass"
+                  icon={GiWeight}
+                  type="number"
+                  placeholder="Peso em kg"
+                />
+                <Input
+                  name="stature"
+                  icon={GiBodyHeight}
+                  type="number"
+                  placeholder="Altura em cm"
+                />
+                <InputMask maskPlaceholder="Data de nascimento" mask="99/99/9999">
+                  {inputProps => (
+                    <Input
+                      name="date_of_birth"
+                      icon={FaBirthdayCake}
+                      placeholder="Data de nascimento"
+                    />
+                  )}
+                </InputMask>
+
+                <Select
+                  icon={GiRun}
+                  label="Perfil Aeróbico"
+                  options={[
+                    { key: 'Destreinado', value: 1 },
+                    { key: 'Treinado', value: 2 },
+                    { key: 'Atleta', value: 3 },
+                    { key: 'Obeso', value: 4 },
+                    { key: 'Cardiopata', value: 5 },
+                    { key: 'Hipertenso', value: 6 },
+                    { key: 'Diabético', value: 7 },
+                  ]}
+                  name="aerobic_profile"
+                />
+                <Select
+                  label="Nível Musculação"
+                  icon={GiWeightLiftingUp}
+                  options={[
+                    { key: 'Iniciante', value: 1 },
+                    { key: 'Intermediário', value: 2 },
+                    { key: 'Avançado', value: 3 },
+                  ]}
+                  name="training_level"
+                />
+                <Select
+                  icon={GiWeightLiftingDown}
+                  label="Atividade Fisica"
+                  options={[
+                    { key: 'Inativo Fisicamente', value: 1 },
+                    { key: 'Moderatamente', value: 2 },
+                    { key: 'Ativo Fisicamente', value: 3 },
+                  ]}
+                  name="physical_activity"
+                />
+                <Select
+                  label="Objetivo"
+                  icon={GiStairsGoal}
+                  options={[
+                    { key: 'Emagrecimento', value: 1 },
+                    { key: 'Hipertrofia', value: 2 },
+                  ]}
+                  name="objective"
+                />
+                <Select
+                  label="Sexo"
+                  icon={GiStairsGoal}
+                  options={[
+                    { key: 'Masculino', value: 0 },
+                    { key: 'Feminino', value: 1 },
+                  ]}
+                  name="sexo"
+                />
+              </div>
+              <Button type="submit">Cadastrar</Button>
+            </Form>
+          </div>
+        </Content>
+      </Container>
   );
+    </>
 };
 
 export default NewAthlete;
