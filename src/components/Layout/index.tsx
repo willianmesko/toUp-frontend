@@ -7,7 +7,6 @@ import { GiStrong } from 'react-icons/gi';
 import { FaRuler } from 'react-icons/fa';
 import Header from '~/components/Header';
 import {
-  TopArea,
   Content,
   MenuLateral,
   SideMenu,
@@ -137,16 +136,7 @@ export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
           margin={sideMenu ? '100px' : 'auto'}
           flexDirection={sideBar ? 'row' : 'column'}
         >
-          {topBar && (
-            <>
-              <TopArea>
-                <h1>
-                  {location.pathname === '/training' ? 'Treinos' : 'Alunos'}
-                </h1>
-                <hr />
-              </TopArea>
-            </>
-          )}
+
 
           {sideBar && <MenuLateral>{renderComponentInfo()}</MenuLateral>}
           {children}

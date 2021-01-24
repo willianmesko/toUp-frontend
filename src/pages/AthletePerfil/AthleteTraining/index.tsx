@@ -10,6 +10,7 @@ import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import api from '~/services/api';
 import { useTraining } from '~/hooks/TrainingContext';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import noWorkout from '~/assets/notfound.png';
 
 interface RoutineExerciceInterface {
   exercice_id: string;
@@ -192,6 +193,7 @@ const AthleteTraining: React.FC = () => {
               newRoutine={setRoutine}
               newRoutines={setRoutines}
             />
+            <img src={noWorkout} alt="no-workout" />
           </div>
         )}
       {routine && routine.routineExercice &&

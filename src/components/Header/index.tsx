@@ -47,7 +47,7 @@ const Header = () => {
           </Link>
         </nav>
         {(location.pathname === '/perfil-athlete' ||
-          location.pathname === '/training-info' || location.pathname === '/me' ) && (
+          location.pathname === '/training-info' || location.pathname === '/me') && (
             <Menu>
               <LoadingBar
                 progress={loadingBar}
@@ -90,11 +90,11 @@ const Header = () => {
           )}
 
         <aside>
-        <Link to="/upgrade-plan">
-          <Upgrade>
-            <p>Fazer Upgrade</p>
-          </Upgrade>
-        </Link>
+          <Link to="/upgrade-plan">
+            <Upgrade>
+              <p>Fazer Upgrade</p>
+            </Upgrade>
+          </Link>
           <Notification />
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle
