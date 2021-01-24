@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTraining } from '~/hooks/TrainingContext';
-import { Container, RoutinesArea, Routine } from './styles';
+import { Container, RoutinesArea, Routine, View } from './styles';
 import ModalContainer from '~/components/ModalContainer';
 import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
