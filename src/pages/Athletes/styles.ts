@@ -4,6 +4,7 @@ import backgroundCard from '~/assets/MountainsOpacity.a4edba24.png';
 
 export const Container = styled.div`
   border-radius: 10px;
+  width: 1200px;
 `;
 
 export const NoAthlete = styled.div`
@@ -34,14 +35,14 @@ export const AthleteField = styled.div`
   display: flex;
   margin-left: 30px;
   margin-top: 15px;
-  align-content: flex-end;
 
-  justify-content: space-around;
+ 
   input {
     padding: 12px;
     height: 50px;
     border-radius: 50px;
-    width: 80%;
+    width: 250px;
+    align-self: flex-end;
     border: none;
 
     &:focus {
@@ -61,13 +62,124 @@ export const AthleteField = styled.div`
       background: rgba(106, 161, 169, 0.29);
     }
   }
+  
 `;
 
 export const AthleteCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    padding: 20px;
+    opacity: 0.8;
+    background: linear-gradient(
+      to bottom,
+      rgba(42, 159, 255, 0.2) 0%,
+      rgb(248, 248, 255) 30%,
+      rgba(255, 255, 255, 1) 60%
+    ) !important;
+  
+    -webkit-box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84); 
+    box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84);
+    border-radius: 5px;
+    height: 375px;
+    width: 270px;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      opacity: 1;
+    }
+
+`;
+
+export const Tab = styled.ul`
+display: flex;
+h2 {
+font-size: 24px;
+font-weight: bold;
+margin: 15px;
+}
+
+li {
+  cursor: pointer;
+}
+.active {
+  color: rgb(42, 159, 255);
+}
+
+ 
+input {
+    padding: 12px;
+    height: 50px;
+    border-radius: 50px;
+    width: 300px;
+    align-self: flex-end;
+    border: none;
+    margin-right: 30px;
+    &:focus {
+      border: 2px solid rgb(42, 159, 255);
+      transition: all ease 0.25s;
+    }
+  }
+`;
+
+export const About = styled.ul`
+margin-top: 0px;
+width: 100%;
+text-align: center;
+li {
+  margin-bottom: 3px;
+}
+
+
+`
+export const Tabs = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+
+export const Avatar = styled.div`
+
+
+
+
+.defaultImage {
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: #f8f8f8;
+  text-align: center;
+  line-height: 135px;
+  font-size:65px;
+  font-weight: 650;
+  color: rgb(135, 134, 139);
+
+}
+img {
+  border-radius: 50%;
+}
+
+h3 {
+  margin-top: 30px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+`
+
+export const Content = styled.div`
   display: grid;
-  grid-gap: 20px;
-  justify-content: center;
-  align-items: center;
+  margin-top: 20px;
+  grid-template-columns: repeat(4, 2fr);
+  grid-gap: 30px;
 
   p {
     color: #000;

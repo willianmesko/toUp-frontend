@@ -66,9 +66,8 @@ export const TrainingCard = styled.div`
       rgb(248, 248, 255) 60%,
       rgba(255, 255, 255, 1) 100%
     ) !important;
-    -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    - -webkit-box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84); 
+box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84);
     display: grid;
     grid-template-columns: 40% auto;
     color: #000;

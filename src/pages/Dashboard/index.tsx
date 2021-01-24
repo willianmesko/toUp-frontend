@@ -35,7 +35,7 @@ const Dashboard: React.FC = () => {
 
             <div className="card-content-labels">
               <GiWeightLiftingUp size={150} color="#87868B" />
-              <h1>Alunos</h1>
+
             </div>
             {/* <div className="card-label">Alunos</div> */}
             <div className="card-title">Gerencie todos seus alunos aqui</div>

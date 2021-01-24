@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import LoadingBar from 'react-top-loading-bar';
-import { GrAddCircle } from 'react-icons/gr';
 import {
   Container,
-  AthleteField,
+  Content,
   AthleteCard,
   LoadingMore,
-  NoAthlete,
+  Avatar,
+  Tabs,
+  Tab,
+  About
 } from './styles';
 import api from '~/services/api';
+import Button from '~/components/Button';
 import { useAthlete } from '~/hooks/AthleteContext';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
@@ -29,28 +32,28 @@ interface Athlete {
   objectiveLabel: string;
   avatar_url?: string;
 }
-enum objective {
-  'None',
-  'Emagrecimento',
-  'Hipertrofia',
-}
+
 
 const Athletes: React.FC = () => {
   const [athletes, setAthletes] = useState<Athlete[]>([]);
   const [copyAthletes, setCopyAthletes] = useState<Athlete[]>([]);
   const { setAthlete } = useAthlete();
   const [loadingBar, setLoadingBar] = useState<number>(0);
-  const [visible, setVisible] = useState<number>(3);
+  const [visible, setVisible] = useState<number>(8);
   const [, setFilter] = useState('');
   const history = useHistory();
   const [skeleton, setSkeleton] = useState(false);
+
+  const [tabs, setTabs] = useState({
+    myAthletes: true,
+    network: false
+  })
 
   useEffect(() => {
     async function getAthletes(): Promise<void> {
       setSkeleton(true);
       const { data } = await api.get('/athletes');
       setCopyAthletes(data);
-
       setAthletes(data);
       setSkeleton(false);
 
@@ -82,105 +85,100 @@ const Athletes: React.FC = () => {
           color="#93ccea"
           onLoaderFinished={() => setLoadingBar(0)}
         />
-        <AthleteField>
-          {athletes.length > 0 && (
-            <input
-              onChange={e => filterAthlete(e.target.value)}
-              placeholder="Pesquisar"
-            />
-          )}
 
-          <span>
-            <GrAddCircle
-              onClick={() => {
-                setLoadingBar(100);
-                setTimeout(() => history.push('new-athlete'), 180);
-              }}
-              size={40}
-              color="#87868B"
-            />
-          </span>
-        </AthleteField>
-        <AthleteCard>
-          {athletes
-            .slice(0, visible)
+        <Tabs>
+          <Tab>
+            <li onClick={() => setTabs({
+              myAthletes: true,
+              network: false
+            })} className={tabs.myAthletes ? 'active' : 'default'}><h2>Meus Alunos</h2></li>
+            <li onClick={() => setTabs({
+              myAthletes: false,
+              network: true
+            })} className={tabs.network ? 'active' : 'default'} ><h2>Rede de alunos</h2></li>
+          </Tab>
 
-            .map(athlete => {
-              return (
-                <div>
-                  <div
-                    aria-hidden="true"
-                    className="card-profile-athlete"
-                    onClick={() => {
-                      setAthlete(athlete);
-                      history.push('/perfil-athlete');
-                    }}
-                  >
-                    <div className="card-avatar">
-                      {athlete.avatar_url ? (
-                        <img src={athlete.avatar_url} alt={athlete.name} />
-                      ) : (
-                          <div>
-                            <p>{athlete.name.charAt(0)}</p>
-                          </div>
-                        )}
-                    </div>
-                    <div className="card-details">
-                      <div className="name">
-                        <div>{athlete.name}</div>
+          <Tab>
+            {athletes.length > 0 && (
+              <input
+                onChange={e => filterAthlete(e.target.value)}
+                placeholder="Pesquisar"
+              />)}
+            <span onClick={() => {
+              setLoadingBar(100);
+              setTimeout(() => history.push('new-athlete'), 180);
+            }}>
+              <Button width="150px" height="40px">
+                Novo aluno
+              </Button>
+            </span>
 
-                      </div>
-                      <div className="occupation">
-                        <p>{objective[athlete.objective]}</p>
-                      </div>
+          </Tab>
+        </Tabs>
+        <Content>
+          {tabs.myAthletes ? athletes && athletes.map(athlete => {
+            return (
+              <AthleteCard key={athlete.id} onClick={() => {
+                setAthlete(athlete);
+                history.push('/perfil-athlete');
+              }} >
+                <Avatar >
+                  <div className="defaultImage"> {athlete.name.charAt(0).toUpperCase()} </div>
+                  <h3>{athlete.name}</h3>
+                </Avatar >
 
-                      <div className="card-about">
-                        <div className="item">
-                          <span className="value">
-                            <p>{athlete.age} anos</p>
-                          </span>
-                          <span className="label">
-                            <p>Idade</p>
-                          </span>
-                        </div>
-                        <div className="item">
-                          <span className="value">
-                            <p>{athlete.body_mass} kg </p>
-                          </span>
-                          <span className="label">
-                            <p>Peso</p>
-                          </span>
-                        </div>
-                        <div className="item">
-                          <span className="value">
-                            <p>{athlete.stature} cm</p>
-                          </span>
-                          <span className="label">
-                            <p>Altura</p>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-        </AthleteCard>
+                <About>
+                  <li><b>Idade:</b> {athlete.age} anos</li>
+                  <li><b>Peso:</b> {athlete.body_mass} kg</li>
+                  <li><b>Altura:</b> {athlete.stature} cm</li>
+                </About>
+              </AthleteCard>
+            )
+          }) : <AthleteCard >
+              <Avatar >
+                <div className="defaultImage"> A </div>
+                <h3>Greg</h3>
+              </Avatar >
+
+              <About>
+                <li><b>Idade:</b> 26 anos</li>
+                <li><b>Peso:</b> 150 kg</li>
+                <li><b>Altura:</b> 160cm cm</li>
+
+                <Button height='45px' width='70%'>
+                  Contatar
+              </Button>
+              </About>
+
+
+            </AthleteCard>}
+
+
+        </Content>
         {skeleton && (
-          <NoAthlete>
+          <Content>
 
             <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-              <Skeleton width={700} height={200} duration={2} />
+              <Skeleton width="270px" height="375px" duration={2} />
             </SkeletonTheme>
             <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-              <Skeleton width={700} height={200} duration={2} />
+              <Skeleton width="270px" height="375px" duration={2} />
             </SkeletonTheme>
             <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
-              <Skeleton width={700} height={200} duration={2} />
+              <Skeleton width="270px" height="375px" duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width="270px" height="375px" duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width="270px" height="375px" duration={2} />
+            </SkeletonTheme>
+            <SkeletonTheme color="#D3D3D3" highlightColor="#C0C0C0">
+              <Skeleton width="270px" height="375px" duration={2} />
             </SkeletonTheme>
 
 
-          </NoAthlete>
+          </Content>
         )}
         {athletes.length > visible && (
           <LoadingMore>

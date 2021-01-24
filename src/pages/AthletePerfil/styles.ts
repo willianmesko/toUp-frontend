@@ -142,6 +142,12 @@ export const Content = styled.div`
     h3 {
       cursor: pointer;
     }
+
+    img {
+      margin-top: -50px;
+      width: 800px;
+      height: 400px;
+    }
   }
 `;
 
