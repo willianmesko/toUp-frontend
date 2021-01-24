@@ -111,8 +111,9 @@ const SignIn: React.FC = () => {
         </Content>
         {/* <Background /> */}
       </Container>
-  );
     </>
+  );
+
 };
 
 export default SignIn;

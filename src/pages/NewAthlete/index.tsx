@@ -265,8 +265,9 @@ const NewAthlete: React.FC = () => {
           </div>
         </Content>
       </Container>
-  );
     </>
+  );
+
 };
 
 export default NewAthlete;
