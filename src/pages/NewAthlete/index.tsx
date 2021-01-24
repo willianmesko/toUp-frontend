@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import moment from 'moment';
 import { FiMail, FiUser } from 'react-icons/fi';
 import {
@@ -19,7 +19,7 @@ import { useToast } from '~/hooks/ToastContext';
 import 'react-datepicker/dist/react-datepicker.css';
 import api from '~/services/api';
 import getValidationErrors from '~/utils/getValidationErrors';
-
+import LazyLoading from '~/components/LazyLoading';
 import Input from '~/components/Inputs/Text';
 import Select from '~/components/Inputs/Select';
 
@@ -47,6 +47,7 @@ interface NewAthleteFormData {
 const NewAthlete: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
   const { setAthlete } = useAthlete();
 
   const { addToast } = useToast();
@@ -72,7 +73,7 @@ const NewAthlete: React.FC = () => {
           'YYYY-MM-DD[T]HH:mm:ss',
         );
         const start = moment(dateFormated).format('YYYY-MM-DD');
-
+        setLoading(true);
         const age: number = Math.trunc(
           moment.duration(moment(new Date()).diff(start)).asYears(),
         );
@@ -130,6 +131,7 @@ const NewAthlete: React.FC = () => {
           aerobic_profile,
           training_level,
         });
+        setLoading(false)
 
         addToast({
           type: 'success',
@@ -140,7 +142,7 @@ const NewAthlete: React.FC = () => {
         setAthlete(response.data);
         setTimeout(() => history.push('/perfil-athlete'), 1000);
       } catch (err) {
-        console.log(err)
+
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -161,6 +163,7 @@ const NewAthlete: React.FC = () => {
 
   return (
     <Container>
+      {loading && <LazyLoading />}
       <Content>
         <div>
           <h1>Cadastre um novo aluno</h1>

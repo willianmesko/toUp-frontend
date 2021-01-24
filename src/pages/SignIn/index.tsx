@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -16,6 +16,7 @@ import Button from '~/components/Button';
 import logoImg from '~/assets/to-up2.png';
 
 import { Container, Content, AnimationContainer } from './styles';
+import LazyLoading from '~/components/LazyLoading';
 
 interface SignInFormData {
   email: string;
@@ -28,6 +29,7 @@ const SignIn: React.FC = () => {
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -72,6 +74,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
+      {loading && <LazyLoading />}
       <Content>
         <AnimationContainer>
           <img src={logoImg} alt="To Up" />

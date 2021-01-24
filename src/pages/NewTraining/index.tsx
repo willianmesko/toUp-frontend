@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 import { MdTitle, MdDescription } from 'react-icons/md';
 import { GiStairsGoal, GiCycle } from 'react-icons/gi';
@@ -14,7 +14,7 @@ import getValidationErrors from '~/utils/getValidationErrors';
 import { useTraining } from '~/hooks/TrainingContext';
 import Input from '~/components/Inputs/Text';
 import Select from '~/components/Inputs/Select';
-
+import LazyLoading from '~/components/LazyLoading';
 import Button from '~/components/Button';
 
 import { Container, Content, TrainingArea } from './styles';
@@ -31,12 +31,13 @@ const NewTraining: React.FC = () => {
   const history = useHistory();
   const { addToast } = useToast();
   const { setTraining } = useTraining();
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(
     async ({ title, description, cycle, objective }: NewTrainingFormData) => {
       try {
         formRef.current?.setErrors({});
-
+        setLoading(true)
         const schema = Yup.object().shape({
           title: Yup.string().required('Campo obrigatório'),
           description: Yup.string(),
@@ -62,7 +63,7 @@ const NewTraining: React.FC = () => {
           cycle,
           objective,
         });
-
+        setLoading(false)
         setTraining(response.data);
         setTimeout(() => history.push(`/training-info/${response.data.id}`),
           1000,
@@ -93,6 +94,7 @@ const NewTraining: React.FC = () => {
 
   return (
     <Container>
+      {loading && <LazyLoading />}
       <Content>
         <TrainingArea>
           <h1>Cadastre um novo treino</h1>
