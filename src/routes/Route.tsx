@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import {
   RouteProps as ReactDOMRouteProps,
   Route as ReactDOMRoute,
@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { Layout } from '~/components/Layout';
 import { useAuth } from '~/hooks/AuthContext';
-import LazyLoading from '~/components/LazyLoading';
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
   component: React.ComponentType;
