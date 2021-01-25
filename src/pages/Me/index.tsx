@@ -81,7 +81,7 @@ const Me: React.FC = () => {
   };
   const handleEditProfile = useCallback(
     async (data: EditProfileData) => {
-      const {  city, state, country } = data;
+      const { city, state, country } = data;
 
       await api.put('/users/adress', {
         city,
@@ -120,12 +120,12 @@ const Me: React.FC = () => {
       <Container>
         <RightBox>
           <Avatar>
-            <img
-              loading="lazy"
-              src="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/136055153_3844327295618506_1204292927982679153_o.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=2Zrm17vwFiEAX_y4fmK&_nc_oc=AQkpNsTGhT1ZlQx-KW6ZWvjesRMlQoy-4KnXPb2GI0l98Jcv_7UjlseNkY_asRM-Q34&_nc_ht=scontent.faly3-1.fna&oh=37be2f86b005a82f15994cc236f334f8&oe=6022AD14"
-              alt="profile"
-            />
 
+            <img src="https://scontent.faly3-1.fna.fbcdn.net/v/t1.0-9/136055153_3844327295618506_1204292927982679153_o.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=2Zrm17vwFiEAX_y4fmK&_nc_oc=AQkpNsTGhT1ZlQx-KW6ZWvjesRMlQoy-4KnXPb2GI0l98Jcv_7UjlseNkY_asRM-Q34&_nc_ht=scontent.faly3-1.fna&oh=37be2f86b005a82f15994cc236f334f8&oe=6022AD14" alt="" />
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="svgloading"
+            >
+              <circle cx="50" cy="50" r="40" />
+            </svg>
             <label htmlFor="avatar">
               <FiCamera />
               <input type="file" id="avatar" onChange={handleChangeAvatar} />
@@ -144,47 +144,47 @@ const Me: React.FC = () => {
                     {user.address?.country}
                   </h6>
                 ) : (
-                  <h6>Cidade, Estado, Pais</h6>
-                )}
+                    <h6>Cidade, Estado, Pais</h6>
+                  )}
 
                 <p onClick={() => setEnableEditPerfil(true)}>Editar</p>
               </div>
             ) : (
-              <div className="editUser">
-                <Form ref={formRef} onSubmit={handleEditProfile}>
-                  <Input
-                    name="public_name"
-                    type="text"
-                    placeholder="Nome publico"
-                    icon={FaUser}
-                  />
-                  <Input
-                    name="city"
-                    type="text"
-                    placeholder="Cidade"
-                    icon={FaCity}
-                  />
-                  <Input
-                    name="state"
-                    type="text"
-                    placeholder="Estado"
-                    icon={FaMoneyBillAlt}
-                  />
-                  <Input
-                    name="country"
-                    type="text"
-                    placeholder="Pais"
-                    icon={GiWorld}
-                  />
-                  <div className="buttons">
-                    <Button onClick={() => setEnableEditPerfil(false)}>
-                      Cancelar
+                <div className="editUser">
+                  <Form ref={formRef} onSubmit={handleEditProfile}>
+                    <Input
+                      name="public_name"
+                      type="text"
+                      placeholder="Nome publico"
+                      icon={FaUser}
+                    />
+                    <Input
+                      name="city"
+                      type="text"
+                      placeholder="Cidade"
+                      icon={FaCity}
+                    />
+                    <Input
+                      name="state"
+                      type="text"
+                      placeholder="Estado"
+                      icon={FaMoneyBillAlt}
+                    />
+                    <Input
+                      name="country"
+                      type="text"
+                      placeholder="Pais"
+                      icon={GiWorld}
+                    />
+                    <div className="buttons">
+                      <Button onClick={() => setEnableEditPerfil(false)}>
+                        Cancelar
                     </Button>
-                    <Button type="submit">Salvar</Button>
-                  </div>
-                </Form>
-              </div>
-            )}
+                      <Button type="submit">Salvar</Button>
+                    </div>
+                  </Form>
+                </div>
+              )}
           </Info>
           <Form ref={formRef} onSubmit={handleEditExtraInformation}>
             <Input
@@ -209,15 +209,15 @@ const Me: React.FC = () => {
               {enableEditBio ? (
                 <AiFillSave size={20} onClick={() => handleUpdateBio()} />
               ) : (
-                <AiFillEdit size={20} onClick={() => setEnableEditBio(true)} />
-              )}
+                  <AiFillEdit size={20} onClick={() => setEnableEditBio(true)} />
+                )}
             </header>
             <Bio>
               {enableEditBio ? (
                 <textarea value={bio} onChange={e => setBio(e.target.value)} />
               ) : (
-                <p>{user.bio}</p>
-              )}
+                  <p>{user.bio}</p>
+                )}
             </Bio>
           </AboutMe>
           <Skills>

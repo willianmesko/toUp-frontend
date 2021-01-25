@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
@@ -191,20 +191,49 @@ export const RightBox = styled.div`
   }
 `;
 
+
+const loadingBorder = keyframes`
+from{
+   
+    stroke-dasharray: 5;
+    transform:rotate(0deg);
+   
+  }
+  to{
+  
+    transform:rotate(90deg);
+    stroke-dasharray: 1;
+  }
+
+  
+`;
+
 export const Avatar = styled.div`
   margin-top: -150px;
   align-self: center;
-  border: 6px solid #75a3bb;
-  border-radius: 50%;
-
-  position: relative;
-
-  img {
-    padding: 3px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+  width:250px;
+  height:250px;
+  cursor: pointer;
+  position:relative;
+  
+  svg{
+    fill:none;
+    stroke:#75a3bb;;
+    stroke-linecap: round;
+    stroke-width:3;
+    animation: ${loadingBorder} 3s ease-out forwards;
+    animation-timing-function: cubic-bezier(0.25,0.5,.75,1);  
+     
   }
+  img{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    width:190px;
+    border-radius:50%;
+  }
+
   label {
     position: absolute;
     width: 48px;
