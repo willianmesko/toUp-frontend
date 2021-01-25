@@ -98,6 +98,7 @@ const Header = () => {
           <Notification />
           <Dropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle
+
               tag="div"
               data-toggle="dropdown"
               aria-expanded={dropdownOpen}

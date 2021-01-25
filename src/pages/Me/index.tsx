@@ -115,7 +115,7 @@ const Me: React.FC = () => {
 
   return (
     <>
-      <Cover>a</Cover>
+      <Cover></Cover>
 
       <Container>
         <RightBox>

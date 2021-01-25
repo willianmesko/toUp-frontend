@@ -63,9 +63,21 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
   }
-  a {
-    text-decoration: none;
-  }
+  a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
   li {
     list-style: none;
   }

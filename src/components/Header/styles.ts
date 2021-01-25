@@ -11,6 +11,8 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+
+
 export const Content = styled.div`
   height: 80px;
   max-width: auto;
@@ -39,6 +41,27 @@ export const Content = styled.div`
     display: flex;
 
     align-items: center;
+
+    .dropdown-menu {
+      
+      transition: all 0.25s ease;
+     opacity: 0.8;
+
+      width: 250px;
+
+      .dropdown-item {
+        a {
+          color: #000 !important;
+          font-weight: bold;
+        }
+        
+        &:hover {
+       
+        opacity: 0.9;
+       }
+
+      }
+    }
   }
 `;
 

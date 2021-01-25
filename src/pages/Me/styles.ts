@@ -6,15 +6,16 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 0;
+  margin: 0 auto;
   width: 100%;
 `;
 
 export const Cover = styled.div`
-  min-height: 250px;
-
-  width: 1300px;
+  min-height: 280px;;
+  width: 100vw;
   background: #93ccea;
+  margin-top: -15px;
+
 `;
 
 export const Tags = styled.div`
@@ -29,6 +30,7 @@ export const Tag = styled.span`
   background: #93ccea;
   color: #fff;
   margin-left: 10px;
+  line-height: 30px;
   text-align: center;
 `;
 
@@ -211,8 +213,8 @@ from{
 export const Avatar = styled.div`
   margin-top: -150px;
   align-self: center;
-  width:250px;
-  height:250px;
+  width:280px;
+  height:280px;
   cursor: pointer;
   position:relative;
   
@@ -230,7 +232,7 @@ export const Avatar = styled.div`
     left:50%;
     top:50%;
     transform:translate(-50%, -50%);
-    width:190px;
+    width:210px;
     border-radius:50%;
   }
 

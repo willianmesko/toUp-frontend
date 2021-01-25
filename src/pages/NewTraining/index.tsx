@@ -74,6 +74,7 @@ const NewTraining: React.FC = () => {
           description: 'Aluno cadastrado com sucesso!',
         });
       } catch (err) {
+        setLoading(false)
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
