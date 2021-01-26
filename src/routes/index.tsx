@@ -26,30 +26,28 @@ const Routes: React.FC = () => (
     <Route path="/" exact component={SignIn} />
     <Route path="/signup" component={SignUp} />
     <Route path="/me" isPrivate component={Me} />
-    <Route path="/dashboard" sideMenu component={Dashboard} isPrivate />
+    <Route path="/dashboard" menu component={Dashboard} isPrivate />
     <Route path="/profile" component={Profile} isPrivate />
-    <Route path="/athletes" topBar sideMenu component={Athletes} isPrivate />
+    <Route path="/athletes" menu component={Athletes} isPrivate />
     <Route
       path="/training"
-      linksUtils
-      topBar
-      sideMenu
+      menu
       component={Training}
       isPrivate
     />
     <Route path="/new-athlete" component={NewAthlete} isPrivate />
-    <Route path="/perfil-athlete" sideBar component={AthletePerfil} isPrivate />
+    <Route path="/perfil-athlete" component={AthletePerfil} isPrivate />
     <Route path="/new-training" component={NewTraining} isPrivate />
     <Route path="/training-info" component={TrainingInfo} isPrivate />
-    <Route path="/workout" sideMenu component={AthleteTraining} isPrivate />
+    <Route path="/workout" menu component={AthleteTraining} isPrivate />
     <Route
       path="/evaluations"
-      sideMenu
+      menu
       component={AthleteEvaluation}
       isPrivate
     />
-    <Route path="/trainer" sideMenu component={TrainerList} isPrivate />
-    <Route path="/exercices" sideMenu component={Exercices} isPrivate />
+    <Route path="/trainer" menu component={TrainerList} isPrivate />
+    <Route path="/exercices" menu component={Exercices} isPrivate />
     <Route path="/upgrade-plan" component={UpgradePlan} isPrivate />
   </Switch>
 );

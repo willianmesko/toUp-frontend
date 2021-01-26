@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  margin: 0 250px;
 
   ul {
     cursor: pointer;
@@ -40,6 +40,125 @@ export const Container = styled.div`
     }
   }
 `;
+
+
+export const Buttons = styled.div`
+
+display: flex;
+align-self: flex-end;
+justify-content: flex-end;
+
+button {
+  margin-right:30px;
+}
+
+`
+
+export const MenuLateral = styled.aside`
+  height: 670px;
+  width: 390px;
+  background: linear-gradient(
+    to top,
+    rgba(42, 159, 255, 0.2) 10%,
+    rgb(248, 248, 255) 60%,
+    rgba(255, 255, 255, 1) 100%
+  ) !important;
+  color: #000;
+  border-radius: 0.75rem;
+
+  padding: 32px;
+  margin-right: 50px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    button {
+      padding: 10px !important;
+      background: #ff6347 !important;
+    }
+    .mediasocial-area {
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+      width: 60%;
+
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        margin-right: 8px;
+        cursor: pointer;
+      }
+    }
+    .training-image {
+      background: pink !important;
+      width: 100px !important;
+      height: 100px !important;
+      border-radius: 6px !important;
+
+      img {
+        display: block;
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 2px !important;
+        border: none !important;
+      }
+    }
+    img,
+    .no-image {
+      display: block;
+      width: 180px;
+      height: 180px;
+      margin: 0px auto 24px;
+      background: #f8f8f8;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 90px;
+
+      border-width: 2px;
+      border-style: solid;
+      border-color: rgb(135, 134, 139);
+      border-image: initial;
+
+      p {
+        margin-top: 1vh;
+        color: rgb(135, 134, 139);
+      }
+    }
+
+    h2,
+    h5 {
+      text-align: center;
+      margin: 5px;
+    }
+
+    .information-area {
+      margin-top: 60px;
+
+      li {
+        padding: 3px;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+
+        &:hover {
+          background: rgba(106, 161, 169, 0.29);
+        }
+      }
+      p {
+        font-weight: 500;
+        font-size: 16px;
+        margin: 5px;
+
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+`;
+
 
 export const Content = styled.div`
   width: 800px;
@@ -227,7 +346,7 @@ export const TrainingContainer = styled.div`
         border-radius: 6px;
         cursor: pointer;
         text-align: center;
-
+        line-height: 35px;
         color: #000;
 
         &:hover {
@@ -250,7 +369,7 @@ export const TrainingContainer = styled.div`
         border: 2px solid rgb(42, 159, 255);
         border-left: 8px solid rgb(42, 159, 255);
         color: rgb(42, 159, 255);
-
+        line-height: 35px;
         &:hover {
           transform: scale(1.05);
           border-left: 8px solid rgb(42, 159, 255);

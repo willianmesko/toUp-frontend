@@ -3,6 +3,7 @@ import Notification from './Notification';
 import { GiWeightLiftingDown } from 'react-icons/gi';
 import { IoIosFitness } from 'react-icons/io';
 import { FiArrowLeft } from 'react-icons/fi';
+import { AiOutlineDashboard } from 'react-icons/ai';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import logo from '~/assets/to-up2.png';
 import { useAuth } from '~/hooks/AuthContext';
@@ -47,7 +48,7 @@ const Header = () => {
           </Link>
         </nav>
         {(location.pathname === '/perfil-athlete' ||
-          location.pathname === '/training-info' || location.pathname === '/me') && (
+          location.pathname === '/dashboard' || location.pathname === '/me') && (
             <Menu>
               <LoadingBar
                 progress={loadingBar}
@@ -56,6 +57,17 @@ const Header = () => {
                 color="#054f77"
                 onLoaderFinished={() => completeLoading()}
               />
+              <li
+                className={
+                  location.pathname === '/dashboard' ? 'active' : ''
+                }
+                onClick={() => {
+                  completeLoading('/dashboard');
+                }}
+              >
+                <AiOutlineDashboard size={40} />
+                <small>Dashboard</small>
+              </li>
               <li
                 className={
                   location.pathname === '/perfil-athlete' ? 'active' : ''
@@ -67,7 +79,7 @@ const Header = () => {
                 <GiWeightLiftingDown size={40} />
                 <small>Alunos</small>
               </li>
-              <li
+              {/* <li
                 className={location.pathname === '/training-info' ? 'active' : ''}
                 onClick={() => {
                   completeLoading('/training');
@@ -75,7 +87,7 @@ const Header = () => {
               >
                 <GiWeightLiftingDown size={40} />
                 <small>Treinos</small>
-              </li>
+              </li> */}
               <li
                 onClick={() => {
                   completeLoading('/exercices');

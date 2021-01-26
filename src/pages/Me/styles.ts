@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+ margin-left: -80px;
   width: 100%;
 `;
 
@@ -206,11 +206,15 @@ from{
     transform:rotate(90deg);
     stroke-dasharray: 1;
   }
-
-  
 `;
 
-export const Avatar = styled.div`
+interface AvatarProps {
+  height?: string;
+  width?: string;
+}
+
+
+export const Avatar = styled.div<AvatarProps>`
   margin-top: -150px;
   align-self: center;
   width:280px;

@@ -8,161 +8,115 @@ import { FaRuler } from 'react-icons/fa';
 import Header from '~/components/Header';
 import {
   Content,
-  MenuLateral,
-  SideMenu,
+  Menu,
   Container,
-  LinksUtils,
-  Post,
+
 } from './styles';
-import { UserInfo } from './Userinfo';
 import { useAuth } from '~/hooks/AuthContext';
-import { AthleteInfo } from './AthleteInfo';
-import { TrainingInfo } from './TrainingInfo';
 import articleTrainer from '~/assets/utils.jpg';
 import avaliacao from '~/assets/avaliacao.jpg';
 
-export const Layout = ({ sideBar, topBar, children, sideMenu, linksUtils }) => {
+export const Layout = ({ children, menu }) => {
   const location = useLocation();
   const { role, user } = useAuth();
-  const renderComponentInfo = () => {
-    switch (location.pathname) {
-      case '/training':
-        return <UserInfo />;
 
-      case '/athletes':
-        return <UserInfo />;
-
-      case '/perfil-athlete':
-        return <AthleteInfo />;
-
-      case '/training-info':
-        return <TrainingInfo />;
-
-    }
-  };
 
   return (
-    <>
+
+
+    <Container>
       <Header />
 
-      <Container>
-        {sideMenu && (
-          <SideMenu>
-            {role === 'trainer' ? (
-              <div>
-                <Link to="/dashboard">
-                  <span
-                    className={
-                      location.pathname === '/dashboard' ? 'active' : 'default'
-                    }
-                  >
-                    <AiOutlineDashboard size={35} />
+      {menu && (
+        <Menu>
+          {role === 'trainer' ? (
+            <div>
+              <Link to="/dashboard">
+                <span
+                  className={
+                    location.pathname === '/dashboard' ? 'active' : 'default'
+                  }
+                >
+                  <AiOutlineDashboard size={35} />
                     Dashboard
                   </span>
-                </Link>
-                <Link to="/athletes">
-                  <span
-                    className={
-                      location.pathname === '/athletes' ? 'active' : 'default'
-                    }
-                  >
-                    <GiWeightLiftingUp size={35} />
+              </Link>
+              <Link to="/athletes">
+                <span
+                  className={
+                    location.pathname === '/athletes' ? 'active' : 'default'
+                  }
+                >
+                  <GiWeightLiftingUp size={35} />
                     Alunos
                   </span>
-                </Link>
-                <Link to="/training">
+              </Link>
+              {/* <Link to="/training">
+                <span
+                  className={
+                    location.pathname === '/training' ? 'active' : 'default'
+                  }
+                >
+                  <GiWeightLiftingDown size={35} />
+                    Treinos
+                  </span>
+              </Link> */}
+              <Link to="/exercices">
+                <span
+                  className={
+                    location.pathname === '/exercices' ? 'active' : 'default'
+                  }
+                >
+                  <IoIosFitness size={50} />
+                    Exercicios
+                  </span>
+              </Link>
+            </div>
+          ) : (
+              <div>
+                {user.trainer_id && (
+                  <Link to="/trainer">
+                    <span
+                      className={
+                        location.pathname === '/trainer' ? 'active' : 'default'
+                      }
+                    >
+                      <GiStrong size={35} />
+                      Treinadores
+                    </span>
+                  </Link>
+                )}
+                <Link to="/workout">
                   <span
                     className={
-                      location.pathname === '/training' ? 'active' : 'default'
+                      location.pathname === '/workout' ? 'active' : 'default'
                     }
                   >
                     <GiWeightLiftingDown size={35} />
-                    Treinos
+                    Treino
                   </span>
                 </Link>
-                <Link to="/exercices">
+                <Link to="/evaluations">
                   <span
                     className={
-                      location.pathname === '/exercices' ? 'active' : 'default'
+                      location.pathname === '/evaluations'
+                        ? 'active'
+                        : 'default'
                     }
                   >
-                    <IoIosFitness size={50} />
-                    Exercicios
+                    <FaRuler size={40} />
+                    Avaliaçoes
                   </span>
                 </Link>
               </div>
-            ) : (
-                <div>
-                  {user.trainer_id && (
-                    <Link to="/trainer">
-                      <span
-                        className={
-                          location.pathname === '/trainer' ? 'active' : 'default'
-                        }
-                      >
-                        <GiStrong size={35} />
-                      Treinadores
-                    </span>
-                    </Link>
-                  )}
-                  <Link to="/workout">
-                    <span
-                      className={
-                        location.pathname === '/workout' ? 'active' : 'default'
-                      }
-                    >
-                      <GiWeightLiftingDown size={35} />
-                    Treino
-                  </span>
-                  </Link>
-                  <Link to="/evaluations">
-                    <span
-                      className={
-                        location.pathname === '/evaluations'
-                          ? 'active'
-                          : 'default'
-                      }
-                    >
-                      <FaRuler size={40} />
-                    Avaliaçoes
-                  </span>
-                  </Link>
-                </div>
-              )}
-          </SideMenu>
-        )}
+            )}
+        </Menu>
+      )}
 
-        <Content
-          margin={sideMenu ? '100px' : 'auto'}
-          flexDirection={sideBar ? 'row' : 'column'}
-        >
+      <Content>
+        {children}
+      </Content>
+    </Container>
 
-
-          {sideBar && <MenuLateral>{renderComponentInfo()}</MenuLateral>}
-          {children}
-        </Content>
-        {linksUtils && (
-          <LinksUtils>
-            <h5>Links Uteis</h5>
-
-            <Post>
-              <img src={articleTrainer} alt="article" />
-              <p>Como montar um treino efeciente </p>
-            </Post>
-            <hr />
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="http://www.appto.com.br/blog/2017/09/18/avaliacao-fisica-entenda-como-realmente-pode-ajuda-lo-a-atingir-resultados"
-            >
-              <Post>
-                <img src={avaliacao} alt="avaliacao" />
-                <p>Avaliação física: entenda como realmente pode ajudá-lo a </p>
-              </Post>
-            </a>
-          </LinksUtils>
-        )}
-      </Container>
-    </>
   );
 };

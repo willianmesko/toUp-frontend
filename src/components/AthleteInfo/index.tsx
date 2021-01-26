@@ -43,10 +43,7 @@ const AthleteInfo: React.FC = () => {
                 <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
               </div>
             )}
-          <label htmlFor="avatar">
-            <FiCamera />
-            <input type="file" id="avatar" onChange={handleChangeAvatar} />
-          </label>{' '}
+
         </AvatarInput>
 
         <h2>{athlete.name}</h2>

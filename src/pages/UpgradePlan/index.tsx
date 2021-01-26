@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Title, Subtitle, Plans, PlanTitle, PlanPrice, PlanInfo, PlanAbout, Button } from './styles';
+import { Container, Content, Title, Subtitle, Plans, PlanTitle, PlanPrice, PlanInfo, PlanAbout, Button } from './styles';
 import { FiCheck } from 'react-icons/fi';
 import { AiOutlineClose } from 'react-icons/ai';
 const UpgradePlan = () => {
@@ -7,10 +7,10 @@ const UpgradePlan = () => {
   const [plans] = useState([1, 2, 3, 4]);
   return (
 
-    <>
+    <Container>
       <Title>Conheça nossos planos</Title>
       <Subtitle>Você está no plano FREE, assine um de nossos planos quando desejar.</Subtitle>
-      <Container>
+      <Content>
 
 
         {plans && plans.map(plan => {
@@ -42,8 +42,8 @@ const UpgradePlan = () => {
           )
         })}
 
-      </Container>
-    </>
+      </Content>
+    </Container>
   )
 };
 

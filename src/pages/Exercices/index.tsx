@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Container,
+  ExercicesArea,
   ExerciceCard,
   SearchField,
+  Container
 } from './styles';
 import CreateExercice from '~/pages/TrainingInfo/CreateExercice';
 import api from '~/services/api';
@@ -21,7 +22,7 @@ const Exercices = () => {
     getExercices();
   }, []);
   return (
-    <>
+    <Container>
       <h1>Exercicios</h1>
       <hr />
       <SearchField>
@@ -35,7 +36,7 @@ const Exercices = () => {
           <CreateExercice addExercice={setExercices} />
         </span>
       </SearchField>
-      <Container>
+      <ExercicesArea>
         {exercices &&
           exercices.map((exercice, index) => {
             return <ExerciceCard>
@@ -64,8 +65,8 @@ const Exercices = () => {
 
             </ExerciceCard>;
           })}
-      </Container>
-    </>
+      </ExercicesArea>
+    </Container>
   );
 };
 

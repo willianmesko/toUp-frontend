@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+export const ExercicesArea = styled.div`
+  display: flex;
+ 
   flex-wrap: wrap;
   max-width: 1333px;
   h1 {

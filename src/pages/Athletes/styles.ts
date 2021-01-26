@@ -5,6 +5,7 @@ import backgroundCard from '~/assets/MountainsOpacity.a4edba24.png';
 export const Container = styled.div`
   border-radius: 10px;
   width: 1200px;
+
 `;
 
 export const NoAthlete = styled.div`
@@ -18,7 +19,6 @@ export const NoAthlete = styled.div`
 
 export const LoadingMore = styled.div`
   display: flex;
-
   justify-content: center;
   margin-top: 30px;
   button {

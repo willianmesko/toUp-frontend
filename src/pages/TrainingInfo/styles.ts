@@ -6,9 +6,9 @@ interface RoutineAreaProps {
 }
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-
+    margin-left: 450px;
+     
+    
   .icons-action {
     display: flex;
     justify-content: flex-end;
@@ -20,11 +20,13 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
-  background: #fff;
-  min-height: 560px;
-  max-height: 10000px;
+
+  background: blue;
+
   border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+ 
 `;
 
 export const Cards = styled.ul`
@@ -70,6 +72,7 @@ export const RoutinesArea = styled.div`
   align-content: center;
   opacity: 0.8;
   align-items: center;
+    
 `;
 
 export const View = styled.ul`

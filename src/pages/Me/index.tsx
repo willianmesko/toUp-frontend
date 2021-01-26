@@ -115,9 +115,10 @@ const Me: React.FC = () => {
 
   return (
     <>
-      <Cover></Cover>
+
 
       <Container>
+        <Cover></Cover>
         <RightBox>
           <Avatar>
 

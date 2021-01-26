@@ -49,13 +49,7 @@ interface RoutineFormData {
   title: string;
   description: string;
 }
-interface ExerciceInterface {
-  id: string;
-  name: string;
-  group_muscle_id: number;
-  group_muscle_name: string;
-  youtube_video_id?: string;
-}
+
 
 const TrainingInfo: React.FC = () => {
   const { training } = useTraining();
@@ -422,53 +416,7 @@ const TrainingInfo: React.FC = () => {
         isOpen={isTourOpen}
         onRequestClose={() => setIsTourOpen(false)}
       />
-      {/*
-      <ExerciceArea data-tut="reactour__add_exercice">
-        {exercices &&
-          exercices.map((exercice, index) => (
-            <div
-              draggable={true}
-              onDragEnd={e => dragEnd(e, exercice.id)}
-              onDragOver={e => dragOver(e)}
-              onDrag={e => dragStart(e, exercice.id)}
-            >
-              <Chip
-                data-tut={`reactour__add_exercice${index}`}
-                data-tip
-                data-for={`tooltip${index}`}
-                onMouseEnter={() => setPlayVideo(1)}
-                onMouseLeave={() => setPlayVideo(0)}
-                style={{ display: 'flex' }}
-                draggable
-                onDragEnd={e => dragEnd(e, exercice.id)}
-                onDragOver={e => dragOver(e)}
-                onDrag={e => dragStart(e, exercice.id)}
-                clickable
-                color="primary"
-                variant="outlined"
-                label={exercice.name}
-              />
 
-              <ReactTooltip
-                delayShow={2000}
-                id={`tooltip${index}`}
-                clickable={true}
-              >
-
-                <iframe
-                  title="exercice example"
-                  width="420"
-                  height="315"
-                  src="https://www.youtube.com/embed/tgbNymZ7vqY"
-                />
-              </ReactTooltip>
-            </div>
-          ))}
-
-        <span>
-          <CreateExercice exercices={exercices} addExercice={setExercices} />
-        </span>
-      </ExerciceArea> */}
 
       <RoutinesArea>
         <View>

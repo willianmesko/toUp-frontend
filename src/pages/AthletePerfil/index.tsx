@@ -1,11 +1,12 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useAthlete } from '~/hooks/AthleteContext';
-import { Container, Content } from './styles';
+import { Container, Content, MenuLateral } from './styles';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import AthleteTraining from './AthleteTraining';
 import AthleteEvaluation from './AthleteEvaluation';
 import AddEvaluation from './AthleteEvaluation/AddEvaluation';
+import { AthleteInfo } from '~/components/AthleteInfo';
 
 const AthletePerfil: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -14,6 +15,9 @@ const AthletePerfil: React.FC = () => {
   const { athlete } = useAthlete();
   return (
     <Container>
+      <MenuLateral >
+        <AthleteInfo />
+      </MenuLateral>
       <Tabs>
         <TabList>
           <Tab
@@ -52,13 +56,13 @@ const AthletePerfil: React.FC = () => {
                 athlete={athlete}
               />
             ) : (
-              <>
-                <AthleteEvaluation
-                  addEvaluation={setAddEvaluation}
-                  athlete={athlete}
-                />
-              </>
-            )}
+                <>
+                  <AthleteEvaluation
+                    addEvaluation={setAddEvaluation}
+                    athlete={athlete}
+                  />
+                </>
+              )}
           </Content>
         </TabPanel>
         <TabPanel>

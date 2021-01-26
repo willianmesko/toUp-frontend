@@ -36,6 +36,7 @@ interface Athlete {
 
 const Athletes: React.FC = () => {
   const [athletes, setAthletes] = useState<Athlete[]>([]);
+  const [netWorkAthletes, setNetWorkAthletes] = useState([]);
   const [copyAthletes, setCopyAthletes] = useState<Athlete[]>([]);
   const { setAthlete } = useAthlete();
   const [loadingBar, setLoadingBar] = useState<number>(0);
@@ -53,14 +54,31 @@ const Athletes: React.FC = () => {
     async function getAthletes(): Promise<void> {
       setSkeleton(true);
       const { data } = await api.get('/athletes');
+
+      setSkeleton(false);
+
       setCopyAthletes(data);
       setAthletes(data);
-      setSkeleton(false);
+
 
 
     }
 
     getAthletes();
+  }, []);
+
+
+  useEffect(() => {
+    async function getNetWorkAthletes(): Promise<void> {
+
+
+      const newtWorkAthletes = await api.get('/athletes/all');
+
+      setNetWorkAthletes(newtWorkAthletes.data)
+
+    }
+
+    getNetWorkAthletes();
   }, []);
 
   const filterAthlete = value => {
@@ -134,24 +152,28 @@ const Athletes: React.FC = () => {
                 </About>
               </AthleteCard>
             )
-          }) : <AthleteCard >
-              <Avatar >
-                <div className="defaultImage"> A </div>
-                <h3>Greg</h3>
-              </Avatar >
+          }) : netWorkAthletes && netWorkAthletes.map(netWorkAthlete => {
+            return (
+              <AthleteCard >
+                <Avatar >
+                  <div className="defaultImage"> A </div>
+                  <h3>{netWorkAthlete.name}</h3>
+                </Avatar >
 
-              <About>
-                <li><b>Idade:</b> 26 anos</li>
-                <li><b>Peso:</b> 150 kg</li>
-                <li><b>Altura:</b> 160cm cm</li>
+                <About>
+                  <li><b>Idade:</b> {netWorkAthlete.age} anos</li>
+                  <li><b>Peso:</b> {netWorkAthlete.body_mass} kg</li>
+                  <li><b>Altura:</b> {netWorkAthlete.stature} cm</li>
 
-                <Button height='45px' width='70%'>
-                  Contatar
+                  <Button height='45px' width='70%'>
+                    Contatar
               </Button>
-              </About>
+                </About>
 
 
-            </AthleteCard>}
+              </AthleteCard>
+            )
+          })}
 
 
         </Content>
