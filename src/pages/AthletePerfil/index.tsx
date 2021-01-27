@@ -3,7 +3,7 @@ import { useAthlete } from '~/hooks/AthleteContext';
 import { Container, Content, MenuLateral } from './styles';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import AthleteTraining from './AthleteTraining';
+import AthleteTraining from './AthleteTraining/index';
 import AthleteEvaluation from './AthleteEvaluation';
 import AddEvaluation from './AthleteEvaluation/AddEvaluation';
 import { AthleteInfo } from '~/components/AthleteInfo';
@@ -20,31 +20,31 @@ const AthletePerfil: React.FC = () => {
       </MenuLateral>
       <Tabs>
         <TabList>
+          {/* <Tab
+            className={activeTab === 0 ? 'activeTab' : 'defaultTab'}
+            onClick={() => setActiveTab(0)}
+          >
+            Geral
+          </Tab> */}
           <Tab
             className={activeTab === 0 ? 'activeTab' : 'defaultTab'}
             onClick={() => setActiveTab(0)}
           >
             Treinos
           </Tab>
-          <Tab
-            className={activeTab === 1 ? 'activeTab' : 'defaultTab'}
-            onClick={() => setActiveTab(1)}
-          >
-            Avaliações
-          </Tab>
+
           <Tab
             className={activeTab === 2 ? 'activeTab' : 'defaultTab'}
             onClick={() => setActiveTab(2)}
           >
-            Evolução
-          </Tab>
-          <Tab
-            className={activeTab === 3 ? 'activeTab' : 'defaultTab'}
-            onClick={() => setActiveTab(3)}
-          >
-            Fotos
+            Avaliações
           </Tab>
         </TabList>
+        {/* <TabPanel>
+          <div style={{ width: '800px' }}>
+            <h1>Geral</h1>
+          </div>
+        </TabPanel> */}
         <TabPanel>
           <AthleteTraining />
         </TabPanel>

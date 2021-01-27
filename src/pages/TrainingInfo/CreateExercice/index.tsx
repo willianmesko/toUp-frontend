@@ -139,8 +139,8 @@ const CreateExercice: React.FC<ModalProps> = props => {
 
   return (
     <div>
-      <span onClick={toggle}>{<GrAddCircle size={30} color="#87868B" />}</span>
 
+      <Button onClick={toggle} height="35px" width="130px">+ Exercicio</Button>
       <Modal centered isOpen={modal} toggle={toggle}>
         <ModalHeader>Novo Exercício</ModalHeader>
         <ModalBody>

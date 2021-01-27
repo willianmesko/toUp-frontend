@@ -1,0 +1,63 @@
+
+{
+    routine && routine.routineExercice &&
+        <>
+        <Buttons>
+        <AddExercices routine={ routine } routineExercices = { routineExercices } updateExercicesInRoutine = { setRoutineExercices } />
+            <AddRoutine button training_id = { training.id } routines = { routines } updateRoutines = { setRoutines } />
+                </Buttons>
+
+
+                < div className = 'exercice-info' >
+                    <ul>
+
+                    {
+                        routineExercices.map(exercice => (
+                            <li>
+                            <div className= "exercice-border" >
+
+                            </div>
+                            < div className = "exercice-info" >
+                            <div className="exercice-title" >
+                            <p>{ exercice.exercice_name } < /p>
+                        < div className = "exercice-icons" >
+                        <p>
+                        <ViewRoutine icon="view" />
+                        </p>
+                        < p >
+                        <MdEdit size={ 25} />
+                        </p>
+
+                        < p >
+                        <MdDelete
+                            onClick={() => deleteExercice(exercice.exercice_id)}
+    size = { 25}
+        />
+        </p>
+        < /div>
+        < /div>
+        < table >
+        <thead>
+        <tr>
+        <td>Séries < /td>
+        < td > Repetições < /td>
+        < td > Carga < /td>
+        < /tr>
+        < /thead>
+        < tbody >
+        <tr>
+        <td>{ exercice.sequence } < /td>
+        < td > { exercice.repetitions } < /td>
+        < td > { exercice.volume } < /td>
+        < /tr>
+        < /tbody>
+        < /table>
+        < /div>
+        < /li>
+              ))
+}
+</ul>
+    < /div>
+    < />
+
+      }

@@ -10,6 +10,7 @@ export const ExercicesArea = styled.div`
   display: flex;
  
   flex-wrap: wrap;
+  
   max-width: 1333px;
   h1 {
     font-weight: bold;
@@ -20,8 +21,8 @@ export const ExerciceCard = styled.div`
   width: 400px;
   height: 150px;
   border-radius: 6px;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  
+  margin: 15px;
   background: #fff;
   cursor: pointer;
   display: flex;
@@ -74,19 +75,29 @@ export const ExerciceCard = styled.div`
 export const SearchField = styled.div`
   display: flex;
   margin-left: 30px;
-  margin-top: 15px;
-  align-content: flex-end;
-  margin-bottom: 15px;
-  justify-content: space-around;
+  
+  margin-bottom: 50px;
+ 
+
+  h2 {
+font-size: 24px;
+font-weight: bold;
+margin: 15px;
+}
+div {
+  width: 100%;
+  display: flex;
+
+ 
   input,
   select {
     padding: 12px;
-    margin: 10px;
     height: 50px;
     border-radius: 50px;
-    width: 400px;
+    width: 300px;
     border: none;
     color: #555;
+    float: left;
 
     &:focus {
       border: 2px solid rgb(42, 159, 255);
@@ -96,33 +107,7 @@ export const SearchField = styled.div`
       width: 100px;
     }
   }
-  span {
-    cursor: pointer;
-    padding: 10px 10px;
-    border-radius: 50%;
-    border: 0;
-    margin-left: auto;
-    transition: all ease 0.2s;
-
-    &:hover {
-      background: rgba(106, 161, 169, 0.29);
-    }
-  }
+}
+  
 `;
 
-export const GroupMuscleFilter = styled.div`
-  display: flex;
-`;
-export const GroupMuscle = styled.div`
-  margin-left: 40px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-`;

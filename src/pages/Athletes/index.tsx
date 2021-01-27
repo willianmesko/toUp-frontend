@@ -15,6 +15,7 @@ import api from '~/services/api';
 import Button from '~/components/Button';
 import { useAthlete } from '~/hooks/AthleteContext';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { networkInterfaces } from 'os';
 
 interface Athlete {
   id: string;
@@ -59,27 +60,24 @@ const Athletes: React.FC = () => {
 
       setCopyAthletes(data);
       setAthletes(data);
-
-
-
     }
 
     getAthletes();
   }, []);
 
-
-  useEffect(() => {
-    async function getNetWorkAthletes(): Promise<void> {
-
-
+  async function getNetWorkAthletes(): Promise<void> {
+    setTabs({
+      myAthletes: false,
+      network: true
+    })
+    if (networkInterfaces.length === 0) {
       const newtWorkAthletes = await api.get('/athletes/all');
 
       setNetWorkAthletes(newtWorkAthletes.data)
-
     }
 
-    getNetWorkAthletes();
-  }, []);
+  }
+
 
   const filterAthlete = value => {
     setFilter(value);
@@ -110,10 +108,7 @@ const Athletes: React.FC = () => {
               myAthletes: true,
               network: false
             })} className={tabs.myAthletes ? 'active' : 'default'}><h2>Meus Alunos</h2></li>
-            <li onClick={() => setTabs({
-              myAthletes: false,
-              network: true
-            })} className={tabs.network ? 'active' : 'default'} ><h2>Rede de alunos</h2></li>
+            <li onClick={getNetWorkAthletes} className={tabs.network ? 'active' : 'default'} ><h2>Rede de alunos</h2></li>
           </Tab>
 
           <Tab>

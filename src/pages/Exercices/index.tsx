@@ -23,18 +23,20 @@ const Exercices = () => {
   }, []);
   return (
     <Container>
-      <h1>Exercicios</h1>
-      <hr />
-      <SearchField>
-        <input placeholder="Pesquisar" />
-        <select>
-          <option>Bicps</option>
-          <option>Tricps</option>
-        </select>
 
-        <span>
+
+      <SearchField>
+        <h2>Execícicos</h2>
+        <div>
+          <input placeholder="Pesquisar" />
+          <select>
+            <option>Bicps</option>
+            <option>Tricps</option>
+          </select>
           <CreateExercice addExercice={setExercices} />
-        </span>
+
+        </div>
+
       </SearchField>
       <ExercicesArea>
         {exercices &&

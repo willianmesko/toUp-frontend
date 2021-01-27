@@ -36,6 +36,8 @@ export const ChartArea = styled.div`
   height: 650px;
   display: flex;
   flex-direction: column !important;
+  -webkit-box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84); 
+    box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84);
 
   .infoResult {
     display: flex;
@@ -73,6 +75,9 @@ export const EvaluationInfo = styled.div`
   width: 800px;
   height: 450px;
   border-radius: 6px;
+  
+  -webkit-box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84); 
+    box-shadow: 10px 10px 15px -8px rgba(0,0,0,0.84);
   div {
     display: flex;
     justify-content: space-around;

@@ -30,7 +30,9 @@ const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@toUp:user');
 
     if (token && user) {
+
       const decodedToken = jwt_decode(token);
+      console.log(decodedToken.role)
       api.defaults.headers.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user), role: decodedToken.role };
     }

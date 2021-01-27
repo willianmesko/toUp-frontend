@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -45,11 +45,10 @@ export const Container = styled.div`
 export const Buttons = styled.div`
 
 display: flex;
-align-self: flex-end;
-justify-content: flex-end;
+margin-left: 10px;
 
 button {
-  margin-right:30px;
+  margin-right:5px;
 }
 
 `
@@ -160,11 +159,32 @@ export const MenuLateral = styled.aside`
 `;
 
 
+
+export const CustomDot = styled.hr`
+width: 20px;
+height: 2px;
+background: pink;
+margin-left: 10px;
+
+
+
+
+`
+
 export const Content = styled.div`
   width: 800px;
   display: flex;
   align-content: center;
-
+  h5 {
+    font-weight: 600;
+  }
+  .carousel-container {
+  margin-top: -20px;
+   display: flex;
+  width: 800px !important;
+   height: 150px;
+  
+ }
   flex-direction: column;
   min-height: 800px;
   max-height: 10000px;
@@ -198,6 +218,7 @@ export const Content = styled.div`
         box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
         &:hover {
           opacity: 1;
+         
         }
         .exercice-border {
           align-items: center;
@@ -259,7 +280,8 @@ export const Content = styled.div`
 
   .no-training {
     text-align: center;
-
+    
+   
     h3 {
       cursor: pointer;
     }
@@ -272,112 +294,63 @@ export const Content = styled.div`
   }
 `;
 
-export const TrainingContainer = styled.div`
-  width: 95%;
-  margin-top: 30px;
+interface TrainingContainerProps {
+  active?: boolean;
+}
+export const TrainingContainer = styled.div<TrainingContainerProps>`
+  width:260px !important;
+
+  font-size:15px;
+  
+ &:hover {
+  font-weight: bold;
+  font-size: 20px;
+  transform: scale(1.05)  translate3d(5px, 5px, 5px);
+    margin-top: -10px;
+  
+      }
+
+${props => props.active && css`
+    margin-right: 100px;
+    color: #3172b7;
+    font-weight: bold;
+    font-size: 20px;
+    transform: scale(1.05) translate3d(5px, 5px, 5px);
+    margin-top: -10px;
+      
+    border-top: 4px solid rgb(42, 159, 255);
+  border-bottom: 4px solid rgb(42, 159, 255);
+  ` }
+  
+  line-height: 80px;
+    text-align: center;
+  transition: transform 500ms;
   color: #000;
-  height: 160px;
+  height: 80px;
   background: #fff;
   display: flex;
-  flex-direction: column;
-  border-radius: 0.75rem;
-  transition: all 0.5s ease;
+
+  justify-content: center;
+  text-align: center;
+  border-radius:5px;
   -webkit-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 2px 5px 0px rgba(0, 0, 0, 0.75);
 
-  .icons-action {
-    margin-top: 10px;
-    align-self: flex-end;
+  .routine-info {
     display: flex;
-    span {
-      padding: 5px;
-      margin-right: 5px;
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-
-      &:hover {
-        background: rgba(106, 161, 169, 0.29);
-      }
-      svg {
-        cursor: pointer;
-      }
-    }
+    width: 100%;
+    text-align: center;
+    
+  .routine-img {
+   width: 30px;
+  
+   height:30px;
+ 
   }
-  .training {
-    display: flex;
-    justify-content: center;
-
-    .training-image {
-      width: 20%;
-
-      img {
-        margin-left: 30px;
-        margin-top: 30px;
-        width: 90px;
-      }
-    }
-
-    .training-about {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-      width: 20%;
-    }
-    .routines {
-      display: flex;
-      width: 60%;
-      font-weight: 500;
-      align-items: center;
-      justify-content: space-around;
-      transition: all 0.25s ease;
-      flex-wrap: wrap;
-      .routine-default {
-        transition: all 0.5s ease;
-        width: 45%;
-        height: 35px;
-        border-width: 0.1px;
-        border-style: solid;
-        border-color: #f0f0f0;
-        background: #fff;
-        opacity: 0.5;
-        border-left: 8px solid rgb(42, 159, 255);
-        border-radius: 6px;
-        cursor: pointer;
-        text-align: center;
-        line-height: 35px;
-        color: #000;
-
-        &:hover {
-          transform: scale(1.05);
-          border-left: 8px solid rgb(42, 159, 255);
-          border: 2px solid rgb(42, 159, 255);
-          color: rgb(42, 159, 255);
-          opacity: 1;
-        }
-      }
-
-      .routine-active {
-        transition: all 0.5s ease;
-        width: 45%;
-        height: 35px;
-        background: #fff;
-        border-radius: 6px;
-        cursor: pointer;
-        text-align: center;
-        border: 2px solid rgb(42, 159, 255);
-        border-left: 8px solid rgb(42, 159, 255);
-        color: rgb(42, 159, 255);
-        line-height: 35px;
-        &:hover {
-          transform: scale(1.05);
-          border-left: 8px solid rgb(42, 159, 255);
-          border: 2px solid rgb(42, 159, 255);
-        }
-      }
-    }
   }
+
+ 
 `;
 
 export const RoutineInfo = styled.div``;

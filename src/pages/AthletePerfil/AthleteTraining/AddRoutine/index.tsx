@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import Button from '~/components/Button'
 import { useToast } from '~/hooks/ToastContext';
+import { useAthlete } from '~/hooks/AthleteContext';
 import api from '~/services/api'
 import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
@@ -18,17 +19,20 @@ interface RoutineFormData {
 }
 
 interface ModalRoutineProps {
-    training_id: string;
+    training_id?: string;
     routines: RoutineInterface[];
     button?: boolean;
     updateRoutines(routine: RoutineInterface[]): void;
+    updateRoutine(routine: RoutineInterface): void;
+    openModal(open: boolean): void;
 }
 
 
-const AddRoutine: React.FC<ModalRoutineProps> = ({ training_id, routines, button, updateRoutines }) => {
+const AddRoutine: React.FC<ModalRoutineProps> = ({ openModal, training_id, routines, button, updateRoutines, updateRoutine }) => {
     const [modal, setModal] = useState(false);
     const formRef = useRef<FormHandles>(null);
     const { addToast } = useToast();
+    const { athlete } = useAthlete();
 
     const toggle = async () => {
         setModal(!modal);
@@ -37,6 +41,8 @@ const AddRoutine: React.FC<ModalRoutineProps> = ({ training_id, routines, button
 
     const openModalStyle = {
         cursor: 'pointer',
+        height: '80px',
+
     };
 
     async function handleSubmitRoutine({
@@ -70,6 +76,7 @@ const AddRoutine: React.FC<ModalRoutineProps> = ({ training_id, routines, button
             const response = await api.post('/routines', {
                 title,
                 training_id,
+                athlete_id: athlete.id,
             });
 
             let routinesUpdated = [...routines]
@@ -77,6 +84,7 @@ const AddRoutine: React.FC<ModalRoutineProps> = ({ training_id, routines, button
             routinesUpdated.push(response.data)
 
             updateRoutines(routinesUpdated)
+            updateRoutine(response.data);
 
             toggle()
 
@@ -103,9 +111,9 @@ const AddRoutine: React.FC<ModalRoutineProps> = ({ training_id, routines, button
 
     return (
         <div>
-            {button ? <Button onClick={toggle} width="200px" height="45px">Adicionar rotina</Button> :
-                <span onClick={toggle} style={openModalStyle}>
-                    <h4>Clique para cadastrar uma rotina </h4>
+            {button ? <Button onClick={toggle} width="120px" height="35px">+ Rotina</Button> :
+                <span onClick={toggle} >
+                    <h4 style={openModalStyle}>Clique para cadastrar uma rotina </h4>
                 </span>}
 
 
