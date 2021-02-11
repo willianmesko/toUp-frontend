@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import { shade } from 'polished';
 
-interface AsideProps {
-  width: number;
-}
 interface ContentProps {
   margin?: string;
   flexDirection?: string;

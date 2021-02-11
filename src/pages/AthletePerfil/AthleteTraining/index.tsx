@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { MdDelete, MdEdit, MdRemoveRedEye } from 'react-icons/md';
+import { MdDelete, MdEdit } from 'react-icons/md';
 import { useAthlete } from '~/hooks/AthleteContext';
-import { Content, TrainingContainer, Buttons, CustomDot } from '../styles';
-import NewTraining from './AddTraining';
+import { Content, TrainingContainer, Buttons } from '../styles';
 import ViewRoutine from './ViewRoutine';
 import AddExercices from './AddExercices';
 import AddRoutine from './AddRoutine';
-import hipertrofia from '~/assets/icons/hipertrofia.svg';
-import emagrecimento from '~/assets/icons/emagrecimento.svg';
 import api from '~/services/api';
-import { useTraining } from '~/hooks/TrainingContext';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import noWorkout from '~/assets/notfound.png';
 import RoutineInterface, { RoutineExercice } from '~/interfaces/routineInterface';
-import { IoIosFitness } from 'react-icons/io';
-import halterImage from '~/assets/halter.png'
+
 interface TrainingInterface {
     id: string;
     title: string;
@@ -32,9 +25,7 @@ const AthleteTraining: React.FC = () => {
     const [routines, setRoutines] = useState<RoutineInterface[]>([]);
     const [routine, setRoutine] = useState<RoutineInterface>();
     const [routineExercices, setRoutineExercices] = useState<RoutineExercice[]>([])
-    const { setTraining } = useTraining();
-    const [openModal, setOpenModal] = useState(false)
-    const history = useHistory()
+    const [, setOpenModal] = useState(false)
 
     const responsive = {
         desktop: {
@@ -80,16 +71,6 @@ const AthleteTraining: React.FC = () => {
 
     async function deleteExercice(exercice_id): Promise<void> {
         await api.delete(`/routine_exercice/${exercice_id}`);
-    }
-
-
-    const CustomDots = () => {
-        return (
-            <div style={{ width: '100%', opacity: '0.5', background: '#000', height: '3px' }}>
-                <CustomDot />
-
-            </div>
-        )
     }
 
     return (

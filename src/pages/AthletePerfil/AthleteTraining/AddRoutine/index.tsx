@@ -9,7 +9,7 @@ import Input from '~/components/Inputs/Text';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { FiUser, FiEdit3, FiSave } from 'react-icons/fi';
+import { FiUser, } from 'react-icons/fi';
 import RoutineInterface from '~/interfaces/routineInterface';
 
 interface RoutineFormData {

@@ -1,4 +1,4 @@
-import React, { useCallback, ChangeEvent } from 'react';
+import React from 'react';
 import { GiWeight, GiBodyHeight } from 'react-icons/gi';
 import {
   AiFillInstagram,
@@ -6,31 +6,30 @@ import {
   AiOutlineWhatsApp,
 } from 'react-icons/ai';
 import { FaBirthdayCake } from 'react-icons/fa';
-import { FiCamera } from 'react-icons/fi';
 import { useAthlete } from '~/hooks/AthleteContext';
 
 import { AvatarInput } from '~/pages/Profile/styles';
 import Button from '~/components/Button';
-import api from '~/services/api';
+
 
 const AthleteInfo: React.FC = () => {
-  const { athlete, setAthlete } = useAthlete();
+  const { athlete } = useAthlete();
 
 
-  const handleChangeAvatar = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      if (e.target.files) {
-        const data = new FormData();
+  // const handleChangeAvatar = useCallback(
+  //   (e: ChangeEvent<HTMLInputElement>) => {
+  //     if (e.target.files) {
+  //       const data = new FormData();
 
-        data.append('avatar', e.target.files[0]);
+  //       data.append('avatar', e.target.files[0]);
 
-        api.patch(`/athletes/avatar/${athlete.id}`, data).then(response => {
-          setAthlete(response.data);
-        });
-      }
-    },
-    [setAthlete, athlete.id],
-  );
+  //       api.patch(`/athletes/avatar/${athlete.id}`, data).then(response => {
+  //         setAthlete(response.data);
+  //       });
+  //     }
+  //   },
+  //   [setAthlete, athlete.id],
+  // );
 
   return (
     <>
@@ -39,10 +38,10 @@ const AthleteInfo: React.FC = () => {
           {athlete.avatar_url ? (
             <img src={athlete.avatar_url} alt={athlete.name} />
           ) : (
-              <div className="no-image">
-                <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
-              </div>
-            )}
+            <div className="no-image">
+              <p>{athlete.name ? athlete.name.charAt(0).toUpperCase() : 'A'}</p>
+            </div>
+          )}
 
         </AvatarInput>
 

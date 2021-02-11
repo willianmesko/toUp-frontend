@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { GrAddCircle } from 'react-icons/gr';
 import { GiDuration } from 'react-icons/gi';
 import { FiYoutube, FiUser } from 'react-icons/fi';
 import { FaWeight } from 'react-icons/fa';
