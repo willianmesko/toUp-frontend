@@ -6,16 +6,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
- margin-left: -80px;
+  margin: 0 auto;
   width: 100%;
 `;
 
 export const Cover = styled.div`
-  min-height: 280px;;
+  min-height: 280px;
   width: 100vw;
   background: #93ccea;
   margin-top: -15px;
-
 `;
 
 export const Tags = styled.div`
@@ -193,16 +192,15 @@ export const RightBox = styled.div`
   }
 `;
 
-
 const loadingBorder = keyframes`
 from{
-   
+
     stroke-dasharray: 5;
     transform:rotate(0deg);
-   
+
   }
   to{
-  
+
     transform:rotate(90deg);
     stroke-dasharray: 1;
   }
@@ -213,31 +211,29 @@ interface AvatarProps {
   width?: string;
 }
 
-
 export const Avatar = styled.div<AvatarProps>`
   margin-top: -150px;
   align-self: center;
-  width:280px;
-  height:280px;
+  width: 280px;
+  height: 280px;
   cursor: pointer;
-  position:relative;
-  
-  svg{
-    fill:none;
-    stroke:#75a3bb;;
+  position: relative;
+
+  svg {
+    fill: none;
+    stroke: #75a3bb;
     stroke-linecap: round;
-    stroke-width:3;
+    stroke-width: 3;
     animation: ${loadingBorder} 3s ease-out forwards;
-    animation-timing-function: cubic-bezier(0.25,0.5,.75,1);  
-     
+    animation-timing-function: cubic-bezier(0.25, 0.5, 0.75, 1);
   }
-  img{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%, -50%);
-    width:210px;
-    border-radius:50%;
+  img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    border-radius: 50%;
   }
 
   label {

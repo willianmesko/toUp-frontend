@@ -14,7 +14,7 @@ import {
 } from './styles';
 import { useAuth } from '~/hooks/AuthContext';
 
-const roules = {
+const roles = {
   trainer: {
     permissions: ['dashboard', 'athletes', 'exercices'],
     icons: {
@@ -50,7 +50,7 @@ export const Layout = ({ children, menu }) => {
       {menu && (
         <Menu>
           <div>
-            {roules[role].permissions.map(permission => {
+            {roles[role].permissions.map(permission => {
               return (
                 <Link to={`/${permission}`}>
                   <span
@@ -58,7 +58,7 @@ export const Layout = ({ children, menu }) => {
                       location.pathname === `/${permission}` ? 'active' : 'default'
                     }
                   >
-                    {roules[role].icons[permission]}
+                    {roles[role].icons[permission]}
                     <p>{permission}</p>
                   </span>
                 </Link>

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  margin: 0 0px;
+  margin: 0 auto;
 
   ul {
     cursor: pointer;

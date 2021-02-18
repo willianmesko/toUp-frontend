@@ -9,7 +9,7 @@ export const Container = styled.div``;
 
 export const Content = styled.main<ContentProps>`
   display: flex;
-  margin: 100px 0 0 0px;
+  margin: 100px auto;
 `;
 
 export const Menu = styled.div`
@@ -19,10 +19,8 @@ export const Menu = styled.div`
   left: 0;
   bottom: 0;
   height: 100%;
-
   justify-content: center;
   align-content: center;
-
   div {
     display: flex;
     width: 90px;
