@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
-   width: 1500px;
-   margin: 30px 0 0 120px;
+  width: 1333px;
+  margin: 30px 0 0 0px;
   display: flex;
   flex-direction: column;
- 
+  margin-left: -90px;
 `;
 
-
 export const Content = styled.div`
- 
-
   display: flex;
   justify-content: space-around;
 `;
@@ -42,6 +38,7 @@ export const Plans = styled.div`
   display: flex;
   flex-direction: column;
   &:hover {
+    cursor: pointer;
     -webkit-box-shadow: 1px -2px 14px 1px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px -2px 14px 1px rgba(0, 0, 0, 0.75);
     box-shadow: 1px -2px 14px 1px rgba(0, 0, 0, 0.75);

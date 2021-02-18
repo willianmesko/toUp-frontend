@@ -5,30 +5,25 @@ interface ContentProps {
   flexDirection?: string;
 }
 
-export const Container = styled.div`
-`;
-
+export const Container = styled.div``;
 
 export const Content = styled.main<ContentProps>`
   display: flex;
-  margin: 100px 0 0 150px;
+  margin: 100px 0 0 0px;
 `;
-
-
 
 export const Menu = styled.div`
   width: 90px;
   background: #fff;
   position: fixed;
-  left:0;
-  bottom:0;
+  left: 0;
+  bottom: 0;
   height: 100%;
 
   justify-content: center;
   align-content: center;
 
   div {
-    
     display: flex;
     width: 90px;
     position: fixed;
@@ -72,7 +67,7 @@ export const Menu = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
       height: 80px;
       color: rgb(42, 159, 255);
       text-align: center;
@@ -97,4 +92,3 @@ export const Menu = styled.div`
     }
   }
 `;
-
