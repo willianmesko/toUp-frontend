@@ -23,7 +23,8 @@ const AddExercices: React.FC<ModalProps> = ({ routineExercices, openModal, updat
     const [exercices, setExercices] = useState<IExercice[]>([])
     const [selectedExercices, setSelectedExercices] = useState<RoutineExercice[]>([]);
     const [page, setPage] = useState(1);
-    const pageSize = Math.round(exercices.length / 5);
+    const pages = window.innerWidth <= 1280 ? 2 : 4;
+    const pageSize = Math.round(exercices.length / pages);
     const { addToast } = useToast();
     const toggle = async () => {
         setModal(!modal);
@@ -118,7 +119,7 @@ const AddExercices: React.FC<ModalProps> = ({ routineExercices, openModal, updat
 
     return (
         <div>
-            {console.log(pageSize)}
+
             <Button onClick={toggle} height='35px' width="120px">+ Exercício</Button>
 
             <Modal size="lg" centered isOpen={modal} toggle={toggle}>
@@ -138,7 +139,7 @@ const AddExercices: React.FC<ModalProps> = ({ routineExercices, openModal, updat
                         <Button onClick={() => saveExerciceToRoutine()} height="40px" width="130px" style={{ alignSelf: 'flex-end', marginTop: '-10px' }}>Salvar</Button>
                         <ExercicesArea >
 
-                            {exercices && exercices.slice((page - 1) * 4, page * 4).map(exercice => {
+                            {exercices && exercices.slice((page - 1) * pages, page * pages).map(exercice => {
                                 return (
                                     <Exercice selected={isSelected(exercice.id)} onClick={() => addExercices(exercice)}>
                                         <div className="thumbnail">
