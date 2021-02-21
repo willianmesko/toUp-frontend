@@ -3,7 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  @media (min-width: 1281px) {
+    height: 80vh;
+  }
+  @media (max-width: 1280px) {
+    height: 60vh;
+  }
 `;
 
 export const Filters = styled.ul`
