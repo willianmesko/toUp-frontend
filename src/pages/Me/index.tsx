@@ -42,7 +42,7 @@ const Me: React.FC = () => {
   const { user, updateUser } = useAuth();
   const { addToast } = useToast();
   const [bio, setBio] = useState('');
-  const [enableEditBio, setEnableEditBio] = useState(false);
+  const [enableEditBio,] = useState(false);
   const [enableEditPerfil, setEnableEditPerfil] = useState(false);
   const formRef = useRef<FormHandles>(null);
 
