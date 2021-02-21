@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import Button from '~/components/Button'
-import api from '~/services/api'
+
 import {
     AiFillEdit,
-    AiFillSave,
+
 } from 'react-icons/ai';
 
 

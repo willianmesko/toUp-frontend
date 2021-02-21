@@ -1,10 +1,6 @@
 import React, { useState, useRef, useCallback, ChangeEvent } from 'react';
 import { Form } from '@unform/web';
 import { FiCamera } from 'react-icons/fi';
-import {
-  AiFillEdit,
-  AiFillSave,
-} from 'react-icons/ai';
 import { FaCity, FaMoneyBillAlt, FaUser } from 'react-icons/fa';
 import { MdVisibility } from 'react-icons/md';
 import { GiWorld } from 'react-icons/gi';
