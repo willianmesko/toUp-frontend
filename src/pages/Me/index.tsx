@@ -28,6 +28,7 @@ import {
   Tags,
   Tag,
 } from './styles';
+import AboutMeModal from './AboutMe'
 
 interface EditProfileData {
   name: string;
@@ -118,7 +119,9 @@ const Me: React.FC = () => {
 
 
       <Container>
-        <Cover></Cover>
+        <Cover>
+          <FiCamera />
+        </Cover>
         <RightBox>
           <Avatar>
 
@@ -145,47 +148,47 @@ const Me: React.FC = () => {
                     {user.address?.country}
                   </h6>
                 ) : (
-                    <h6>Cidade, Estado, Pais</h6>
-                  )}
+                  <h6>Cidade, Estado, Pais</h6>
+                )}
 
                 <p onClick={() => setEnableEditPerfil(true)}>Editar</p>
               </div>
             ) : (
-                <div className="editUser">
-                  <Form ref={formRef} onSubmit={handleEditProfile}>
-                    <Input
-                      name="public_name"
-                      type="text"
-                      placeholder="Nome publico"
-                      icon={FaUser}
-                    />
-                    <Input
-                      name="city"
-                      type="text"
-                      placeholder="Cidade"
-                      icon={FaCity}
-                    />
-                    <Input
-                      name="state"
-                      type="text"
-                      placeholder="Estado"
-                      icon={FaMoneyBillAlt}
-                    />
-                    <Input
-                      name="country"
-                      type="text"
-                      placeholder="Pais"
-                      icon={GiWorld}
-                    />
-                    <div className="buttons">
-                      <Button onClick={() => setEnableEditPerfil(false)}>
-                        Cancelar
+              <div className="editUser">
+                <Form ref={formRef} onSubmit={handleEditProfile}>
+                  <Input
+                    name="public_name"
+                    type="text"
+                    placeholder="Nome publico"
+                    icon={FaUser}
+                  />
+                  <Input
+                    name="city"
+                    type="text"
+                    placeholder="Cidade"
+                    icon={FaCity}
+                  />
+                  <Input
+                    name="state"
+                    type="text"
+                    placeholder="Estado"
+                    icon={FaMoneyBillAlt}
+                  />
+                  <Input
+                    name="country"
+                    type="text"
+                    placeholder="Pais"
+                    icon={GiWorld}
+                  />
+                  <div className="buttons">
+                    <Button onClick={() => setEnableEditPerfil(false)}>
+                      Cancelar
                     </Button>
-                      <Button type="submit">Salvar</Button>
-                    </div>
-                  </Form>
-                </div>
-              )}
+                    <Button type="submit">Salvar</Button>
+                  </div>
+                </Form>
+              </div>
+            )}
           </Info>
           <Form ref={formRef} onSubmit={handleEditExtraInformation}>
             <Input
@@ -207,18 +210,16 @@ const Me: React.FC = () => {
           <AboutMe>
             <header>
               <h2>Sobre mim</h2>
-              {enableEditBio ? (
-                <AiFillSave size={20} onClick={() => handleUpdateBio()} />
-              ) : (
-                  <AiFillEdit size={20} onClick={() => setEnableEditBio(true)} />
-                )}
+
+              <AboutMeModal />
+
             </header>
             <Bio>
               {enableEditBio ? (
                 <textarea value={bio} onChange={e => setBio(e.target.value)} />
               ) : (
-                  <p>{user.bio}</p>
-                )}
+                <p>{user.bio}</p>
+              )}
             </Bio>
           </AboutMe>
           <Skills>

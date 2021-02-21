@@ -15,6 +15,13 @@ export const Cover = styled.div`
   width: 100vw;
   background: #93ccea;
   margin-top: -15px;
+
+  svg {
+    float: right;
+    margin-right: 50px;
+    cursor: pointer;
+  }
+
 `;
 
 export const Tags = styled.div`
