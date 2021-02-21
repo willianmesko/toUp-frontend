@@ -66,16 +66,6 @@ const Me: React.FC = () => {
     [addToast, updateUser],
   );
 
-  const handleUpdateBio = async (): Promise<void> => {
-    setEnableEditBio(false);
-
-    await api.put('/profile', {
-      bio,
-    });
-
-    user.bio = bio;
-    updateUser(user);
-  };
   const handleEditProfile = useCallback(
     async (data: EditProfileData) => {
       const { city, state, country } = data;
