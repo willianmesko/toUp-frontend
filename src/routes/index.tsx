@@ -48,7 +48,7 @@ const Routes: React.FC = () => (
     />
     <Route path="/trainer" menu component={TrainerList} isPrivate />
     <Route path="/exercices" menu component={Exercices} isPrivate />
-    <Route path="/upgrade-plan" component={UpgradePlan} isPrivate />
+      <Route path="/upgrade-plan" component={UpgradePlan} isPrivate />
   </Switch>
 );
 
